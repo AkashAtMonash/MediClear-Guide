@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MediClear — Wireframes v2 · Mobile + Web</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0C0D0F;
+  --surface: #14161A;
+  --surface-2: #1C1E24;
+  --surface-3: #24262E;
+  --border: #2C2E38;
+  --border-2: #383A46;
+  --accent: #FF5C2B;
+  --accent-dim: rgba(255,92,43,0.13);
+  --teal: #00C9B1;
+  --teal-dim: rgba(0,201,177,0.12);
+  --blue: #3B82F6;
+  --blue-dim: rgba(59,130,246,0.12);
+  --green: #22C55E;
+  --green-dim: rgba(34,197,94,0.12);
+  --amber: #F59E0B;
+  --amber-dim: rgba(245,158,11,0.12);
+  --red: #EF4444;
+  --red-dim: rgba(239,68,68,0.12);
+  --purple: #A78BFA;
+  --purple-dim: rgba(167,139,250,0.12);
+  --text: #F0F1F3;
+  --text-2: #9CA3AF;
+  --text-3: #6B7280;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:#080909;color:var(--text);overflow-x:hidden;}
+
+/* ══ TOP NAV ══ */
+.top-nav{background:var(--bg);border-bottom:1px solid var(--border);padding:0 32px;display:flex;align-items:center;gap:0;position:sticky;top:0;z-index:300;height:52px;}
+.brand{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;letter-spacing:-.02em;margin-right:32px;flex-shrink:0;}
+.brand span{color:var(--accent);}
+.screen-tabs{display:flex;gap:0;overflow-x:auto;flex:1;}
+.screen-tabs::-webkit-scrollbar{height:0;}
+.stab{font-size:12px;font-weight:500;padding:0 16px;height:52px;display:flex;align-items:center;border:none;background:none;color:var(--text-3);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all .2s;font-family:'DM Sans',sans-serif;gap:7px;}
+.stab:hover{color:var(--text);}
+.stab.active{color:var(--accent);border-bottom-color:var(--accent);font-weight:600;}
+.stab-num{font-size:10px;font-weight:700;background:var(--surface-3);padding:2px 6px;border-radius:4px;color:var(--text-3);}
+.stab.active .stab-num{background:var(--accent-dim);color:var(--accent);}
+
+/* ══ STAGE ══ */
+.stage{padding:32px;display:flex;flex-direction:column;align-items:center;gap:0;}
+.view-label-row{display:flex;gap:8px;align-items:center;margin-bottom:20px;align-self:flex-start;max-width:1360px;width:100%;}
+.screen-title{font-family:'Syne',sans-serif;font-size:20px;font-weight:700;}
+.screen-desc{font-size:13px;color:var(--text-3);margin-left:4px;}
+.view-toggle{display:flex;gap:6px;margin-left:auto;}
+.vt-btn{font-size:11px;font-weight:600;padding:5px 12px;border-radius:6px;border:1px solid var(--border);background:none;color:var(--text-3);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;}
+.vt-btn.active{background:var(--accent);border-color:var(--accent);color:#fff;}
+
+.dual-view{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:start;width:100%;max-width:1360px;}
+.dual-view.web-only{grid-template-columns:1fr;}
+.dual-view.mobile-only{grid-template-columns:auto;justify-content:center;}
+
+/* ══ MOBILE DEVICE FRAME ══ */
+.mobile-col{display:flex;flex-direction:column;align-items:center;gap:10px;flex-shrink:0;}
+.device-label{font-size:11px;color:var(--text-3);font-weight:500;letter-spacing:.04em;text-transform:uppercase;}
+.device{width:375px;background:var(--bg);border-radius:48px;box-shadow:0 0 0 10px #1A1C22,0 0 0 11px #22242C,0 50px 100px rgba(0,0,0,.8),0 0 80px rgba(255,92,43,.04);overflow:hidden;position:relative;flex-shrink:0;}
+.device-notch{width:110px;height:32px;background:#080909;border-radius:0 0 20px 20px;margin:0 auto;position:relative;z-index:10;}
+.device-notch::after{content:'';position:absolute;bottom:9px;left:50%;transform:translateX(-50%);width:52px;height:4px;background:#1A1A1A;border-radius:10px;}
+.m-screen{background:var(--bg);min-height:760px;overflow:hidden;display:none;}
+.m-screen.active{display:block;}
+.m-scroll{overflow-y:auto;max-height:760px;}
+.m-scroll::-webkit-scrollbar{width:0;}
+.pb80{padding-bottom:80px;}
+
+/* ══ WEB BROWSER FRAME ══ */
+.web-col{display:flex;flex-direction:column;align-items:stretch;gap:10px;}
+.browser-frame{background:var(--surface);border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:0 20px 60px rgba(0,0,0,.5);}
+.browser-chrome{background:var(--surface-2);padding:12px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border);}
+.browser-dots{display:flex;gap:6px;}
+.b-dot{width:12px;height:12px;border-radius:50%;}
+.b-dot:nth-child(1){background:#FF5F57;}
+.b-dot:nth-child(2){background:#FFBD2E;}
+.b-dot:nth-child(3){background:#28C840;}
+.browser-url{flex:1;background:var(--surface-3);border-radius:6px;padding:6px 12px;font-size:12px;color:var(--text-3);display:flex;align-items:center;gap:8px;}
+.browser-url svg{flex-shrink:0;}
+.w-screen{background:var(--bg);display:none;min-height:620px;}
+.w-screen.active{display:block;}
+.w-scroll{overflow-y:auto;max-height:620px;}
+.w-scroll::-webkit-scrollbar{width:4px;}
+.w-scroll::-webkit-scrollbar-track{background:transparent;}
+.w-scroll::-webkit-scrollbar-thumb{background:var(--border-2);border-radius:2px;}
+
+/* ══ SHARED COMPONENTS ══ */
+/* Status bar */
+.sbar{display:flex;justify-content:space-between;align-items:center;padding:8px 22px 2px;font-size:11px;}
+.sbar-time{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;}
+.sbar-icons{display:flex;align-items:center;gap:5px;}
+.sig{display:flex;gap:1.5px;align-items:flex-end;}
+.sig span{background:var(--text);border-radius:1px;width:2.5px;}
+.sig span:nth-child(1){height:4px;}
+.sig span:nth-child(2){height:7px;}
+.sig span:nth-child(3){height:10px;}
+.sig span:nth-child(4){height:13px;}
+.batt{width:20px;height:10px;border:1.5px solid var(--text);border-radius:2px;position:relative;display:flex;align-items:center;padding:1px;}
+.batt::after{content:'';position:absolute;right:-3px;top:50%;transform:translateY(-50%);width:2px;height:4px;background:var(--text);border-radius:0 1px 1px 0;}
+.batt-fill{background:var(--green);height:100%;width:68%;border-radius:1px;}
+
+/* Bottom nav mobile */
+.m-bnav{display:flex;background:var(--surface);border-top:1px solid var(--border);padding:8px 0 18px;position:sticky;bottom:0;}
+.m-bn{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:5px 0;}
+.m-bn-lbl{font-size:9px;font-weight:500;color:var(--text-3);}
+.m-bn.on .m-bn-lbl{color:var(--accent);}
+.m-bn-ico{width:20px;height:20px;display:flex;align-items:center;justify-content:center;}
+.m-bn-ico svg{stroke:var(--text-3);fill:none;width:18px;height:18px;}
+.m-bn.on .m-bn-ico svg{stroke:var(--accent);}
+
+/* Web sidebar nav */
+.web-layout{display:grid;grid-template-columns:220px 1fr;min-height:620px;}
+.w-sidebar{background:var(--surface);border-right:1px solid var(--border);padding:20px 0;display:flex;flex-direction:column;}
+.w-sb-brand{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;padding:0 20px 20px;border-bottom:1px solid var(--border);margin-bottom:12px;}
+.w-sb-brand span{color:var(--accent);}
+.w-sb-item{display:flex;align-items:center;gap:10px;padding:10px 20px;font-size:13px;font-weight:500;color:var(--text-3);cursor:pointer;transition:all .15s;border-left:2px solid transparent;}
+.w-sb-item:hover{color:var(--text);background:var(--surface-2);}
+.w-sb-item.on{color:var(--accent);background:var(--accent-dim);border-left-color:var(--accent);}
+.w-sb-item svg{width:15px;height:15px;stroke:currentColor;fill:none;flex-shrink:0;}
+.w-sb-section{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);padding:12px 20px 6px;}
+.w-sb-bottom{margin-top:auto;padding:16px 20px;border-top:1px solid var(--border);}
+.w-sb-user{display:flex;align-items:center;gap:10px;}
+.w-main{padding:28px 32px;overflow-y:auto;max-height:620px;}
+.w-main::-webkit-scrollbar{width:4px;}
+.w-main::-webkit-scrollbar-thumb{background:var(--border-2);border-radius:2px;}
+
+/* Web top bar (for pages without sidebar) */
+.w-topbar{background:var(--surface);border-bottom:1px solid var(--border);padding:0 32px;display:flex;align-items:center;height:56px;gap:20px;}
+.w-tb-brand{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;}
+.w-tb-brand span{color:var(--accent);}
+.w-tb-nav{display:flex;gap:0;margin-left:20px;}
+.w-tb-link{font-size:13px;font-weight:500;color:var(--text-3);padding:0 14px;height:56px;display:flex;align-items:center;border-bottom:2px solid transparent;cursor:pointer;transition:all .15s;}
+.w-tb-link:hover{color:var(--text);}
+.w-tb-link.on{color:var(--accent);border-bottom-color:var(--accent);}
+.w-tb-actions{margin-left:auto;display:flex;gap:10px;align-items:center;}
+
+/* Generic reused */
+.pg-title{font-family:'Syne',sans-serif;font-size:22px;font-weight:700;letter-spacing:-.02em;}
+.pg-sub{font-size:13px;color:var(--text-2);margin-top:3px;}
+.w-pg-title{font-family:'Syne',sans-serif;font-size:26px;font-weight:700;letter-spacing:-.02em;}
+.w-pg-sub{font-size:14px;color:var(--text-2);margin-top:4px;}
+.sec-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.sec-lbl{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);}
+.see-all{font-size:12px;color:var(--accent);font-weight:600;cursor:pointer;}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px;}
+.card-sm{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px;}
+.avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#CC3A15);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#fff;flex-shrink:0;}
+.avatar-sm{width:30px;height:30px;font-size:11px;}
+.btn-p{background:var(--accent);color:#fff;border:none;border-radius:10px;padding:12px 20px;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;width:100%;transition:background .2s;}
+.btn-p:hover{background:#E8400F;}
+.btn-g{background:var(--surface-2);color:var(--text);border:1.5px solid var(--border);border-radius:10px;padding:12px 20px;font-size:14px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;width:100%;}
+.btn-sm{padding:8px 16px;font-size:12px;border-radius:8px;width:auto;}
+.inp{width:100%;background:var(--surface-2);border:1.5px solid var(--border);border-radius:10px;padding:12px 14px;font-size:14px;color:var(--text);font-family:'DM Sans',sans-serif;outline:none;transition:border-color .2s;}
+.inp:focus{border-color:var(--accent);}
+.inp::placeholder{color:var(--text-3);}
+.lbl{font-size:12px;font-weight:600;color:var(--text-2);margin-bottom:5px;display:block;}
+.cost-free{display:inline-flex;align-items:center;gap:4px;background:var(--green-dim);color:var(--green);font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;}
+.cost-low{display:inline-flex;align-items:center;gap:4px;background:var(--amber-dim);color:var(--amber);font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;}
+.cost-gap{display:inline-flex;align-items:center;gap:4px;background:var(--red-dim);color:var(--red);font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;}
+.pill{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;}
+.pill-t{background:var(--teal-dim);color:var(--teal);}
+.pill-b{background:var(--blue-dim);color:var(--blue);}
+.pill-a{background:var(--accent-dim);color:var(--accent);}
+.pill-g{background:var(--green-dim);color:var(--green);}
+.pill-r{background:var(--red-dim);color:var(--red);}
+.pill-p{background:var(--purple-dim);color:var(--purple);}
+.dot{width:7px;height:7px;border-radius:50%;display:inline-block;flex-shrink:0;}
+.dot-g{background:var(--green);}
+.dot-a{background:var(--amber);}
+.dot-r{background:var(--red);}
+.dot-t{background:var(--teal);}
+.divl{height:1px;background:var(--border);margin:12px 0;}
+.notice{background:var(--surface-2);border-radius:8px;padding:9px 12px;font-size:11px;color:var(--text-3);display:flex;align-items:center;gap:8px;line-height:1.5;}
+.notice svg{flex-shrink:0;width:13px;height:13px;stroke:var(--text-3);fill:none;}
+.emg-bar{background:var(--red-dim);border:1px solid rgba(239,68,68,.25);border-radius:12px;padding:11px 14px;display:flex;align-items:center;justify-content:space-between;}
+.emg-lbl{font-size:12px;font-weight:600;color:var(--red);}
+.emg-sub{font-size:10.5px;color:rgba(239,68,68,.6);margin-top:1px;}
+.emg-btn{background:var(--red);color:#fff;font-size:12px;font-weight:700;padding:7px 13px;border-radius:7px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;}
+.source-note{background:var(--surface-2);border-radius:8px;padding:9px 12px;font-size:11px;color:var(--text-3);line-height:1.5;margin-top:8px;}
+.conf-row{display:flex;align-items:center;gap:6px;}
+.conf-lbl{font-size:10px;color:var(--text-3);}
+.conf-track{width:56px;height:4px;background:var(--border);border-radius:2px;}
+.conf-fill{height:100%;border-radius:2px;background:var(--teal);}
+.chip-filter{font-size:12px;font-weight:500;padding:6px 13px;border-radius:20px;border:1px solid var(--border);background:none;color:var(--text-3);cursor:pointer;white-space:nowrap;font-family:'DM Sans',sans-serif;transition:all .15s;}
+.chip-filter:hover{border-color:var(--accent);color:var(--text);}
+.chip-filter.on{background:var(--accent-dim);border-color:var(--accent);color:var(--accent);}
+.tt-tabs{display:flex;gap:0;background:var(--surface);border-radius:10px;padding:3px;margin-bottom:14px;}
+.tt-tab{flex:1;text-align:center;padding:7px;font-size:12px;font-weight:600;border-radius:7px;cursor:pointer;color:var(--text-3);transition:all .2s;}
+.tt-tab.on{background:var(--accent);color:#fff;}
+.toggle{width:42px;height:22px;background:var(--surface-3);border-radius:11px;position:relative;cursor:pointer;transition:background .2s;flex-shrink:0;}
+.toggle.on{background:var(--accent);}
+.toggle::after{content:'';position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:transform .2s;}
+.toggle.on::after{transform:translateX(20px);}
+.stat-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.stat-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
+.stat-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px;}
+.sb-val{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;line-height:1;}
+.sb-lbl{font-size:11px;color:var(--text-3);margin-top:3px;}
+.provider-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:10px;}
+.prov-hd{display:flex;align-items:flex-start;gap:11px;margin-bottom:10px;}
+.prov-av{width:42px;height:42px;border-radius:11px;background:var(--surface-3);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--text-2);flex-shrink:0;}
+.prov-nm{font-size:13.5px;font-weight:600;}
+.prov-tp{font-size:11.5px;color:var(--text-3);margin-top:1px;}
+.prov-dist{font-size:11px;color:var(--text-3);margin-left:auto;}
+.book-btn{background:var(--accent);color:#fff;font-size:12px;font-weight:600;padding:7px 13px;border-radius:7px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;}
+.pw-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:13px;margin-bottom:8px;display:flex;align-items:center;gap:11px;cursor:pointer;transition:border-color .15s;}
+.pw-card:hover{border-color:var(--accent);}
+.pw-ico{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.pw-ico svg{width:18px;height:18px;stroke-width:1.8;}
+.pw-nm{font-size:13.5px;font-weight:600;}
+.pw-dist{font-size:11.5px;color:var(--text-3);margin-top:1px;}
+.wt-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:13px;margin-bottom:8px;display:flex;gap:10px;}
+.wt-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:5px;}
+.wt-nm{font-size:13.5px;font-weight:600;margin-bottom:2px;}
+.wt-meta{font-size:11.5px;color:var(--text-3);}
+.wt-desc{font-size:12px;color:var(--text-2);margin-top:5px;line-height:1.5;}
+.wt-acts{display:flex;gap:12px;margin-top:8px;align-items:center;}
+.wt-cal{font-size:11px;font-weight:600;color:var(--teal);cursor:pointer;display:flex;align-items:center;gap:4px;}
+.wt-bk{font-size:11px;font-weight:600;color:var(--accent);cursor:pointer;}
+.ent-card{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:13px;margin-bottom:9px;display:flex;gap:11px;align-items:flex-start;}
+.ent-ico{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ent-ico svg{width:16px;height:16px;stroke-width:1.8;}
+.ent-nm{font-size:13.5px;font-weight:600;margin-bottom:2px;}
+.ent-desc{font-size:11.5px;color:var(--text-3);line-height:1.4;}
+.ent-ft{display:flex;align-items:center;justify-content:space-between;margin-top:7px;}
+.ent-mbs{font-size:10px;color:var(--text-3);}
+.find-prov{font-size:11.5px;color:var(--accent);font-weight:600;cursor:pointer;}
+.ai-card{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:14px;margin-bottom:10px;}
+.ai-hd{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:8px;}
+.ai-nm{font-size:14px;font-weight:600;}
+.ai-mbs{font-size:10.5px;color:var(--text-3);margin-top:1px;}
+.ai-desc{font-size:12.5px;color:var(--text-2);line-height:1.55;margin-bottom:9px;}
+.ai-ask-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-3);margin-bottom:5px;}
+.ai-ask-item{font-size:12px;color:var(--text-2);padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:7px;line-height:1.5;}
+.ai-ask-item:last-child{border-bottom:none;}
+.ai-ask-item::before{content:'–';color:var(--text-3);flex-shrink:0;}
+.ai-src{display:flex;align-items:center;gap:6px;margin-top:9px;padding-top:8px;border-top:1px solid var(--border);font-size:10.5px;color:var(--text-3);}
+.ai-src svg{width:11px;height:11px;stroke:var(--text-3);fill:none;}
+.gp-disc{background:var(--surface-3);border-radius:8px;padding:8px 12px;font-size:11px;color:var(--text-2);text-align:center;margin:8px 0;}
+.ai-badge{display:inline-flex;align-items:center;gap:6px;background:var(--accent-dim);border:1px solid rgba(255,92,43,.2);border-radius:20px;padding:4px 11px;font-size:11px;font-weight:600;color:var(--accent);}
+.ai-badge svg{width:11px;height:11px;stroke:var(--accent);fill:none;}
+.menu-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:13px 15px;margin-bottom:6px;display:flex;align-items:center;gap:11px;cursor:pointer;}
+.menu-ico{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.menu-ico svg{width:14px;height:14px;stroke-width:1.8;}
+.menu-lbl{font-size:13.5px;flex:1;}
+.menu-arr{color:var(--text-3);}
+.menu-arr svg{width:14px;height:14px;stroke:currentColor;fill:none;}
+.hero-card{background:linear-gradient(135deg,var(--accent) 0%,#CC3A15 100%);border-radius:18px;padding:18px;position:relative;overflow:hidden;}
+.hero-card::before{content:'';position:absolute;top:-30px;right:-30px;width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.07);}
+.hero-ey{font-size:10px;font-weight:600;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px;}
+.hero-val{font-family:'Syne',sans-serif;font-size:38px;font-weight:800;color:#fff;line-height:1;}
+.hero-lbl{font-size:12px;color:rgba(255,255,255,.7);margin-top:4px;}
+.hero-cta{margin-top:14px;display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.15);padding:7px 13px;border-radius:20px;font-size:11.5px;font-weight:600;color:#fff;cursor:pointer;}
+.select-f{width:100%;background:var(--surface-2);border:1.5px solid var(--border);border-radius:10px;padding:11px 14px;font-size:14px;color:var(--text);font-family:'DM Sans',sans-serif;appearance:none;outline:none;transition:border-color .2s;}
+.select-f:focus{border-color:var(--accent);}
+
+/* Web specific layout helpers */
+.w-2col{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.w-3col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+.w-sidebar-content{padding:24px;}
+.w-table{width:100%;border-collapse:collapse;}
+.w-table th{padding:9px 14px;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--surface-2);color:var(--text-3);text-align:left;border-bottom:1px solid var(--border);}
+.w-table td{padding:11px 14px;font-size:13px;color:var(--text-2);border-bottom:1px solid var(--border);vertical-align:middle;}
+.w-table tr:last-child td{border-bottom:none;}
+.w-table tr:hover td{background:rgba(255,255,255,.02);}
+.w-card-accent{background:linear-gradient(135deg,var(--accent),#CC3A15);border-radius:14px;padding:20px;color:#fff;position:relative;overflow:hidden;}
+.w-card-accent::before{content:'';position:absolute;top:-20px;right:-20px;width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,.07);}
+.tag{display:inline-block;font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;}
+.tag-ov{background:var(--red-dim);color:var(--red);}
+.tag-due{background:var(--amber-dim);color:var(--amber);}
+.tag-up{background:var(--surface-3);color:var(--text-3);}
+.progress-bar{height:6px;background:var(--surface-3);border-radius:3px;overflow:hidden;margin-top:6px;}
+.progress-fill{height:100%;border-radius:3px;background:var(--accent);}
+.w-search-bar{display:flex;gap:10px;margin-bottom:16px;}
+.w-search-inp{flex:1;position:relative;}
+.w-search-inp svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:15px;height:15px;stroke:var(--text-3);fill:none;}
+.w-search-inp input{width:100%;background:var(--surface-2);border:1.5px solid var(--border);border-radius:10px;padding:10px 14px 10px 36px;font-size:13px;color:var(--text);font-family:'DM Sans',sans-serif;outline:none;}
+.w-search-inp input:focus{border-color:var(--accent);}
+.w-search-inp input::placeholder{color:var(--text-3);}
+
+/* ══ ANIMATION ══ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.m-screen.active,.w-screen.active{animation:fadeUp .22s ease;}
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<div class="top-nav">
+  <div class="brand">Medi<span>Clear</span></div>
+  <div class="screen-tabs">
+    <button class="stab active" onclick="go('onboard')"><span class="stab-num">01</span>Onboarding</button>
+    <button class="stab" onclick="go('login')"><span class="stab-num">02</span>Login</button>
+    <button class="stab" onclick="go('home')"><span class="stab-num">03</span>Home</button>
+    <button class="stab" onclick="go('entitle')"><span class="stab-num">04</span>My Entitlements</button>
+    <button class="stab" onclick="go('cost')"><span class="stab-num">05</span>Find Care</button>
+    <button class="stab" onclick="go('right')"><span class="stab-num">06</span>Where To Go</button>
+    <button class="stab" onclick="go('well')"><span class="stab-num">07</span>Health Schedule</button>
+    <button class="stab" onclick="go('ai')"><span class="stab-num">08</span>Hidden Entitlements</button>
+    <button class="stab" onclick="go('profile')"><span class="stab-num">09</span>Profile</button>
+    <button class="stab" onclick="go('provider')"><span class="stab-num">10</span>Provider Detail</button>
+  </div>
+</div>
+
+<!-- STAGE -->
+<div class="stage">
+  <div class="view-label-row">
+    <div>
+      <div class="screen-title" id="screen-title">01 — Onboarding</div>
+      <div class="screen-desc" id="screen-desc">First time user experience · Value proposition · Access options</div>
+    </div>
+    <div class="view-toggle">
+      <button class="vt-btn active" id="btn-both" onclick="setView('both')">Both Views</button>
+      <button class="vt-btn" id="btn-mobile" onclick="setView('mobile')">Mobile Only</button>
+      <button class="vt-btn" id="btn-web" onclick="setView('web')">Web Only</button>
+    </div>
+  </div>
+
+  <!-- ══ DUAL VIEW CONTAINER ══ -->
+  <div class="dual-view" id="dual-view">
+
+    <!-- ░░ MOBILE COLUMN ░░ -->
+    <div class="mobile-col" id="mobile-col">
+      <div class="device-label">Mobile View · 375px</div>
+      <div class="device">
+        <div class="device-notch"></div>
+        <div class="device-screen">
+
+          <!-- M: ONBOARDING -->
+          <div id="m-onboard" class="m-screen active">
+            <div class="m-scroll pb80">
+              <div class="sbar"><span class="sbar-time">9:41</span><div class="sbar-icons"><div class="sig"><span></span><span></span><span></span><span></span></div><div class="batt"><div class="batt-fill"></div></div></div></div>
+              <div style="padding:36px 26px 0;text-align:center;">
+                <div style="width:100px;height:100px;margin:0 auto 24px;background:var(--accent-dim);border:1.5px solid rgba(255,92,43,.2);border-radius:28px;display:flex;align-items:center;justify-content:center;">
+                  <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                </div>
+                <div style="font-family:'Syne',sans-serif;font-size:26px;font-weight:800;letter-spacing:-.03em;line-height:1.15;margin-bottom:12px;">Your Medicare.<br><span style="color:var(--accent);">Finally clear.</span></div>
+                <div style="font-size:14px;color:var(--text-2);line-height:1.65;margin-bottom:32px;">Discover what the Australian health system already covers for you — in plain English, by your postcode.</div>
+                <div style="display:flex;gap:6px;justify-content:center;margin-bottom:28px;">
+                  <div style="width:20px;height:5px;background:var(--accent);border-radius:3px;"></div>
+                  <div style="width:5px;height:5px;background:var(--border-2);border-radius:3px;"></div>
+                  <div style="width:5px;height:5px;background:var(--border-2);border-radius:3px;"></div>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:28px;">
+                  <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center;">
+                    <div style="font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--accent);">7</div>
+                    <div style="font-size:10px;color:var(--text-3);">Entitlements<br>unlocked</div>
+                  </div>
+                  <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center;">
+                    <div style="font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--teal);">$0</div>
+                    <div style="font-size:10px;color:var(--text-3);">Average GP<br>cost near you</div>
+                  </div>
+                  <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center;">
+                    <div style="font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--green);">60s</div>
+                    <div style="font-size:10px;color:var(--text-3);">To find your<br>entitlements</div>
+                  </div>
+                </div>
+                <button class="btn-p" onclick="go('login')">Get Started</button>
+                <button class="btn-g" style="margin-top:8px;" onclick="go('home')">Continue as Guest</button>
+                <div style="font-size:11px;color:var(--text-3);margin-top:10px;">No account needed · All features available</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- M: LOGIN -->
+          <div id="m-login" class="m-screen">
+            <div class="m-scroll pb80">
+              <div class="sbar"><span class="sbar-time">9:41</span><div class="sbar-icons"><div class="sig"><span></span><span></span><span></span><span></span></div><div class="batt"><div class="batt-fill"></div></div></div></div>
+              <div style="padding:28px 22px 0;">
+                <div style="font-family:'Syne',sans-serif;font-size:26px;font-weight:800;margin-bottom:3px;">Medi<span style="color:var(--accent);">Clear</span></div>
+                <div style="font-size:13px;color:var(--text-3);margin-bottom:28px;">Sign in to save your health profile</div>
+                <button class="btn-g" style="display:flex;align-items:center;justify-content:center;gap:9px;margin-bottom:10px;font-size:13.5px;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                  Continue with Google
+                </button>
+                <div style="display:flex;align-items:center;gap:10px;margin:14px 0;"><div style="flex:1;height:1px;background:var(--border);"></div><span style="font-size:11px;color:var(--text-3);">or</span><div style="flex:1;height:1px;background:var(--border);"></div></div>
+                <div style="margin-bottom:10px;"><span class="lbl">Email address</span><input class="inp" type="email" placeholder="jordan@email.com"></div>
+                <div style="margin-bottom:6px;"><span class="lbl">Password</span><input class="inp" type="password" placeholder="••••••••"></div>
+                <div style="text-align:right;font-size:11.5px;color:var(--accent);margin-bottom:16px;cursor:pointer;">Forgot password?</div>
+                <button class="btn-p" onclick="go('home')">Sign In</button>
+                <div style="margin-top:10px;background:var(--amber-dim);border:1px solid rgba(245,158,11,.2);border-radius:8px;padding:9px 12px;font-size:10.5px;color:var(--amber);line-height:1.55;">Health data is protected under the Australian Privacy Act 1988. You can delete your account and data at any time.</div>
+                <div style="text-align:center;font-size:12px;color:var(--text-3);margin-top:14px;">No account? <span style="color:var(--accent);">Create one</span></div>
+                <div style="text-align:center;font-size:12px;color:var(--text-2);margin-top:8px;cursor:pointer;" onclick="go('home')">Continue as guest <span style="color:var(--accent);">without signing in</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- M: HOME -->
+          <div id="m-home" class="m-screen">
+            <div class="m-scroll pb80">
+              <div class="sbar"><span class="sbar-time">9:41</span><div class="sbar-icons"><div class="sig"><span></span><span></span><span></span><span></span></div><div class="batt"><div class="batt-fill"></div></div></div></div>
+              <div style="padding:12px 18px 0;display:flex;align-items:center;justify-content:space-between;">
+                <div><div style="font-size:12px;color:var(--text-3);">Welcome back,</div><div style="font-family:'Syne',sans-serif;font-size:19px;font-weight:700;">Jordan</div></div>
+                <div style="width:36px;height:36px;background:var(--surface);border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;position:relative;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-2)" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                  <div style="position:absolute;top:7px;right:7px;width:6px;height:6px;border-radius:50%;background:var(--accent);border:1.5px solid var(--bg);"></div>
+                </div>
+              </div>
+              <div style="margin:12px 18px 0;" class="hero-card">
+                <div class="hero-ey">Postcode · 3011 · Footscray</div>
+                <div class="hero-val">3</div>
+                <div class="hero-lbl">health checks overdue</div>
+                <div class="hero-cta" onclick="go('well')">View schedule <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div>
+              </div>
+              <div style="margin:10px 18px 0;" class="stat-grid-2">
+                <div class="stat-box"><div class="sb-lbl">Local bulk-billing rate</div><div class="sb-val" style="color:var(--teal);">68<span style="font-size:13px;color:var(--text-3);">%</span></div><div class="sb-lbl" style="font-size:10px;">Footscray 3011</div></div>
+                <div class="stat-box"><div class="sb-lbl">Entitlements available</div><div class="sb-val" style="color:var(--accent);">7</div><div class="sb-lbl" style="font-size:10px;">Age 23 · Male</div></div>
+              </div>
+              <div style="padding:12px 18px 0;">
+                <div class="sec-hd"><div class="sec-lbl">Quick Access</div></div>
+                <div class="card" style="padding:10px 14px;">
+                  <div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);cursor:pointer;" onclick="go('entitle')"><div style="width:34px;height:34px;background:var(--accent-dim);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h5M8 18h3"/></svg></div><div style="flex:1;"><div style="font-size:13px;font-weight:500;">My Entitlements</div><div style="font-size:11px;color:var(--text-3);">7 items for your profile</div></div><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-3)" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
+                  <div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);cursor:pointer;" onclick="go('cost')"><div style="width:34px;height:34px;background:var(--teal-dim);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg></div><div style="flex:1;"><div style="font-size:13px;font-weight:500;">Find Affordable Care</div><div style="font-size:11px;color:var(--text-3);">4 bulk-billing GPs nearby</div></div><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-3)" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
+                  <div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);cursor:pointer;" onclick="go('right')"><div style="width:34px;height:34px;background:var(--blue-dim);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><div style="flex:1;"><div style="font-size:13px;font-weight:500;">Where Should I Go?</div><div style="font-size:11px;color:var(--text-3);">Compare care options</div></div><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-3)" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
+                  <div style="display:flex;align-items:center;gap:10px;padding:9px 0;cursor:pointer;" onclick="go('ai')"><div style="width:34px;height:34px;background:var(--purple-dim);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4"/></svg></div><div style="flex:1;"><div style="font-size:13px;font-weight:500;">Hidden Entitlements</div><div style="font-size:11px;color:var(--text-3);">AI-powered discovery</div></div><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-3)" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
+                </div>
+              </div>
+              <div style="padding:10px 18px 0;">
+                <div class="emg-bar"><div><div class="emg-lbl">Emergency?</div><div class="emg-sub">Life-threatening situation</div></div><button class="emg-btn">Call 000</button></div>
+                <div class="notice" style="margin-top:8px;"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>This is not medical advice. Data from Medicare Benefits Schedule.</div>
+              </div>
+            </div>
+            <div class="m-bnav">
+              <div class="m-bn on" onclick="go('home')"><div class="m-bn-ico"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg></div><div class="m-bn-lbl">Home</div></div>
+              <div class="m-bn" onclick="go('entitle')"><div class="m-bn-ico"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div><div class="m-bn-lbl">Entitlements</div></div>
+              <div class="m-bn" onclick="go('right')"><div class="m-bn-ico"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="m-bn-lbl">Where To Go</div></div>
+              <div class="m-bn" onclick="go('well')"><div class="m-bn-ico"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01"/></svg></div><div class="m-bn-lbl">Schedule</div></div>
+              <div class="m-bn" onclick="go('profile')"><div class="m-bn-ico"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="m-bn-lbl">Profile</div></div>
+            </div>
+          </div>
+
+          <!-- M: ENTITLECHECK -->
+          <div id="m-entitle" class="m-screen">
+            <div class="m-scroll pb80">
+              <div class="sbar"><span class="sbar-time">9:41</span><div class="sbar-icons"><div class="sig"><span></span><span></span><span></span><span></span></div><div class="batt"><div class="batt-fill"></div></div></div></div>
+              <div style="padding:14px 18px 0;"><div class="pg-title">My Entitlements</div><div class="pg-sub">Age 23 · Male · Postcode 3011 · Based on Medicare Benefits Schedule</div></div>
+              <div style="padding:12px 18px 0;display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                <select class="select-f"><option>Age: 23</option></select>
+                <select class="select-f"><option>Male</option><option>Female</option></select>
+              </div>
+              <div style="padding:8px 18px 0;"><input class="inp" placeholder="Postcode · 3011" value="3011"></div>
+              <div style="padding:12px 18px 0;">
+                <div class="ent-card">
+                  <div class="ent-ico" style="background:var(--accent-dim);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+                  <div style="flex:1;"><div class="ent-nm">GP Health Assessment</div><div class="ent-desc">Annual check for overall health and any concerns</div><div class="ent-ft"><span class="ent-mbs">MBS Item 701</span><span class="cost-free">Free</span></div><div class="find-prov" style="margin-top:7px;" onclick="go('cost')">Find bulk-billing GP near me</div></div>
+                </div>
+                <div class="ent-card">
+                  <div class="ent-ico" style="background:var(--red-dim);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div>
+                  <div style="flex:1;"><div class="ent-nm">Skin Check (Full Body)</div><div class="ent-desc">Annual skin examination — important if you work outdoors</div><div class="ent-ft"><span class="ent-mbs">MBS Item 104</span><div style="display:flex;gap:6px;"><span class="cost-free">Free</span><span class="tag tag-ov">Overdue</span></div></div><div class="find-prov" style="margin-top:7px;" onclick="go('cost')">Book now</div></div>
+                </div>
+                <div class="ent-card">
+                  <div class="ent-ico" style="background:var(--blue-dim);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.8"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0-.83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg></div>
+                  <div style="flex:1;"><div class="ent-nm">Cholesterol Blood Test</div><div class="ent-desc">Fasting lipid panel — recommended from age 18</div><div class="ent-ft"><span class="ent-mbs">MBS Item 1484</span><span class="cost-free">Free with GP referral</span></div></div>
+                </div>
+                <div class="ent-card">
+                  <div class="ent-ico" style="background:var(--green-dim);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/></svg></div>
+                  <div style="flex:1;"><div class="ent-nm">STI Screening</div><div class="ent-desc">Annual check for sexually active adults under 30</div><div class="ent-ft"><span class="ent-mbs">MBS Item 69316</span><span class="cost-free">Free</span></div></div>
+                </div>
+              </div>
+              <div style="padding:0 18px;"><div class="source-note">Data sourced from Medicare Benefits Schedule (MBS). Last updated March 2026. A GP makes all clinical eligibility decisions.</div></div>
+            </div>
+            <div class="m-bnav">
+              <div class="m-bn" onclick="go('home')"><div class="m-bn-ico"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg></div><div class="m-bn-lbl">Home</div></div>
+              <div class="m-bn on"><div class="m-bn-ico"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div><div class="m-bn-lbl">Entitlements</div></div>
+              <div class="m-bn" onclick="go('right')"><div class="m-bn-ico"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="m-bn-lbl">Where To Go</div></div>
+              <div class="m-bn" onclick="go('well')"><div class="m-bn-ico"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01"/></svg></div><div class="m-bn-lbl">Schedule</div></div>
+              <div class="m-bn" onclick="go('profile')"><div class="m-bn-ico"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="m-bn-lbl">Profile</div></div>
+            </div>
+          </div>
+
+          <!-- M: COST CLEAR -->
+          <div id="m-cost" class="m-screen">
+            <div class="m-scroll pb80">
+              <div class="sbar"><span class="sbar-time">9:41</span><div class="sbar-icons"><div class="sig"><span></span><span></span><span></span><span></span></div><div class="batt"><div class="batt-fill"></div></div></div></div>
+              <div style="padding:14px 18px 0;"><div class="pg-title">Find Affordable Care</div><div class="pg-sub">Cost shown before you book · Postcode 3011</div></div>
+              <div style="padding:10px 18px 0;position:relative;"><svg style="position:absolute;left:30px;top:50%;transform:translateY(-50%);width:14px;height:14px;stroke:var(--text-3);fill:none;" viewBox="0 0 24 24" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><input class="inp" style="padding-left:36px;" placeholder="GP, skin check, blood test..."></div>
+              <div style="padding:8px 18px 0;display:flex;gap:7px;overflow-x:auto;padding-bottom:4px;"><button class="chip-filter on">All</button><button class="chip-filter">GP</button><button class="chip-filter">Skin Check</button><button class="chip-filter">Blood Test</button><button class="chip-filter">Dental</button></div>
+              <div style="padding:8px 18px 0;display:flex;gap:8px;align-items:center;flex-wrap:wrap;"><span class="cost-free">Free</span><span style="font-size:10px;color:var(--text-3)">Bulk-billing</span><span class="cost-low">Low</span><span style="font-size:10px;color:var(--text-3)">Under $30</span><span class="cost-gap">Gap</span><span style="font-size:10px;color:var(--text-3)">$30+</span></div>
+              <div style="padding:8px 18px 0;">
+                <div class="provider-card" onclick="go('provider')" style="cursor:pointer;">
+                  <div class="prov-hd"><div class="prov-av">WM</div><div style="flex:1;"><div class="prov-nm">Western Medical Centre</div><div class="prov-tp">General Practice · Bulk-billing</div></div><div class="prov-dist">1.2 km</div></div>
+                  <div style="display:flex;align-items:center;justify-content:space-between;"><span class="cost-free">Free · Bulk-billing</span><button class="book-btn">Book</button></div>
+                  <div style="display:flex;align-items:center;gap:6px;margin-top:7px;"><div class="dot dot-g"></div><span style="font-size:11px;color:var(--text-2);">Open · Closes 6:00 PM</span></div>
+                  <div style="font-size:10px;color:var(--text-3);margin-top:5px;">Estimate based on area bulk-billing rates. Confirm before attending.</div>
+                </div>
+                <div class="provider-card">
+                  <div class="prov-hd"><div class="prov-av">FH</div><div style="flex:1;"><div class="prov-nm">Footscray Health Hub</div><div class="prov-tp">Community Health</div></div><div class="prov-dist">1.8 km</div></div>
+                  <div style="display:flex;align-items:center;justify-content:space-between;"><span class="cost-free">Free · Community Health</span><button class="book-btn">Book</button></div>
+                  <div style="display:flex;align-items:center;gap:6px;margin-top:7px;"><div class="dot dot-g"></div><span style="font-size:11px;color:var(--text-2);">Open · Closes 8:00 PM</span></div>
+                </div>
+                <div class="provider-card">
+                  <div class="prov-hd"><div class="prov-av">MW</div><div style="flex:1;"><div class="prov-nm">Maribyrnong Walk-In</div><div class="prov-tp">General Practice</div></div><div class="prov-dist">2.4 km</div></div>
+                  <div style="display:flex;align-items:center;justify-content:space-between;"><span class="cost-low">~$25 gap</span><button class="book-btn">Book</button></div>
+                  <div style="display:flex;align-items:center;gap:6px;margin-top:7px;"><div class="dot dot-g"></div><span style="font-size:11px;color:var(--text-2);">Open · Closes 9:00 PM</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="m-bnav">
+              <div class="m-bn" onclick="go('home')"><div class="m-bn-ico"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg></div><div class="m-bn-lbl">Home</div></div>
+              <div class="m-bn" onclick="go('entitle')"><div class="m-bn-ico"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div><div class="m-bn-lbl">Entitlements</div></div>
+              <div class="m-bn on"><div class="m-bn-ico"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="m-bn-lbl">Find Care</div></div>
+              <div class="m-bn" onclick="go('well')"><div class="m-bn-ico"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01"/></svg></div><div class="m-bn-lbl">Schedule</div></div>
+              <div class="m-bn" onclick="go('profile')"><div class="m-bn-ico"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="m-bn-lbl">Profile</div></div>
+            </div>
+          </div>
+
+          <!-- M: RIGHTDOOR -->
+          <div id="m-right" class="m-screen">
+            <div class="m-scroll pb80">
+              <div class="sbar"><span class="sbar-time">9:41</span><div class="sbar-icons"><div class="sig"><span></span><span></span><span></span><span></span></div><div class="batt"><div class="batt-fill"></div></div></div></div>
+              <div style="padding:14px 18px 0;"><div class="pg-title">Where Should I Go?</div><div class="pg-sub">Not a diagnosis. Compare your options and costs near 3011.</div></div>
+              <div style="padding:10px 18px 0;" class="emg-bar"><div><div class="emg-lbl">Life-threatening emergency?</div><div class="emg-sub">Chest pain · difficulty breathing · unconscious</div></div><button class="emg-btn">Call 000</button></div>
+              <div style="padding:12px 18px 0;"><div style="font-size:12.5px;font-weight:600;color:var(--text-2);margin-bottom:9px;">What best describes your concern?</div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;">
+                  <div style="background:var(--accent-dim);border:1.5px solid var(--accent);border-radius:11px;padding:12px;cursor:pointer;"><div style="width:32px;height:32px;background:rgba(255,92,43,.2);border-radius:8px;display:flex;align-items:center;justify-content:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div><div style="font-size:12.5px;font-weight:600;margin-top:7px;">General Health</div></div>
+                  <div style="background:var(--surface);border:1.5px solid var(--border);border-radius:11px;padding:12px;cursor:pointer;"><div style="width:32px;height:32px;background:var(--red-dim);border-radius:8px;display:flex;align-items:center;justify-content:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.8"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><div style="font-size:12.5px;font-weight:600;margin-top:7px;">Pain or Injury</div></div>
+                  <div style="background:var(--surface);border:1.5px solid var(--border);border-radius:11px;padding:12px;cursor:pointer;"><div style="width:32px;height:32px;background:var(--teal-dim);border-radius:8px;display:flex;align-items:center;justify-content:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78z"/></svg></div><div style="font-size:12.5px;font-weight:600;margin-top:7px;">Skin Concern</div></div>
+                  <div style="background:var(--surface);border:1.5px solid var(--border);border-radius:11px;padding:12px;cursor:pointer;"><div style="width:32px;height:32px;background:var(--purple-dim);border-radius:8px;display:flex;align-items:center;justify-content:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div><div style="font-size:12.5px;font-weight:600;margin-top:7px;">Mental Wellness</div></div>
+                </div>
+              </div>
+              <div style="padding:12px 18px 0;"><div style="font-size:12px;font-weight:600;color:var(--text-2);margin-bottom:8px;">Your options near 3011</div>
+                <div class="pw-card" onclick="go('cost')"><div class="pw-ico" style="background:var(--teal-dim);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.8"><path d="M15.05 5A3 3 0 0 1 17 7.95M15.05 1A7 7 0 0 1 21 7.94m-1 7.98v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.07 8.67 19.79 19.79 0 0 1 .1 5.51a2 2 0 0 1 1.98-2.18H5a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L6.38 11"/></svg></div><div style="flex:1;"><div class="pw-nm">Telehealth GP</div><div class="pw-dist">Available now · 15 min wait</div></div><span class="cost-free">Free</span></div>
+                <div class="pw-card" onclick="go('provider')"><div class="pw-ico" style="background:var(--accent-dim);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><div style="flex:1;"><div class="pw-nm">GP · Western Medical</div><div class="pw-dist">1.2 km · Open · ~45 min wait</div></div><span class="cost-free">Free</span></div>
+                <div class="pw-card"><div class="pw-ico" style="background:var(--green-dim);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v8M8 12h8"/></svg></div><div style="flex:1;"><div class="pw-nm">Medicare Urgent Care</div><div class="pw-dist">2.1 km · Walk-in · Opens 8 AM</div></div><span class="cost-free">Free</span></div>
+                <div class="pw-card"><div class="pw-ico" style="background:var(--blue-dim);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.8"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg></div><div style="flex:1;"><div class="pw-nm">Footscray ED</div><div class="pw-dist">2.8 km · 24/7</div></div><span class="cost-free" style="background:var(--amber-dim);color:var(--amber);">~3.5 hr wait</span></div>
+              </div>
+              <div style="padding:0 18px;"><div class="source-note">Wait times from MyHospitals (AIHW). Navigation information only — not medical advice.</div></div>
+            </div>
+            <div class="m-bnav">
+              <div class="m-bn" onclick="go('home')"><div class="m-bn-ico"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg></div><div class="m-bn-lbl">Home</div></div>
+              <div class="m-bn" onclick="go('entitle')"><div class="m-bn-ico"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div><div class="m-bn-lbl">Entitlements</div></div>
+              <div class="m-bn on"><div class="m-bn-ico"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="m-bn-lbl">Where To Go</div></div>
+              <div class="m-bn" onclick="go('well')"><div class="m-bn-ico"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01"/></svg></div><div class="m-bn-lbl">Schedule</div></div>
+              <div class="m-bn" onclick="go('profile')"><div class="m-bn-ico"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="m-bn-lbl">Profile</div></div>
+            </div>
+          </div>
+
+          <!-- M: WELLTRACK -->
+          <div id="m-well" class="m-screen">
+            <div class="m-scroll pb80">
+              <div class="sbar"><span class="sbar-time">9:41</span><div class="sbar-icons"><div class="sig"><span></span><span></span><span></span><span></span></div><div class="batt"><div class="batt-fill"></div></div></div></div>
+              <div style="padding:14px 18px 0;"><div class="pg-title">Health Schedule</div><div class="pg-sub">Your preventive care timeline · MBS guidelines</div></div>
+              <div style="padding:10px 18px 0;" class="stat-grid-3">
+                <div class="stat-box" style="background:var(--red-dim);border-color:rgba(239,68,68,.2);"><div class="sb-val" style="color:var(--red);">3</div><div class="sb-lbl">Overdue</div></div>
+                <div class="stat-box" style="background:var(--amber-dim);border-color:rgba(245,158,11,.2);"><div class="sb-val" style="color:var(--amber);">1</div><div class="sb-lbl">Due soon</div></div>
+                <div class="stat-box"><div class="sb-val">5</div><div class="sb-lbl">Upcoming</div></div>
+              </div>
+              <div style="padding:10px 18px 0;"><div class="tt-tabs"><div class="tt-tab on">Overdue</div><div class="tt-tab">Due Soon</div><div class="tt-tab">Upcoming</div></div>
+                <div class="wt-item"><div class="wt-dot" style="background:var(--red);"></div><div style="flex:1;"><div class="wt-nm">Skin Check (Full Body)</div><div class="wt-meta">MBS Item 104 · Due Mar 2025 · Annual</div><div class="wt-desc">Full body skin examination. Recommended annually given outdoor work.</div><div class="wt-acts"><div class="wt-cal"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Add to Calendar</div><div style="width:1px;height:10px;background:var(--border);"></div><div class="wt-bk" onclick="go('cost')">Book Now</div></div></div></div>
+                <div class="wt-item"><div class="wt-dot" style="background:var(--red);"></div><div style="flex:1;"><div class="wt-nm">Cholesterol Test</div><div class="wt-meta">MBS Item 1484 · Due Jan 2025</div><div class="wt-desc">Fasting lipid panel via blood test. GP referral needed.</div><div class="wt-acts"><div class="wt-cal"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Add to Calendar</div><div style="width:1px;height:10px;background:var(--border);"></div><div class="wt-bk" onclick="go('cost')">Book Now</div></div></div></div>
+                <div class="wt-item"><div class="wt-dot" style="background:var(--red);"></div><div style="flex:1;"><div class="wt-nm">STI Screening</div><div class="wt-meta">MBS Item 69316 · Due Jun 2025</div><div class="wt-desc">Annual sexual health check. Fully bulk-billed at most clinics.</div><div class="wt-acts"><div class="wt-cal"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Add to Calendar</div><div style="width:1px;height:10px;background:var(--border);"></div><div class="wt-bk" onclick="go('cost')">Book Now</div></div></div></div>
+              </div>
+              <div style="padding:0 18px;"><div class="source-note">From MBS Schedule + NPHS 2021–2030. Last updated March 2026.</div></div>
+            </div>
+            <div class="m-bnav">
+              <div class="m-bn" onclick="go('home')"><div class="m-bn-ico"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg></div><div class="m-bn-lbl">Home</div></div>
+              <div class="m-bn" onclick="go('entitle')"><div class="m-bn-ico"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div><div class="m-bn-lbl">Entitlements</div></div>
+              <div class="m-bn" onclick="go('right')"><div class="m-bn-ico"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="m-bn-lbl">Where To Go</div></div>
+              <div class="m-bn on"><div class="m-bn-ico"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01"/></svg></div><div class="m-bn-lbl">Schedule</div></div>
+              <div class="m-bn" onclick="go('profile')"><div class="m-bn-ico"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="m-bn-lbl">Profile</div></div>
+            </div>
+          </div>
+
+          <!-- M: AI -->
+          <div id="m-ai" class="m-screen">
+            <div class="m-scroll pb80">
+              <div class="sbar"><span class="sbar-time">9:41</span><div class="sbar-icons"><div class="sig"><span></span><span></span><span></span><span></span></div><div class="batt"><div class="batt-fill"></div></div></div></div>
+              <div style="padding:14px 18px 0;"><div class="ai-badge" style="margin-bottom:10px;"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4"/></svg>AI · MBS-grounded · No generative AI</div><div class="pg-title">Hidden Entitlements</div><div class="pg-sub">Describe your lifestyle. Discover what Medicare may cover.</div></div>
+              <div style="padding:12px 18px 0;"><span class="lbl">Tell us about your situation</span><textarea style="width:100%;background:var(--surface-2);border:1.5px solid var(--border);border-radius:10px;padding:12px 14px;font-size:13.5px;color:var(--text);font-family:'DM Sans',sans-serif;outline:none;min-height:80px;resize:none;line-height:1.5;" placeholder="e.g. I work in hospitality, my lower back always hurts...">I work in hospitality standing 8 hours a day and my lower back always hurts. I've been feeling stressed lately.</textarea><button class="btn-p" style="margin-top:9px;">Find My Entitlements</button></div>
+              <div style="padding:8px 18px 0;"><div style="background:var(--surface-2);border-left:3px solid var(--border-2);border-radius:0 8px 8px 0;padding:9px 13px;font-size:11px;color:var(--text-3);line-height:1.5;">Searches the MBS for entitlements relevant to your situation. A GP makes all eligibility decisions. Not medical advice.</div></div>
+              <div style="padding:10px 18px 0;"><div class="sec-lbl" style="margin-bottom:8px;">2 potential entitlements found</div>
+                <div class="ai-card">
+                  <div class="ai-hd"><div><div class="ai-nm">Team Care Arrangement</div><div class="ai-mbs">MBS Item 723 · Chronic Disease Management</div></div><div class="conf-row"><span class="conf-lbl">Match</span><div class="conf-track"><div class="conf-fill" style="width:82%;"></div></div><span style="font-size:10px;color:var(--teal);font-weight:700;">82%</span></div></div>
+                  <div class="ai-desc">Your back pain from ongoing work may qualify you for a Team Care Arrangement — unlocking 5 subsidised physio sessions per year.</div>
+                  <div class="ai-ask-lbl">Questions to ask your GP</div>
+                  <div class="ai-ask-item">Would my back pain qualify for a Chronic Disease Management Plan?</div>
+                  <div class="ai-ask-item">Can you refer me to a physiotherapist under MBS Item 723?</div>
+                  <div class="ai-src"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>MBS Item 723 · mbsonline.gov.au · Feb 2026</div>
+                </div>
+                <div class="ai-card">
+                  <div class="ai-hd"><div><div class="ai-nm">Mental Health Treatment Plan</div><div class="ai-mbs">MBS Item 2715 · Better Access</div></div><div class="conf-row"><span class="conf-lbl">Match</span><div class="conf-track"><div class="conf-fill" style="width:71%;"></div></div><span style="font-size:10px;color:var(--teal);font-weight:700;">71%</span></div></div>
+                  <div class="ai-desc">If stress affects your daily life, a GP can create a Mental Health Treatment Plan unlocking up to 10 subsidised psychology sessions.</div>
+                  <div class="ai-ask-lbl">Questions to ask your GP</div>
+                  <div class="ai-ask-item">Could a Mental Health Treatment Plan be appropriate for me?</div>
+                  <div class="ai-src"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>MBS Item 2715 · mbsonline.gov.au · Feb 2026</div>
+                </div>
+                <div class="gp-disc">A GP makes the final eligibility decision for all results shown above.</div>
+              </div>
+            </div>
+            <div class="m-bnav">
+              <div class="m-bn" onclick="go('home')"><div class="m-bn-ico"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg></div><div class="m-bn-lbl">Home</div></div>
+              <div class="m-bn" onclick="go('entitle')"><div class="m-bn-ico"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div><div class="m-bn-lbl">Entitlements</div></div>
+              <div class="m-bn" onclick="go('right')"><div class="m-bn-ico"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="m-bn-lbl">Where To Go</div></div>
+              <div class="m-bn" onclick="go('well')"><div class="m-bn-ico"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01"/></svg></div><div class="m-bn-lbl">Schedule</div></div>
+              <div class="m-bn on" onclick="go('profile')"><div class="m-bn-ico"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="m-bn-lbl">Profile</div></div>
+            </div>
+          </div>
+
+          <!-- M: PROFILE -->
+          <div id="m-profile" class="m-screen">
+            <div class="m-scroll pb80">
+              <div class="sbar"><span class="sbar-time">9:41</span><div class="sbar-icons"><div class="sig"><span></span><span></span><span></span><span></span></div><div class="batt"><div class="batt-fill"></div></div></div></div>
+              <div style="padding:20px 18px 0;text-align:center;"><div style="width:68px;height:68px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#CC3A15);margin:0 auto 11px;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:24px;font-weight:700;color:#fff;">J</div><div style="font-family:'Syne',sans-serif;font-size:19px;font-weight:700;">Jordan Chen</div><div style="font-size:12px;color:var(--text-3);margin-top:3px;">Footscray VIC 3011 · Member since Jan 2026</div></div>
+              <div style="padding:12px 18px 0;" class="stat-grid-3"><div class="stat-box"><div class="sb-val" style="color:var(--accent);">7</div><div class="sb-lbl">Entitlements</div></div><div class="stat-box"><div class="sb-val" style="color:var(--red);">3</div><div class="sb-lbl">Overdue</div></div><div class="stat-box"><div class="sb-val" style="color:var(--teal);">2</div><div class="sb-lbl">AI Matches</div></div></div>
+              <div style="padding:12px 18px 0;">
+                <div style="font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);margin-bottom:7px;">Your Profile</div>
+                <div class="menu-item"><div class="menu-ico" style="background:var(--accent-dim);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="menu-lbl">Edit Profile</div><div class="menu-arr"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div>
+                <div class="menu-item"><div class="menu-ico" style="background:var(--teal-dim);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.8"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0"/></svg></div><div class="menu-lbl">Notifications</div><div class="toggle on" style="margin-left:auto;"></div></div>
+                <div class="menu-item"><div class="menu-ico" style="background:var(--blue-dim);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div><div class="menu-lbl">Saved Entitlements</div><div class="menu-arr"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div>
+                <div style="font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);margin:12px 0 7px;">Privacy & Data</div>
+                <div class="menu-item"><div class="menu-ico" style="background:var(--green-dim);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><div class="menu-lbl">Privacy Policy</div><div class="menu-arr"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div>
+                <div class="menu-item"><div class="menu-ico" style="background:var(--amber-dim);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div><div class="menu-lbl">Download My Data</div><div class="menu-arr"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div>
+                <div class="menu-item"><div class="menu-ico" style="background:var(--red-dim);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.8"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg></div><div class="menu-lbl" style="color:var(--red);">Delete My Account</div><div class="menu-arr"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div>
+                <div style="text-align:center;font-size:11px;color:var(--text-3);margin-top:12px;padding:10px;background:var(--surface-2);border-radius:8px;line-height:1.55;">Protected under Australian Privacy Act 1988.<br>Not medical advice · Emergency: <strong style="color:var(--red);">000</strong></div>
+              </div>
+            </div>
+            <div class="m-bnav">
+              <div class="m-bn" onclick="go('home')"><div class="m-bn-ico"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg></div><div class="m-bn-lbl">Home</div></div>
+              <div class="m-bn" onclick="go('entitle')"><div class="m-bn-ico"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div><div class="m-bn-lbl">Entitlements</div></div>
+              <div class="m-bn" onclick="go('right')"><div class="m-bn-ico"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="m-bn-lbl">Where To Go</div></div>
+              <div class="m-bn" onclick="go('well')"><div class="m-bn-ico"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01"/></svg></div><div class="m-bn-lbl">Schedule</div></div>
+              <div class="m-bn on"><div class="m-bn-ico"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="m-bn-lbl">Profile</div></div>
+            </div>
+          </div>
+
+          <!-- M: PROVIDER DETAIL -->
+          <div id="m-provider" class="m-screen">
+            <div class="m-scroll pb80">
+              <div class="sbar"><span class="sbar-time">9:41</span><div class="sbar-icons"><div class="sig"><span></span><span></span><span></span><span></span></div><div class="batt"><div class="batt-fill"></div></div></div></div>
+              <div style="padding:12px 18px 0;display:flex;align-items:center;gap:11px;"><div style="width:34px;height:34px;background:var(--surface);border:1px solid var(--border);border-radius:9px;display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="go('cost')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-2)" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></div><div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:700;">Provider Details</div></div>
+              <div style="padding:12px 18px 0;"><div class="card"><div style="font-family:'Syne',sans-serif;font-size:19px;font-weight:700;margin-bottom:3px;">Western Medical Centre</div><div style="font-size:12px;color:var(--text-3);margin-bottom:11px;">General Practice · Bulk-billing clinic · 1.2 km from you</div><div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:11px;"><span class="cost-free">Bulk-billing</span><span class="pill pill-t">Telehealth available</span><span class="pill pill-b">All ages</span></div><div style="display:flex;align-items:center;gap:7px;padding:10px 0;border-top:1px solid var(--border);"><div class="dot dot-g"></div><span style="font-size:12.5px;font-weight:600;color:var(--green);">Open now</span><span style="font-size:11.5px;color:var(--text-3);">Closes 6:00 PM</span></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-top:8px;font-size:11.5px;color:var(--text-2);"><span style="color:var(--text-3);">Mon–Fri</span><span>8:00 AM – 6:00 PM</span><span style="color:var(--text-3);">Saturday</span><span>9:00 AM – 1:00 PM</span><span style="color:var(--text-3);">Sunday</span><span>Closed</span></div></div></div>
+              <div style="padding:10px 18px 0;"><div style="background:var(--green-dim);border:1px solid rgba(34,197,94,.18);border-radius:11px;padding:13px 16px;display:flex;align-items:center;justify-content:space-between;"><div><div style="font-size:12.5px;font-weight:600;color:var(--green);">Standard GP Consultation</div><div style="font-size:10.5px;color:rgba(34,197,94,.65);margin-top:2px;">Estimate — confirm before attending</div></div><div style="font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--green);">$0</div></div></div>
+              <div style="padding:10px 18px 0;"><div class="sec-lbl" style="margin-bottom:8px;">Services Available</div><div class="card" style="padding:10px 14px;">
+                <div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border);font-size:12.5px;color:var(--text-2);"><div class="dot dot-t"></div>General Practice Consultations</div>
+                <div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border);font-size:12.5px;color:var(--text-2);"><div class="dot dot-t"></div>Skin Checks · MBS Item 104</div>
+                <div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border);font-size:12.5px;color:var(--text-2);"><div class="dot dot-t"></div>Blood Test Referrals</div>
+                <div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border);font-size:12.5px;color:var(--text-2);"><div class="dot dot-t"></div>Health Assessments · MBS Item 701</div>
+                <div style="display:flex;align-items:center;gap:8px;padding:8px 0;font-size:12.5px;color:var(--text-2);"><div class="dot dot-t"></div>Chronic Disease Management Plans</div>
+              </div></div>
+              <div style="padding:10px 18px;"><div style="font-size:10.5px;color:var(--text-3);text-align:center;margin-bottom:8px;">Not medical advice. Cost estimates based on area bulk-billing rates.</div><button class="btn-p">Book Appointment</button><button class="btn-g" style="margin-top:8px;">Call Clinic</button></div>
+            </div>
+          </div>
+
+        </div><!-- device-screen -->
+      </div><!-- device -->
+    </div><!-- mobile-col -->
+
+    <!-- ░░ WEB COLUMN ░░ -->
+    <div class="web-col" id="web-col">
+      <div class="device-label">Web View · 1280px · Desktop Browser</div>
+      <div class="browser-frame">
+        <div class="browser-chrome">
+          <div class="browser-dots"><div class="b-dot"></div><div class="b-dot"></div><div class="b-dot"></div></div>
+          <div class="browser-url">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <span id="browser-url-text">mediclear.com.au</span>
+          </div>
+        </div>
+
+        <!-- W: ONBOARDING -->
+        <div id="w-onboard" class="w-screen active">
+          <div style="display:grid;grid-template-columns:1fr 1fr;min-height:620px;">
+            <div style="background:var(--bg);padding:60px 52px;display:flex;flex-direction:column;justify-content:center;">
+              <div style="font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--accent);margin-bottom:20px;display:flex;align-items:center;gap:8px;"><div style="width:20px;height:2px;background:var(--accent);"></div>Australia's Medicare Navigator</div>
+              <div style="font-family:'Syne',sans-serif;font-size:52px;font-weight:800;letter-spacing:-.04em;line-height:1.05;margin-bottom:18px;">Your Medicare.<br><span style="color:var(--accent);">Finally clear.</span></div>
+              <div style="font-size:16px;color:var(--text-2);line-height:1.7;margin-bottom:36px;max-width:420px;">Discover what the Australian health system already covers for you — in plain English, by your postcode. No jargon. No surprises. Just what you're owed.</div>
+              <div style="display:flex;gap:12px;">
+                <button class="btn-p" style="width:auto;padding:14px 28px;font-size:15px;" onclick="go('login')">Get Started — Free</button>
+                <button class="btn-g" style="width:auto;padding:14px 28px;font-size:15px;" onclick="go('home')">Continue as Guest</button>
+              </div>
+              <div style="font-size:12px;color:var(--text-3);margin-top:12px;">No account needed · All 5 features available without signing in</div>
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:36px;">
+                <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;"><div style="font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--accent);">7</div><div style="font-size:12px;color:var(--text-3);margin-top:3px;">Entitlements<br>for age 23</div></div>
+                <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;"><div style="font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--teal);">$0</div><div style="font-size:12px;color:var(--text-3);margin-top:3px;">Average GP cost<br>near Footscray</div></div>
+                <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;"><div style="font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--green);">60s</div><div style="font-size:12px;color:var(--text-3);margin-top:3px;">To find your<br>entitlements</div></div>
+              </div>
+            </div>
+            <div style="background:var(--surface);border-left:1px solid var(--border);padding:48px 44px;display:flex;flex-direction:column;justify-content:center;">
+              <div style="font-family:'Syne',sans-serif;font-size:20px;font-weight:700;margin-bottom:20px;">What MediClear does</div>
+              <div style="display:flex;flex-direction:column;gap:16px;">
+                <div style="display:flex;gap:14px;align-items:flex-start;padding:16px;background:var(--bg);border:1px solid var(--border);border-radius:12px;"><div style="width:40px;height:40px;border-radius:10px;background:var(--accent-dim);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h5M8 18h3"/></svg></div><div><div style="font-size:14px;font-weight:600;margin-bottom:4px;">My Entitlements</div><div style="font-size:12.5px;color:var(--text-3);line-height:1.5;">See what Medicare covers for your age, sex, and postcode — in plain English</div></div></div>
+                <div style="display:flex;gap:14px;align-items:flex-start;padding:16px;background:var(--bg);border:1px solid var(--border);border-radius:12px;"><div style="width:40px;height:40px;border-radius:10px;background:var(--teal-dim);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.8"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div style="font-size:14px;font-weight:600;margin-bottom:4px;">Find Affordable Care</div><div style="font-size:12.5px;color:var(--text-3);line-height:1.5;">Know your estimated cost before you book — sorted by distance from you</div></div></div>
+                <div style="display:flex;gap:14px;align-items:flex-start;padding:16px;background:var(--bg);border:1px solid var(--border);border-radius:12px;"><div style="width:40px;height:40px;border-radius:10px;background:var(--blue-dim);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.8"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><div><div style="font-size:14px;font-weight:600;margin-bottom:4px;">Where Should I Go?</div><div style="font-size:12.5px;color:var(--text-3);line-height:1.5;">GP vs Telehealth vs Urgent Care vs ED — compared by cost and wait time</div></div></div>
+                <div style="display:flex;gap:14px;align-items:flex-start;padding:16px;background:var(--bg);border:1px solid var(--border);border-radius:12px;"><div style="width:40px;height:40px;border-radius:10px;background:var(--purple-dim);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4"/></svg></div><div><div style="font-size:14px;font-weight:600;margin-bottom:4px;">Hidden Entitlements</div><div style="font-size:12.5px;color:var(--text-3);line-height:1.5;">AI finds multi-step Medicare funding paths you didn't know existed</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- W: LOGIN -->
+        <div id="w-login" class="w-screen">
+          <div style="display:grid;grid-template-columns:1fr 1fr;min-height:620px;">
+            <div style="background:linear-gradient(135deg,var(--accent) 0%,#CC3A15 100%);padding:52px 48px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;">
+              <div style="position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.07);"></div>
+              <div style="font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:#fff;margin-bottom:6px;">Medi<span style="color:rgba(255,255,255,.6);">Clear</span></div>
+              <div style="font-size:15px;color:rgba(255,255,255,.75);margin-bottom:36px;">Your Medicare. Finally clear.</div>
+              <div style="display:flex;flex-direction:column;gap:14px;">
+                <div style="background:rgba(255,255,255,.12);border-radius:12px;padding:16px 18px;"><div style="font-size:22px;font-weight:800;color:#fff;font-family:'Syne',sans-serif;">7</div><div style="font-size:12px;color:rgba(255,255,255,.65);margin-top:2px;">Entitlements available for your profile</div></div>
+                <div style="background:rgba(255,255,255,.12);border-radius:12px;padding:16px 18px;"><div style="font-size:22px;font-weight:800;color:#fff;font-family:'Syne',sans-serif;">$0</div><div style="font-size:12px;color:rgba(255,255,255,.65);margin-top:2px;">Estimated GP cost near Footscray 3011</div></div>
+                <div style="background:rgba(255,255,255,.12);border-radius:12px;padding:16px 18px;"><div style="font-size:13px;color:rgba(255,255,255,.8);line-height:1.5;">Save your health schedule, get reminders for overdue checks, and store your AI entitlement matches.</div></div>
+              </div>
+            </div>
+            <div style="background:var(--bg);padding:52px 48px;display:flex;flex-direction:column;justify-content:center;">
+              <div style="font-family:'Syne',sans-serif;font-size:24px;font-weight:700;margin-bottom:4px;">Sign in to MediClear</div>
+              <div style="font-size:13.5px;color:var(--text-3);margin-bottom:28px;">Or continue as a guest — no account needed for full access</div>
+              <button class="btn-g" style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>Continue with Google</button>
+              <div style="display:flex;align-items:center;gap:12px;margin:14px 0;"><div style="flex:1;height:1px;background:var(--border);"></div><span style="font-size:12px;color:var(--text-3);">or email</span><div style="flex:1;height:1px;background:var(--border);"></div></div>
+              <div style="margin-bottom:10px;"><span class="lbl">Email address</span><input class="inp" type="email" placeholder="jordan@email.com"></div>
+              <div style="margin-bottom:8px;"><span class="lbl">Password</span><input class="inp" type="password" placeholder="••••••••"></div>
+              <div style="text-align:right;font-size:12px;color:var(--accent);margin-bottom:16px;cursor:pointer;">Forgot password?</div>
+              <button class="btn-p" onclick="go('home')">Sign In</button>
+              <div style="margin-top:10px;background:var(--amber-dim);border:1px solid rgba(245,158,11,.2);border-radius:8px;padding:10px 14px;font-size:11.5px;color:var(--amber);line-height:1.5;">Health data protected under Australian Privacy Act 1988. Delete your account and data at any time from Profile settings.</div>
+              <div style="display:flex;gap:16px;margin-top:14px;font-size:13px;"><span style="color:var(--text-3);">No account? <span style="color:var(--accent);cursor:pointer;">Create one</span></span><span style="cursor:pointer;color:var(--text-2);" onclick="go('home')">Continue as guest</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- W: HOME -->
+        <div id="w-home" class="w-screen">
+          <div class="web-layout">
+            <div class="w-sidebar">
+              <div class="w-sb-brand">Medi<span>Clear</span></div>
+              <div class="w-sb-item on" onclick="go('home')"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>Home</div>
+              <div class="w-sb-item" onclick="go('entitle')"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>My Entitlements</div>
+              <div class="w-sb-item" onclick="go('cost')"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>Find Affordable Care</div>
+              <div class="w-sb-item" onclick="go('right')"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>Where Should I Go?</div>
+              <div class="w-sb-item" onclick="go('well')"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01"/></svg>Health Schedule</div>
+              <div class="w-sb-item" onclick="go('ai')"><svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4"/></svg>Hidden Entitlements</div>
+              <div class="w-sb-bottom"><div class="w-sb-user"><div class="avatar" style="width:32px;height:32px;font-size:12px;">J</div><div><div style="font-size:13px;font-weight:600;">Jordan Chen</div><div style="font-size:11px;color:var(--text-3);">3011 · Free account</div></div></div></div>
+            </div>
+            <div class="w-main">
+              <div style="margin-bottom:20px;"><div class="w-pg-title">Dashboard</div><div class="w-pg-sub">Welcome back, Jordan · Postcode 3011 · Footscray VIC</div></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;margin-bottom:20px;">
+                <div class="w-card-accent"><div style="font-size:11px;font-weight:600;color:rgba(255,255,255,.6);margin-bottom:6px;">Overdue</div><div style="font-family:'Syne',sans-serif;font-size:36px;font-weight:800;color:#fff;line-height:1;">3</div><div style="font-size:12px;color:rgba(255,255,255,.65);margin-top:3px;">health checks</div></div>
+                <div class="card"><div style="font-size:11px;color:var(--text-3);margin-bottom:6px;">Entitlements</div><div style="font-family:'Syne',sans-serif;font-size:36px;font-weight:800;color:var(--accent);line-height:1;">7</div><div style="font-size:12px;color:var(--text-3);">Available for you</div></div>
+                <div class="card"><div style="font-size:11px;color:var(--text-3);margin-bottom:6px;">Local bulk-billing rate</div><div style="font-family:'Syne',sans-serif;font-size:36px;font-weight:800;color:var(--teal);line-height:1;">68%</div><div style="font-size:12px;color:var(--text-3);">Footscray 3011</div></div>
+                <div class="card"><div style="font-size:11px;color:var(--text-3);margin-bottom:6px;">AI Matches</div><div style="font-family:'Syne',sans-serif;font-size:36px;font-weight:800;color:var(--purple);line-height:1;">2</div><div style="font-size:12px;color:var(--text-3);">Hidden entitlements</div></div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+                <div class="card"><div class="sec-hd" style="margin-bottom:12px;"><div class="sec-lbl">Overdue Checks</div><div class="see-all" onclick="go('well')">View all</div></div>
+                  <div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);"><div class="dot dot-r"></div><div style="flex:1;font-size:13px;">Skin Check (Full Body)</div><span class="tag tag-ov">MBS 104</span></div>
+                  <div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);"><div class="dot dot-r"></div><div style="flex:1;font-size:13px;">Cholesterol Test</div><span class="tag tag-ov">MBS 1484</span></div>
+                  <div style="display:flex;align-items:center;gap:10px;padding:9px 0;"><div class="dot dot-r"></div><div style="flex:1;font-size:13px;">STI Screening</div><span class="tag tag-ov">MBS 69316</span></div>
+                </div>
+                <div class="card"><div class="sec-hd" style="margin-bottom:12px;"><div class="sec-lbl">Nearby Bulk-billing GPs</div><div class="see-all" onclick="go('cost')">See all</div></div>
+                  <div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);" onclick="go('provider')" style="cursor:pointer;"><div class="prov-av" style="width:34px;height:34px;font-size:12px;">WM</div><div style="flex:1;"><div style="font-size:13px;font-weight:500;">Western Medical Centre</div><div style="font-size:11px;color:var(--text-3);">1.2 km</div></div><span class="cost-free">Free</span></div>
+                  <div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);"><div class="prov-av" style="width:34px;height:34px;font-size:12px;">FH</div><div style="flex:1;"><div style="font-size:13px;font-weight:500;">Footscray Health Hub</div><div style="font-size:11px;color:var(--text-3);">1.8 km</div></div><span class="cost-free">Free</span></div>
+                  <div style="display:flex;align-items:center;gap:10px;padding:9px 0;"><div class="prov-av" style="width:34px;height:34px;font-size:12px;">MW</div><div style="flex:1;"><div style="font-size:13px;font-weight:500;">Maribyrnong Walk-In</div><div style="font-size:11px;color:var(--text-3);">2.4 km</div></div><span class="cost-low">~$25</span></div>
+                </div>
+              </div>
+              <div style="background:var(--red-dim);border:1px solid rgba(239,68,68,.2);border-radius:12px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;"><div><div style="font-size:13.5px;font-weight:600;color:var(--red);">Life-threatening emergency?</div><div style="font-size:12px;color:rgba(239,68,68,.65);margin-top:2px;">Chest pain · difficulty breathing · unconscious person</div></div><button class="emg-btn" style="font-size:13px;">Call 000</button></div>
+              <div class="notice" style="margin-top:10px;"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>This is not medical advice. All data sourced from Medicare Benefits Schedule and Australian Government open datasets.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- W: ENTITLECHECK -->
+        <div id="w-entitle" class="w-screen">
+          <div class="web-layout">
+            <div class="w-sidebar">
+              <div class="w-sb-brand">Medi<span>Clear</span></div>
+              <div class="w-sb-item" onclick="go('home')"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>Home</div>
+              <div class="w-sb-item on"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>My Entitlements</div>
+              <div class="w-sb-item" onclick="go('cost')"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>Find Affordable Care</div>
+              <div class="w-sb-item" onclick="go('right')"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>Where Should I Go?</div>
+              <div class="w-sb-item" onclick="go('well')"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01"/></svg>Health Schedule</div>
+              <div class="w-sb-item" onclick="go('ai')"><svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4"/></svg>Hidden Entitlements</div>
+              <div class="w-sb-bottom"><div class="w-sb-user"><div class="avatar" style="width:32px;height:32px;font-size:12px;">J</div><div><div style="font-size:13px;font-weight:600;">Jordan Chen</div><div style="font-size:11px;color:var(--text-3);">3011 · Free account</div></div></div></div>
+            </div>
+            <div class="w-main">
+              <div style="margin-bottom:20px;"><div class="w-pg-title">My Entitlements</div><div class="w-pg-sub">What Medicare covers for you right now · Age 23 · Male · Postcode 3011</div></div>
+              <div style="display:flex;gap:10px;margin-bottom:16px;"><select class="select-f" style="width:140px;">Age: 23</select><select class="select-f" style="width:140px;"><option>Male</option><option>Female</option></select><input class="inp" style="width:160px;" placeholder="Postcode" value="3011"><button class="btn-p" style="width:auto;padding:10px 20px;font-size:13px;">Update</button></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                <div class="ent-card"><div class="ent-ico" style="background:var(--accent-dim);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><div style="flex:1;"><div class="ent-nm">GP Health Assessment</div><div class="ent-desc">Annual check for overall health. Includes preventive screenings and referrals.</div><div class="ent-ft"><span class="ent-mbs">MBS Item 701 · Annual</span><span class="cost-free">Free</span></div><div class="find-prov" style="margin-top:7px;" onclick="go('cost')">Find provider</div></div></div>
+                <div class="ent-card"><div class="ent-ico" style="background:var(--red-dim);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div><div style="flex:1;"><div class="ent-nm">Skin Check (Full Body)</div><div class="ent-desc">Annual skin examination. Recommended for outdoor workers.</div><div class="ent-ft"><span class="ent-mbs">MBS Item 104 · Annual</span><div style="display:flex;gap:5px;"><span class="cost-free">Free</span><span class="tag tag-ov">Overdue</span></div></div><div class="find-prov" style="margin-top:7px;" onclick="go('cost')">Book now</div></div></div>
+                <div class="ent-card"><div class="ent-ico" style="background:var(--blue-dim);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.8"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0-.83-.67 1.5-1.5 1.5z"/></svg></div><div style="flex:1;"><div class="ent-nm">Cholesterol Blood Test</div><div class="ent-desc">Fasting lipid panel via blood test. GP referral required.</div><div class="ent-ft"><span class="ent-mbs">MBS Item 1484 · Every 2 yrs</span><span class="cost-free">Free with referral</span></div></div></div>
+                <div class="ent-card"><div class="ent-ico" style="background:var(--green-dim);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/></svg></div><div style="flex:1;"><div class="ent-nm">STI Screening</div><div class="ent-desc">Annual check for sexually active adults under 30.</div><div class="ent-ft"><span class="ent-mbs">MBS Item 69316 · Annual</span><span class="cost-free">Free</span></div></div></div>
+                <div class="ent-card"><div class="ent-ico" style="background:var(--teal-dim);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23z"/></svg></div><div style="flex:1;"><div class="ent-nm">Mental Health Treatment Plan</div><div class="ent-desc">Up to 10 subsidised psychology sessions per year via Better Access.</div><div class="ent-ft"><span class="ent-mbs">MBS Item 2715 · Annual</span><span class="cost-free">Subsidised</span></div></div></div>
+                <div class="ent-card"><div class="ent-ico" style="background:var(--amber-dim);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v8M8 12h8"/></svg></div><div style="flex:1;"><div class="ent-nm">Team Care Arrangement</div><div class="ent-desc">5 subsidised allied health sessions (physio, OT, etc.) if you have a chronic condition.</div><div class="ent-ft"><span class="ent-mbs">MBS Item 723 · Annual</span><span class="cost-low">Ask your GP</span></div></div></div>
+              </div>
+              <div class="source-note" style="margin-top:4px;">Data sourced from Medicare Benefits Schedule (MBS). Last updated March 2026. A GP makes all clinical eligibility decisions. This is not medical advice.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- W: COSTCLEAR -->
+        <div id="w-cost" class="w-screen">
+          <div class="web-layout">
+            <div class="w-sidebar">
+              <div class="w-sb-brand">Medi<span>Clear</span></div>
+              <div class="w-sb-item" onclick="go('home')"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>Home</div>
+              <div class="w-sb-item" onclick="go('entitle')"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>My Entitlements</div>
+              <div class="w-sb-item on"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>Find Affordable Care</div>
+              <div class="w-sb-item" onclick="go('right')"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>Where Should I Go?</div>
+              <div class="w-sb-item" onclick="go('well')"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01"/></svg>Health Schedule</div>
+              <div class="w-sb-item" onclick="go('ai')"><svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4"/></svg>Hidden Entitlements</div>
+              <div class="w-sb-bottom"><div class="w-sb-user"><div class="avatar" style="width:32px;height:32px;font-size:12px;">J</div><div><div style="font-size:13px;font-weight:600;">Jordan Chen</div><div style="font-size:11px;color:var(--text-3);">3011 · Free account</div></div></div></div>
+            </div>
+            <div class="w-main">
+              <div style="margin-bottom:18px;"><div class="w-pg-title">Find Affordable Care</div><div class="w-pg-sub">Estimated cost shown before you book · Postcode 3011 · Footscray</div></div>
+              <div class="w-search-bar"><div class="w-search-inp" style="flex:2;"><svg viewBox="0 0 24 24" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><input placeholder="GP, skin check, blood test, physio..."></div><input class="inp" style="width:140px;" value="3011" placeholder="Postcode"><button class="btn-p" style="width:auto;padding:10px 20px;font-size:13px;">Search</button></div>
+              <div style="display:flex;gap:7px;margin-bottom:14px;flex-wrap:wrap;"><button class="chip-filter on">All Services</button><button class="chip-filter">GP</button><button class="chip-filter">Skin Check</button><button class="chip-filter">Blood Test</button><button class="chip-filter">Dental</button><button class="chip-filter">Physio</button></div>
+              <div style="display:flex;gap:8px;margin-bottom:14px;align-items:center;"><span class="cost-free">Free</span><span style="font-size:11.5px;color:var(--text-3);">Bulk-billing · $0 gap</span><span style="margin-left:8px;" class="cost-low">Low</span><span style="font-size:11.5px;color:var(--text-3);">Under $30</span><span style="margin-left:8px;" class="cost-gap">Gap</span><span style="font-size:11.5px;color:var(--text-3);">$30+</span><div style="margin-left:auto;font-size:12px;color:var(--text-3);">3 results · within 5km</div></div>
+              <table class="w-table" style="margin-bottom:12px;">
+                <thead><tr><th>Provider</th><th>Type</th><th>Distance</th><th>Status</th><th>Est. Cost</th><th></th></tr></thead>
+                <tbody>
+                  <tr style="cursor:pointer;" onclick="go('provider')"><td><strong style="display:block;font-size:13px;">Western Medical Centre</strong><span style="font-size:11px;color:var(--text-3);">122 Barkly St, Footscray</span></td><td><span style="font-size:12.5px;">General Practice</span></td><td><span style="font-size:12.5px;">1.2 km</span></td><td><span style="display:flex;align-items:center;gap:5px;font-size:12px;"><div class="dot dot-g"></div>Open · Closes 6 PM</span></td><td><span class="cost-free">Free</span></td><td><button class="book-btn">Book</button></td></tr>
+                  <tr><td><strong style="display:block;font-size:13px;">Footscray Health Hub</strong><span style="font-size:11px;color:var(--text-3);">77 Nicholson St, Footscray</span></td><td><span style="font-size:12.5px;">Community Health</span></td><td><span style="font-size:12.5px;">1.8 km</span></td><td><span style="display:flex;align-items:center;gap:5px;font-size:12px;"><div class="dot dot-g"></div>Open · Closes 8 PM</span></td><td><span class="cost-free">Free</span></td><td><button class="book-btn">Book</button></td></tr>
+                  <tr><td><strong style="display:block;font-size:13px;">Maribyrnong Walk-In</strong><span style="font-size:11px;color:var(--text-3);">45 Hyde St, Footscray</span></td><td><span style="font-size:12.5px;">General Practice</span></td><td><span style="font-size:12.5px;">2.4 km</span></td><td><span style="display:flex;align-items:center;gap:5px;font-size:12px;"><div class="dot dot-g"></div>Open · Closes 9 PM</span></td><td><span class="cost-low">~$25 gap</span></td><td><button class="book-btn">Book</button></td></tr>
+                </tbody>
+              </table>
+              <div class="notice"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>Cost estimates are based on area bulk-billing rates from Medicare. Confirm the cost directly with the provider before attending your appointment.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- W: RIGHTDOOR -->
+        <div id="w-right" class="w-screen">
+          <div class="web-layout">
+            <div class="w-sidebar">
+              <div class="w-sb-brand">Medi<span>Clear</span></div>
+              <div class="w-sb-item" onclick="go('home')"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>Home</div>
+              <div class="w-sb-item" onclick="go('entitle')"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>My Entitlements</div>
+              <div class="w-sb-item" onclick="go('cost')"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>Find Affordable Care</div>
+              <div class="w-sb-item on"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>Where Should I Go?</div>
+              <div class="w-sb-item" onclick="go('well')"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01"/></svg>Health Schedule</div>
+              <div class="w-sb-item" onclick="go('ai')"><svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4"/></svg>Hidden Entitlements</div>
+              <div class="w-sb-bottom"><div class="w-sb-user"><div class="avatar" style="width:32px;height:32px;font-size:12px;">J</div><div><div style="font-size:13px;font-weight:600;">Jordan Chen</div><div style="font-size:11px;color:var(--text-3);">3011 · Free account</div></div></div></div>
+            </div>
+            <div class="w-main">
+              <div style="margin-bottom:16px;"><div class="w-pg-title">Where Should I Go?</div><div class="w-pg-sub">Not a diagnosis. Compare your options by cost, distance, and wait time.</div></div>
+              <div class="emg-bar" style="margin-bottom:16px;"><div><div class="emg-lbl">Life-threatening emergency?</div><div class="emg-sub">Chest pain · difficulty breathing · unconscious person</div></div><button class="emg-btn">Call 000</button></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                <div class="card"><div style="font-size:13px;font-weight:600;margin-bottom:12px;">What best describes your concern?</div>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;">
+                    <div style="background:var(--accent-dim);border:1.5px solid var(--accent);border-radius:11px;padding:13px;cursor:pointer;"><div style="width:32px;height:32px;background:rgba(255,92,43,.2);border-radius:8px;display:flex;align-items:center;justify-content:center;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div><div style="font-size:12.5px;font-weight:600;margin-top:6px;">General Health</div></div>
+                    <div style="background:var(--surface-2);border:1.5px solid var(--border);border-radius:11px;padding:13px;cursor:pointer;"><div style="width:32px;height:32px;background:var(--red-dim);border-radius:8px;display:flex;align-items:center;justify-content:center;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.8"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><div style="font-size:12.5px;font-weight:600;margin-top:6px;">Pain or Injury</div></div>
+                    <div style="background:var(--surface-2);border:1.5px solid var(--border);border-radius:11px;padding:13px;cursor:pointer;"><div style="width:32px;height:32px;background:var(--teal-dim);border-radius:8px;display:flex;align-items:center;justify-content:center;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78z"/></svg></div><div style="font-size:12.5px;font-weight:600;margin-top:6px;">Skin Concern</div></div>
+                    <div style="background:var(--surface-2);border:1.5px solid var(--border);border-radius:11px;padding:13px;cursor:pointer;"><div style="width:32px;height:32px;background:var(--purple-dim);border-radius:8px;display:flex;align-items:center;justify-content:center;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div><div style="font-size:12.5px;font-weight:600;margin-top:6px;">Mental Wellness</div></div>
+                  </div>
+                </div>
+                <div class="card"><div style="font-size:13px;font-weight:600;margin-bottom:12px;">Your options near 3011 — cost & wait time</div>
+                  <table class="w-table"><thead><tr><th>Pathway</th><th>Location</th><th>Wait</th><th>Cost</th><th></th></tr></thead><tbody>
+                    <tr onclick="go('cost')" style="cursor:pointer;"><td><strong style="font-size:13px;">Telehealth GP</strong></td><td><span style="font-size:12px;color:var(--text-3);">Available now</span></td><td><span style="font-size:12px;">~15 min</span></td><td><span class="cost-free">Free</span></td><td><button class="book-btn">Book</button></td></tr>
+                    <tr onclick="go('provider')" style="cursor:pointer;"><td><strong style="font-size:13px;">Western Medical (GP)</strong></td><td><span style="font-size:12px;color:var(--text-3);">1.2 km · Open</span></td><td><span style="font-size:12px;">~45 min</span></td><td><span class="cost-free">Free</span></td><td><button class="book-btn">Book</button></td></tr>
+                    <tr><td><strong style="font-size:13px;">Medicare Urgent Care</strong></td><td><span style="font-size:12px;color:var(--text-3);">2.1 km · Opens 8AM</span></td><td><span style="font-size:12px;">Walk-in</span></td><td><span class="cost-free">Free</span></td><td><button class="book-btn">Directions</button></td></tr>
+                    <tr><td><strong style="font-size:13px;">Footscray ED</strong></td><td><span style="font-size:12px;color:var(--text-3);">2.8 km · 24/7</span></td><td><span style="font-size:12px;color:var(--amber);">~3.5 hrs</span></td><td><span class="cost-free">Free</span></td><td><button class="book-btn">Directions</button></td></tr>
+                  </tbody></table>
+                  <div class="source-note" style="margin-top:8px;">Wait times from MyHospitals API (AIHW). Navigation information only — not medical advice.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- W: WELLTRACK -->
+        <div id="w-well" class="w-screen">
+          <div class="web-layout">
+            <div class="w-sidebar">
+              <div class="w-sb-brand">Medi<span>Clear</span></div>
+              <div class="w-sb-item" onclick="go('home')"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>Home</div>
+              <div class="w-sb-item" onclick="go('entitle')"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>My Entitlements</div>
+              <div class="w-sb-item" onclick="go('cost')"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>Find Affordable Care</div>
+              <div class="w-sb-item" onclick="go('right')"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>Where Should I Go?</div>
+              <div class="w-sb-item on"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01"/></svg>Health Schedule</div>
+              <div class="w-sb-item" onclick="go('ai')"><svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4"/></svg>Hidden Entitlements</div>
+              <div class="w-sb-bottom"><div class="w-sb-user"><div class="avatar" style="width:32px;height:32px;font-size:12px;">J</div><div><div style="font-size:13px;font-weight:600;">Jordan Chen</div><div style="font-size:11px;color:var(--text-3);">3011 · Free account</div></div></div></div>
+            </div>
+            <div class="w-main">
+              <div style="margin-bottom:18px;display:flex;align-items:flex-start;justify-content:space-between;"><div><div class="w-pg-title">Health Schedule</div><div class="w-pg-sub">Your preventive care timeline · MBS guidelines · Age 23 · Male</div></div><button class="btn-p" style="width:auto;padding:10px 18px;font-size:13px;">Export All to Calendar</button></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px;">
+                <div class="card" style="background:var(--red-dim);border-color:rgba(239,68,68,.2);"><div style="font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:var(--red);">3</div><div style="font-size:13px;font-weight:600;color:var(--red);">Overdue</div><div style="font-size:12px;color:rgba(239,68,68,.6);margin-top:2px;">Action required</div></div>
+                <div class="card" style="background:var(--amber-dim);border-color:rgba(245,158,11,.2);"><div style="font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:var(--amber);">1</div><div style="font-size:13px;font-weight:600;color:var(--amber);">Due this month</div><div style="font-size:12px;color:rgba(245,158,11,.6);margin-top:2px;">Recommended soon</div></div>
+                <div class="card"><div style="font-family:'Syne',sans-serif;font-size:32px;font-weight:800;">5</div><div style="font-size:13px;font-weight:600;color:var(--text-2);">Upcoming</div><div style="font-size:12px;color:var(--text-3);margin-top:2px;">Next 12 months</div></div>
+              </div>
+              <div style="display:flex;gap:7px;margin-bottom:14px;"><button class="chip-filter on">Overdue</button><button class="chip-filter">Due Soon</button><button class="chip-filter">Upcoming</button></div>
+              <table class="w-table"><thead><tr><th>Health Check</th><th>MBS Item</th><th>Frequency</th><th>Status</th><th>Cost</th><th></th></tr></thead><tbody>
+                <tr><td><strong style="display:block;font-size:13px;">Skin Check (Full Body)</strong><span style="font-size:11.5px;color:var(--text-3);">Annual skin examination by a GP</span></td><td><span style="font-size:12px;">Item 104</span></td><td><span style="font-size:12px;">Annual</span></td><td><span class="tag tag-ov">Overdue · Mar 2025</span></td><td><span class="cost-free">Free</span></td><td style="display:flex;gap:6px;align-items:center;"><div class="wt-cal"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Cal</div><button class="book-btn" onclick="go('cost')" style="padding:5px 9px;font-size:11px;">Book</button></td></tr>
+                <tr><td><strong style="display:block;font-size:13px;">Cholesterol Blood Test</strong><span style="font-size:11.5px;color:var(--text-3);">Fasting lipid panel · GP referral needed</span></td><td><span style="font-size:12px;">Item 1484</span></td><td><span style="font-size:12px;">Every 2 yrs</span></td><td><span class="tag tag-ov">Overdue · Jan 2025</span></td><td><span class="cost-free">Free</span></td><td style="display:flex;gap:6px;align-items:center;"><div class="wt-cal"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Cal</div><button class="book-btn" onclick="go('cost')" style="padding:5px 9px;font-size:11px;">Book</button></td></tr>
+                <tr><td><strong style="display:block;font-size:13px;">STI Screening</strong><span style="font-size:11.5px;color:var(--text-3);">Annual sexual health check</span></td><td><span style="font-size:12px;">Item 69316</span></td><td><span style="font-size:12px;">Annual</span></td><td><span class="tag tag-ov">Overdue · Jun 2025</span></td><td><span class="cost-free">Free</span></td><td style="display:flex;gap:6px;align-items:center;"><div class="wt-cal"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Cal</div><button class="book-btn" onclick="go('cost')" style="padding:5px 9px;font-size:11px;">Book</button></td></tr>
+              </tbody></table>
+              <div class="source-note" style="margin-top:8px;">Schedule generated from MBS Schedule and National Preventive Health Strategy 2021–2030. Last updated March 2026. This is not medical advice.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- W: AI -->
+        <div id="w-ai" class="w-screen">
+          <div class="web-layout">
+            <div class="w-sidebar">
+              <div class="w-sb-brand">Medi<span>Clear</span></div>
+              <div class="w-sb-item" onclick="go('home')"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>Home</div>
+              <div class="w-sb-item" onclick="go('entitle')"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>My Entitlements</div>
+              <div class="w-sb-item" onclick="go('cost')"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>Find Affordable Care</div>
+              <div class="w-sb-item" onclick="go('right')"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>Where Should I Go?</div>
+              <div class="w-sb-item" onclick="go('well')"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01"/></svg>Health Schedule</div>
+              <div class="w-sb-item on"><svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4"/></svg>Hidden Entitlements</div>
+              <div class="w-sb-bottom"><div class="w-sb-user"><div class="avatar" style="width:32px;height:32px;font-size:12px;">J</div><div><div style="font-size:13px;font-weight:600;">Jordan Chen</div><div style="font-size:11px;color:var(--text-3);">3011 · Free account</div></div></div></div>
+            </div>
+            <div class="w-main">
+              <div style="margin-bottom:4px;"><div class="ai-badge"><svg viewBox="0 0 24 24" width="12" height="12"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4"/></svg>AI-Powered · MBS-grounded · Vector search · No generative AI</div></div>
+              <div style="margin-bottom:16px;margin-top:8px;"><div class="w-pg-title">Hidden Entitlements</div><div class="w-pg-sub">Describe your lifestyle. The AI searches the Medicare Benefits Schedule to find entitlements you may not know about.</div></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                <div>
+                  <div class="card" style="margin-bottom:12px;"><div style="font-size:13px;font-weight:600;margin-bottom:10px;">Describe your situation</div><textarea style="width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:9px;padding:12px 14px;font-size:13px;color:var(--text);font-family:'DM Sans',sans-serif;outline:none;min-height:90px;resize:vertical;line-height:1.55;" placeholder="e.g. I work in hospitality, my lower back always hurts...">I work in hospitality standing 8 hours a day and my lower back always hurts. I've been feeling stressed and exhausted lately.</textarea><button class="btn-p" style="margin-top:10px;">Find My Entitlements</button><div style="margin-top:10px;background:var(--surface-2);border-left:3px solid var(--border-2);border-radius:0 8px 8px 0;padding:10px 13px;font-size:11.5px;color:var(--text-3);line-height:1.5;">Searches the MBS to find entitlements relevant to your situation. A GP makes all eligibility decisions. Not medical advice.</div></div>
+                  <div class="card"><div style="font-size:12px;font-weight:600;color:var(--text-3);margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em;">How it works</div><div style="display:flex;flex-direction:column;gap:10px;"><div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--text-2);"><div style="width:22px;height:22px;border-radius:50%;background:var(--accent-dim);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">1</div>You describe your lifestyle in plain English</div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--text-2);"><div style="width:22px;height:22px;border-radius:50%;background:var(--accent-dim);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">2</div>AI searches MBS eligibility rules using semantic vector matching</div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--text-2);"><div style="width:22px;height:22px;border-radius:50%;background:var(--accent-dim);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">3</div>You receive entitlement cards with GP questions to ask</div><div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--text-2);"><div style="width:22px;height:22px;border-radius:50%;background:var(--accent-dim);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">4</div>Your GP makes the final eligibility and clinical decision</div></div></div>
+                </div>
+                <div>
+                  <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);margin-bottom:10px;">2 potential entitlements found</div>
+                  <div class="ai-card"><div class="ai-hd"><div><div class="ai-nm">Team Care Arrangement</div><div class="ai-mbs">MBS Item 723 · Chronic Disease Management</div></div><div class="conf-row"><span class="conf-lbl">Match</span><div class="conf-track"><div class="conf-fill" style="width:82%;"></div></div><span style="font-size:10.5px;color:var(--teal);font-weight:700;">82%</span></div></div><div class="ai-desc">Your back pain from ongoing physical work may qualify you for a Team Care Arrangement — potentially unlocking 5 subsidised allied health sessions per year including physiotherapy.</div><div class="ai-ask-lbl">Questions to ask your GP</div><div class="ai-ask-item">Would my back pain qualify for a Chronic Disease Management Plan or Team Care Arrangement?</div><div class="ai-ask-item">Can you refer me to a physiotherapist under MBS Item 723?</div><div class="ai-src"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>Source: MBS Item 723 · mbsonline.gov.au · Updated Feb 2026</div></div>
+                  <div class="ai-card"><div class="ai-hd"><div><div class="ai-nm">Mental Health Treatment Plan</div><div class="ai-mbs">MBS Item 2715 · Better Access</div></div><div class="conf-row"><span class="conf-lbl">Match</span><div class="conf-track"><div class="conf-fill" style="width:71%;"></div></div><span style="font-size:10.5px;color:var(--teal);font-weight:700;">71%</span></div></div><div class="ai-desc">If stress or exhaustion is affecting your daily life, a GP may create a Mental Health Treatment Plan unlocking up to 10 subsidised psychology sessions per year.</div><div class="ai-ask-lbl">Questions to ask your GP</div><div class="ai-ask-item">Could a Mental Health Treatment Plan be appropriate for what I'm experiencing?</div><div class="ai-src"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>Source: MBS Item 2715 · mbsonline.gov.au · Updated Feb 2026</div></div>
+                  <div class="gp-disc">A GP makes the final eligibility decision for all entitlements shown above.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- W: PROFILE -->
+        <div id="w-profile" class="w-screen">
+          <div class="web-layout">
+            <div class="w-sidebar">
+              <div class="w-sb-brand">Medi<span>Clear</span></div>
+              <div class="w-sb-item" onclick="go('home')"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>Home</div>
+              <div class="w-sb-item" onclick="go('entitle')"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>My Entitlements</div>
+              <div class="w-sb-item" onclick="go('cost')"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>Find Affordable Care</div>
+              <div class="w-sb-item" onclick="go('right')"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>Where Should I Go?</div>
+              <div class="w-sb-item" onclick="go('well')"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01"/></svg>Health Schedule</div>
+              <div class="w-sb-item" onclick="go('ai')"><svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4"/></svg>Hidden Entitlements</div>
+              <div class="w-sb-bottom"><div class="w-sb-user"><div class="avatar" style="width:32px;height:32px;font-size:12px;">J</div><div><div style="font-size:13px;font-weight:600;">Jordan Chen</div><div style="font-size:11px;color:var(--text-3);">3011 · Free account</div></div></div></div>
+            </div>
+            <div class="w-main">
+              <div style="display:flex;align-items:flex-start;gap:20px;margin-bottom:20px;padding:20px;background:var(--surface);border:1px solid var(--border);border-radius:14px;">
+                <div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#CC3A15);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:22px;font-weight:700;color:#fff;flex-shrink:0;">J</div>
+                <div style="flex:1;"><div style="font-family:'Syne',sans-serif;font-size:20px;font-weight:700;">Jordan Chen</div><div style="font-size:13px;color:var(--text-3);margin-top:2px;">Footscray VIC 3011 · Member since January 2026</div><div style="display:flex;gap:8px;margin-top:10px;"><span class="pill pill-g">Age: 23</span><span class="pill pill-b">Male</span><span class="pill pill-t">Postcode: 3011</span></div></div>
+                <button class="btn-g" style="width:auto;padding:9px 18px;font-size:13px;">Edit Profile</button>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px;">
+                <div class="card" style="text-align:center;"><div style="font-family:'Syne',sans-serif;font-size:30px;font-weight:800;color:var(--accent);">7</div><div style="font-size:12px;color:var(--text-3);margin-top:3px;">Entitlements</div></div>
+                <div class="card" style="text-align:center;"><div style="font-family:'Syne',sans-serif;font-size:30px;font-weight:800;color:var(--red);">3</div><div style="font-size:12px;color:var(--text-3);margin-top:3px;">Overdue checks</div></div>
+                <div class="card" style="text-align:center;"><div style="font-family:'Syne',sans-serif;font-size:30px;font-weight:800;color:var(--purple);">2</div><div style="font-size:12px;color:var(--text-3);margin-top:3px;">AI matches saved</div></div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                <div><div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);margin-bottom:9px;">Settings</div>
+                  <div class="menu-item"><div class="menu-ico" style="background:var(--teal-dim);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.8"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0"/></svg></div><div class="menu-lbl">Email Notifications</div><div class="toggle on" style="margin-left:auto;"></div></div>
+                  <div class="menu-item"><div class="menu-ico" style="background:var(--blue-dim);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div><div class="menu-lbl">Saved Entitlements</div><div class="menu-arr"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div>
+                  <div class="menu-item"><div class="menu-ico" style="background:var(--surface-3);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--text-3)" stroke-width="1.8"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></div><div class="menu-lbl">Sign Out</div></div>
+                </div>
+                <div><div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);margin-bottom:9px;">Privacy & Data</div>
+                  <div class="menu-item"><div class="menu-ico" style="background:var(--green-dim);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><div class="menu-lbl">Privacy Policy</div><div class="menu-arr"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div>
+                  <div class="menu-item"><div class="menu-ico" style="background:var(--amber-dim);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div><div class="menu-lbl">Download My Data</div><div class="menu-arr"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div>
+                  <div class="menu-item"><div class="menu-ico" style="background:var(--red-dim);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.8"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg></div><div class="menu-lbl" style="color:var(--red);">Delete My Account</div></div>
+                  <div class="notice" style="margin-top:8px;"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>Protected under Australian Privacy Act 1988. Not medical advice. Emergency: 000</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- W: PROVIDER DETAIL -->
+        <div id="w-provider" class="w-screen">
+          <div class="web-layout">
+            <div class="w-sidebar">
+              <div class="w-sb-brand">Medi<span>Clear</span></div>
+              <div class="w-sb-item" onclick="go('home')"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>Home</div>
+              <div class="w-sb-item on" onclick="go('cost')"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>Find Affordable Care</div>
+              <div class="w-sb-item" onclick="go('right')"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>Where Should I Go?</div>
+              <div class="w-sb-item" onclick="go('well')"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01"/></svg>Health Schedule</div>
+              <div class="w-sb-item" onclick="go('ai')"><svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4"/></svg>Hidden Entitlements</div>
+              <div class="w-sb-bottom"><div class="w-sb-user"><div class="avatar" style="width:32px;height:32px;font-size:12px;">J</div><div><div style="font-size:13px;font-weight:600;">Jordan Chen</div><div style="font-size:11px;color:var(--text-3);">3011 · Free account</div></div></div></div>
+            </div>
+            <div class="w-main">
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;"><div style="display:flex;align-items:center;gap:7px;font-size:12px;color:var(--text-3);cursor:pointer;" onclick="go('cost')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back to Find Care</div></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+                <div class="card"><div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:700;margin-bottom:4px;">Western Medical Centre</div><div style="font-size:13px;color:var(--text-3);margin-bottom:12px;">General Practice · Bulk-billing clinic · 1.2 km from you</div><div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px;"><span class="cost-free">Bulk-billing</span><span class="pill pill-t">Telehealth available</span><span class="pill pill-b">All ages</span></div><div style="display:flex;align-items:center;gap:8px;padding:11px 0;border-top:1px solid var(--border);"><div class="dot dot-g"></div><span style="font-size:13px;font-weight:600;color:var(--green);">Open now</span><span style="font-size:12px;color:var(--text-3);">Closes at 6:00 PM today</span></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:8px;font-size:12.5px;color:var(--text-2);"><span style="color:var(--text-3);">Mon – Fri</span><span>8:00 AM – 6:00 PM</span><span style="color:var(--text-3);">Saturday</span><span>9:00 AM – 1:00 PM</span><span style="color:var(--text-3);">Sunday</span><span>Closed</span></div><div style="margin-top:12px;padding:10px 14px;background:var(--surface-2);border-radius:9px;font-size:13px;color:var(--text-2);">122 Barkly Street, Footscray VIC 3011<div style="font-size:12px;color:var(--accent);margin-top:4px;cursor:pointer;">Get directions</div></div></div>
+                <div><div style="background:var(--green-dim);border:1px solid rgba(34,197,94,.18);border-radius:12px;padding:16px 18px;display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;"><div><div style="font-size:13px;font-weight:600;color:var(--green);">Standard GP Consultation</div><div style="font-size:11.5px;color:rgba(34,197,94,.65);margin-top:3px;">Estimate based on area bulk-billing rates. Confirm before attending.</div></div><div style="font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:var(--green);">$0</div></div>
+                  <div class="card"><div style="font-size:12px;font-weight:600;color:var(--text-3);margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em;">Services Available</div><div style="display:flex;flex-direction:column;gap:0;"><div style="display:flex;align-items:center;gap:9px;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text-2);"><div class="dot dot-t"></div>General Practice Consultations</div><div style="display:flex;align-items:center;gap:9px;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text-2);"><div class="dot dot-t"></div>Skin Checks · MBS Item 104</div><div style="display:flex;align-items:center;gap:9px;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text-2);"><div class="dot dot-t"></div>Blood Test Referrals</div><div style="display:flex;align-items:center;gap:9px;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text-2);"><div class="dot dot-t"></div>Health Assessments · MBS Item 701</div><div style="display:flex;align-items:center;gap:9px;padding:9px 0;font-size:13px;color:var(--text-2);"><div class="dot dot-t"></div>Chronic Disease Management Plans</div></div></div>
+                  <div style="margin-top:12px;"><div style="font-size:11px;color:var(--text-3);text-align:center;margin-bottom:8px;">Not medical advice. Cost estimates based on area bulk-billing rates.</div><button class="btn-p">Book Appointment</button><button class="btn-g" style="margin-top:8px;">Call Clinic · (03) 9317 XXXX</button></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- browser-frame -->
+    </div><!-- web-col -->
+
+  </div><!-- dual-view -->
+</div><!-- stage -->
+
+<script>
+const screenMeta = {
+  onboard:  ['01 — Onboarding',           'First time user experience · Value proposition · Access options',          'mediclear.com.au'],
+  login:    ['02 — Login / Sign Up',       'Authentication · Guest access · Privacy Act notice',                       'mediclear.com.au/login'],
+  home:     ['03 — Home Dashboard',        'Postcode overview · Overdue alerts · Quick access · Stats',                'mediclear.com.au/dashboard'],
+  entitle:  ['04 — My Entitlements',       'Personalised Medicare entitlements · MBS items · Cost · Find providers',   'mediclear.com.au/entitlements'],
+  cost:     ['05 — Find Affordable Care',  'Provider search · Cost coding · Bulk-billing · Distance sorting',          'mediclear.com.au/find-care'],
+  right:    ['06 — Where Should I Go?',    'Care pathway comparison · GP vs Telehealth vs Urgent Care vs ED',          'mediclear.com.au/where-to-go'],
+  well:     ['07 — Health Schedule',       'Preventive care timeline · Overdue checks · Calendar export · Booking',    'mediclear.com.au/schedule'],
+  ai:       ['08 — Hidden Entitlements',   'AI semantic search · MBS-grounded · Confidence scores · GP questions',     'mediclear.com.au/hidden-entitlements'],
+  profile:  ['09 — Profile & Settings',    'User profile · Notifications · Privacy · Data management',                 'mediclear.com.au/profile'],
+  provider: ['10 — Provider Detail',       'Clinic info · Hours · Services · Cost estimate · Book appointment',        'mediclear.com.au/provider/western-medical-centre'],
+};
+
+let currentView = 'both';
+
+function go(id) {
+  // Hide all screens
+  document.querySelectorAll('.m-screen').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.w-screen').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.stab').forEach(b => b.classList.remove('active'));
+
+  const m = document.getElementById('m-' + id);
+  const w = document.getElementById('w-' + id);
+  if (m) { m.classList.add('active'); m.scrollTop = 0; }
+  if (w) { w.classList.add('active'); if (w.querySelector('.w-main')) w.querySelector('.w-main').scrollTop = 0; }
+
+  const meta = screenMeta[id];
+  if (meta) {
+    document.getElementById('screen-title').textContent = meta[0];
+    document.getElementById('screen-desc').textContent = meta[1];
+    document.getElementById('browser-url-text').textContent = meta[2];
+  }
+
+  // Activate correct tab
+  document.querySelectorAll('.stab').forEach(b => {
+    const map = {onboard:'Onboarding',login:'Login',home:'Home',entitle:'My Entitlements',cost:'Find Care',right:'Where To Go',well:'Health Schedule',ai:'Hidden Entitlements',profile:'Profile',provider:'Provider Detail'};
+    if (b.textContent.trim() === map[id]) b.classList.add('active');
+  });
+}
+
+function setView(v) {
+  currentView = v;
+  const dv = document.getElementById('dual-view');
+  const mc = document.getElementById('mobile-col');
+  const wc = document.getElementById('web-col');
+  document.querySelectorAll('.vt-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('btn-' + v).classList.add('active');
+  if (v === 'both')   { dv.style.gridTemplateColumns='auto 1fr'; mc.style.display='flex'; wc.style.display='flex'; }
+  if (v === 'mobile') { dv.style.gridTemplateColumns='auto'; mc.style.display='flex'; wc.style.display='none'; }
+  if (v === 'web')    { dv.style.gridTemplateColumns='1fr'; mc.style.display='none'; wc.style.display='flex'; }
+}
+</script>
+</body>
+</html>

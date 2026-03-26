@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MediClear — Product Guide v3</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0D0F12; --ink-2: #3A3D44; --ink-3: #7A7E88;
+  --surface: #F7F6F2; --white: #FFFFFF;
+  --accent: #FF5C2B; --accent-pale: rgba(255,92,43,0.09);
+  --teal: #00A896; --teal-pale: rgba(0,168,150,0.09);
+  --blue: #1B6CA8; --blue-pale: rgba(27,108,168,0.09);
+  --green: #2D9B6F; --green-pale: rgba(45,155,111,0.09);
+  --purple: #7B5EA7; --purple-pale: rgba(123,94,167,0.09);
+  --amber: #C27B0E; --amber-pale: rgba(194,123,14,0.09);
+  --red: #C0392B; --red-pale: rgba(192,57,43,0.09);
+  --border: #E2E0DA; --border-light: #EEECE7;
+  --mono: 'JetBrains Mono', monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--ink);font-size:14px;line-height:1.65;}
+
+/* COVER */
+.cover{background:var(--ink);color:#fff;padding:64px 60px 56px;position:relative;overflow:hidden;}
+.cover::before{content:'';position:absolute;top:-100px;right:-60px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(255,92,43,0.15) 0%,transparent 70%);pointer-events:none;}
+.cover::after{content:'';position:absolute;bottom:-60px;left:25%;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(0,168,150,0.1) 0%,transparent 70%);pointer-events:none;}
+.cover-eye{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.cover-eye::before{content:'';display:inline-block;width:22px;height:2px;background:var(--accent);}
+.cover-title{font-family:'Syne',sans-serif;font-size:58px;font-weight:800;line-height:1.0;letter-spacing:-.03em;margin-bottom:4px;}
+.cover-title span{color:var(--accent);}
+.cover-sub{font-family:'Syne',sans-serif;font-size:15px;font-weight:400;color:rgba(255,255,255,.4);margin-bottom:36px;}
+.cover-tags{display:flex;flex-wrap:wrap;gap:7px;}
+.cover-tag{font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;border:1px solid rgba(255,255,255,.13);color:rgba(255,255,255,.6);}
+
+/* TABS */
+.tab-nav{background:var(--white);border-bottom:1.5px solid var(--border);display:flex;overflow-x:auto;position:sticky;top:0;z-index:100;padding:0 20px;}
+.tab-nav::-webkit-scrollbar{height:0;}
+.tab-btn{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;padding:13px 16px;border:none;background:none;cursor:pointer;color:var(--ink-3);border-bottom:2px solid transparent;white-space:nowrap;transition:color .2s,border-color .2s;display:flex;align-items:center;gap:6px;margin-bottom:-1.5px;}
+.tab-btn:hover{color:var(--ink);}
+.tab-btn.active{color:var(--accent);border-bottom-color:var(--accent);font-weight:600;}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+.panel-inner{max-width:940px;margin:0 auto;padding:40px 28px 80px;}
+
+/* TYPOGRAPHY */
+.sec-label{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
+.sec-num{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:var(--accent-pale);padding:3px 8px;border-radius:4px;}
+.sec-title{font-family:'Syne',sans-serif;font-size:21px;font-weight:700;letter-spacing:-.02em;}
+.divider{height:1px;background:var(--border);margin-bottom:22px;}
+.section{margin-top:48px;}
+.section:first-child{margin-top:0;}
+
+/* CALLOUTS */
+.callout{border-left:3px solid var(--teal);border-radius:0 10px 10px 0;padding:12px 16px;margin:12px 0;font-size:13px;color:var(--ink-2);line-height:1.6;background:var(--teal-pale);}
+.callout strong{color:var(--ink);}
+.callout.orange{background:var(--accent-pale);border-left-color:var(--accent);}
+.callout.blue{background:var(--blue-pale);border-left-color:var(--blue);}
+.callout.purple{background:var(--purple-pale);border-left-color:var(--purple);}
+.callout.red{background:var(--red-pale);border-left-color:var(--red);}
+.callout.green{background:var(--green-pale);border-left-color:var(--green);}
+.callout.amber{background:var(--amber-pale);border-left-color:var(--amber);}
+
+/* PROBLEM STATEMENT */
+.ps-block{background:var(--ink);color:#fff;border-radius:16px;padding:36px 40px;position:relative;overflow:hidden;}
+.ps-block::before{content:'"';font-family:'Syne',sans-serif;font-size:160px;font-weight:800;color:rgba(255,92,43,.1);position:absolute;top:-28px;left:18px;line-height:1;pointer-events:none;}
+.ps-text{font-size:18px;font-weight:300;line-height:1.75;color:rgba(255,255,255,.9);position:relative;z-index:1;}
+.ps-text strong{color:#fff;font-weight:500;}
+.ps-text em{color:#FFB347;font-style:normal;font-weight:500;}
+.ps-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:28px;background:rgba(255,255,255,.05);border-radius:10px;overflow:hidden;}
+.ps-stat{padding:18px 20px;background:rgba(255,255,255,.03);}
+.ps-num{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--accent);line-height:1;margin-bottom:3px;}
+.ps-sl{font-size:11.5px;color:rgba(255,255,255,.5);line-height:1.4;}
+.ps-src{font-size:10px;color:rgba(255,255,255,.27);margin-top:3px;}
+
+/* CARDS - GENERIC */
+.card{background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:20px;margin-bottom:12px;}
+.card-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;margin-bottom:8px;}
+.card-text{font-size:13px;color:var(--ink-2);line-height:1.6;}
+
+/* LAYER CARDS */
+.layer-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.layer-card{background:var(--white);border:1.5px solid var(--border);border-radius:14px;overflow:hidden;}
+.layer-head{padding:14px 18px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border-light);}
+.layer-num{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;line-height:1;}
+.layer-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;}
+.layer-body{padding:16px 18px;}
+.layer-item{display:flex;align-items:flex-start;gap:8px;font-size:12.5px;color:var(--ink-2);margin-bottom:8px;line-height:1.55;}
+.layer-item:last-child{margin-bottom:0;}
+.li-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:6px;}
+.lc-1 .layer-head{background:var(--accent-pale);} .lc-1 .layer-num{color:var(--accent);}
+.lc-2 .layer-head{background:var(--blue-pale);} .lc-2 .layer-num{color:var(--blue);}
+.lc-3 .layer-head{background:var(--teal-pale);} .lc-3 .layer-num{color:var(--teal);}
+.lc-4 .layer-head{background:var(--green-pale);} .lc-4 .layer-num{color:var(--green);}
+.li-dot.c1{background:var(--accent);}
+.li-dot.c2{background:var(--blue);}
+.li-dot.c3{background:var(--teal);}
+.li-dot.c4{background:var(--green);}
+
+/* RULES */
+.rule-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.rule-card{border-radius:14px;padding:22px;color:#fff;position:relative;overflow:hidden;}
+.rule-card::before{content:'';position:absolute;top:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.07);}
+.rule-num{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;opacity:.3;line-height:1;margin-bottom:8px;}
+.rule-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;margin-bottom:8px;}
+.rule-text{font-size:12.5px;opacity:.85;line-height:1.6;}
+.rc-1{background:linear-gradient(135deg,#C73B10,#FF5C2B);}
+.rc-2{background:linear-gradient(135deg,#0F4A7A,#1B6CA8);}
+.rc-3{background:linear-gradient(135deg,#1A6645,#2D9B6F);}
+
+/* DO / DON'T TABLE */
+.ddt{width:100%;border-collapse:collapse;background:var(--white);border:1.5px solid var(--border);border-radius:14px;overflow:hidden;}
+.ddt th{padding:11px 16px;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-align:left;border-right:1px solid var(--border);}
+.ddt th:first-child{background:var(--green-pale);color:#1A6645;}
+.ddt th:last-child{background:var(--red-pale);color:var(--red);border-right:none;}
+.ddt td{padding:11px 16px;font-size:12.5px;color:var(--ink-2);border-bottom:1px solid var(--border);border-right:1px solid var(--border);line-height:1.5;vertical-align:top;}
+.ddt td:last-child{border-right:none;}
+.ddt tr:last-child td{border-bottom:none;}
+.ddt tr:nth-child(even) td{background:#FAFAF8;}
+
+/* AUDIT TABLE */
+.audit-table{width:100%;border-collapse:collapse;background:var(--white);border:1.5px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:16px;}
+.audit-table th{padding:11px 14px;font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;background:var(--ink);color:rgba(255,255,255,.55);text-align:left;border-right:1px solid rgba(255,255,255,.08);}
+.audit-table th:last-child{border-right:none;}
+.audit-table td{padding:11px 14px;font-size:12.5px;color:var(--ink-2);border-bottom:1px solid var(--border);border-right:1px solid var(--border);vertical-align:top;line-height:1.55;}
+.audit-table td:last-child{border-right:none;}
+.audit-table tr:last-child td{border-bottom:none;}
+.audit-table tr:nth-child(even) td{background:#FAFAF8;}
+.audit-table td strong{color:var(--ink);display:block;margin-bottom:1px;}
+.risk-h{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;background:var(--red-pale);color:var(--red);}
+.risk-m{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;background:var(--amber-pale);color:var(--amber);}
+.risk-l{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;background:var(--green-pale);color:var(--green);}
+
+/* FEATURE CARDS */
+.feature-card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:16px;}
+.feature-head{padding:18px 22px;display:flex;align-items:flex-start;gap:14px;border-bottom:1.5px solid var(--border);}
+.f-badge{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.f-o{background:var(--accent-pale);}
+.f-t{background:var(--teal-pale);}
+.f-b{background:var(--blue-pale);}
+.f-g{background:var(--green-pale);}
+.f-p{background:var(--purple-pale);}
+.f-name{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;}
+.f-tag{font-size:12.5px;color:var(--ink-3);margin-top:2px;}
+.f-pri{margin-left:auto;font-size:10px;font-weight:600;padding:3px 9px;border-radius:20px;white-space:nowrap;flex-shrink:0;}
+.pri-core{background:var(--accent-pale);color:#C73B10;}
+.pri-key{background:var(--teal-pale);color:#007A6E);}
+.pri-ai{background:var(--purple-pale);color:#5B4080;}
+.feature-body{padding:18px 22px;display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.fb-label{font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);margin-bottom:7px;}
+.fb-text{font-size:13px;color:var(--ink-2);line-height:1.6;}
+.flow-steps{display:flex;flex-direction:column;gap:5px;}
+.flow-step{display:flex;align-items:flex-start;gap:8px;font-size:12.5px;color:var(--ink-2);}
+.flow-num{width:18px;height:18px;border-radius:50%;background:var(--ink);color:#fff;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.dpills{display:flex;flex-wrap:wrap;gap:5px;}
+.dpill{font-size:11px;font-weight:500;padding:3px 9px;border-radius:6px;background:#EEF0F4;color:var(--ink-2);}
+
+/* EPICS */
+.epic-card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:14px;}
+.epic-head{padding:16px 22px;display:flex;align-items:flex-start;gap:14px;border-bottom:1.5px solid var(--border);}
+.epic-num{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--accent);line-height:1;flex-shrink:0;min-width:40px;}
+.epic-name{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;}
+.epic-feature{font-size:11.5px;color:var(--ink-3);margin-top:2px;}
+.epic-phase{margin-left:auto;font-size:10px;font-weight:600;padding:3px 9px;border-radius:20px;white-space:nowrap;flex-shrink:0;}
+.ph-1{background:var(--accent-pale);color:#C73B10;}
+.ph-2{background:var(--blue-pale);color:#0F4A7A;}
+.ph-3{background:var(--purple-pale);color:#5B4080;}
+.epic-body{padding:16px 22px;}
+.epic-story{font-size:13.5px;color:var(--ink-2);font-style:italic;border-left:3px solid var(--accent);padding-left:14px;margin-bottom:14px;line-height:1.65;}
+.epic-stories-title{font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px;}
+.story-item{display:flex;align-items:flex-start;gap:8px;font-size:12.5px;color:var(--ink-2);margin-bottom:6px;line-height:1.5;}
+.story-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:7px;background:var(--border);}
+.story-dot.active{background:var(--accent);}
+.layer-check{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+.lc-chip{font-size:10.5px;font-weight:600;padding:3px 9px;border-radius:6px;}
+.lc-pass{background:var(--green-pale);color:#1A6645;}
+.lc-warn{background:var(--amber-pale);color:#7A4A00;}
+
+/* DATASETS */
+.ds-table{background:var(--white);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;}
+.ds-row{display:grid;grid-template-columns:200px 1fr 150px;border-bottom:1px solid var(--border);}
+.ds-row:last-child{border-bottom:none;}
+.ds-row.hdr{background:var(--ink);}
+.ds-cell{padding:14px 16px;font-size:13px;border-right:1px solid var(--border);}
+.ds-cell:last-child{border-right:none;}
+.ds-row.hdr .ds-cell{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5);border-right-color:rgba(255,255,255,.08);}
+.ds-row:nth-child(even){background:#FAFAF8;}
+.ds-name{font-weight:600;color:var(--ink);font-size:13px;}
+.ds-name small{display:block;font-weight:400;color:var(--ink-3);font-size:11px;margin-top:1px;}
+.ds-links{display:flex;flex-direction:column;gap:4px;margin-top:7px;}
+.ds-link{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:500;color:var(--blue);text-decoration:none;padding:2px 7px;border-radius:5px;background:var(--blue-pale);width:fit-content;}
+.ds-link::before{content:'↗';font-size:9px;}
+.ds-use{font-size:12.5px;color:var(--ink-2);line-height:1.6;}
+.ds-join{font-size:11.5px;color:var(--teal);font-weight:500;line-height:1.8;}
+
+/* THREAD */
+.thread-row{display:grid;grid-template-columns:150px 1fr;gap:0;margin-bottom:2px;border:1.5px solid var(--border);border-radius:12px;overflow:hidden;background:var(--white);}
+.thread-label{padding:18px 16px;display:flex;flex-direction:column;justify-content:center;border-right:1.5px solid var(--border);}
+.tl-icon{font-size:20px;margin-bottom:5px;}
+.tl-name{font-family:'Syne',sans-serif;font-size:12.5px;font-weight:700;}
+.tl-sub{font-size:10.5px;color:var(--ink-3);margin-top:2px;}
+.thread-content{padding:16px 20px;}
+.tc-title{font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px;}
+.tc-items{display:flex;flex-wrap:wrap;gap:6px;}
+.tc-item{font-size:11.5px;font-weight:500;padding:4px 11px;border-radius:7px;}
+.tc-arrow{text-align:center;padding:5px 0;color:var(--border);font-size:18px;}
+.t-prob .thread-label{background:#1A1C20;} .t-prob .tl-name{color:#fff;} .t-prob .tl-sub{color:rgba(255,255,255,.35);} .t-prob .thread-label{border-right-color:rgba(255,255,255,.08);}
+.t-prob .tc-item{background:var(--accent-pale);color:#C73B10;}
+.t-per .thread-label{background:#FFF7F4;} .t-per .tl-name{color:#C73B10;}
+.t-per .tc-item{background:var(--accent-pale);color:#C73B10;}
+.t-pain .thread-label{background:#FEF2F2;} .t-pain .tl-name{color:#B84040;}
+.t-pain .tc-item{background:#FEE8E8;color:#B84040;}
+.t-feat .thread-label{background:var(--teal-pale);} .t-feat .tl-name{color:#007A6E;}
+.t-feat .tc-item{background:var(--teal-pale);color:#007A6E;}
+.t-data .thread-label{background:var(--blue-pale);} .t-data .tl-name{color:#0F4A7A;}
+.t-data .tc-item{background:var(--blue-pale);color:#0F4A7A;}
+.t-sol .thread-label{background:var(--green-pale);} .t-sol .tl-name{color:#1A6645;}
+.t-sol .tc-item{background:var(--green-pale);color:#1A6645;}
+
+/* PERSONA */
+.persona-wrap{border:1.5px solid var(--border);border-radius:16px;overflow:hidden;background:var(--white);}
+.persona-head{padding:22px 26px;background:linear-gradient(135deg,#FFF7F4,#FFF2EA);border-bottom:1.5px solid var(--border);display:flex;gap:16px;align-items:flex-start;}
+.p-avatar{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#FF8A5C);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;}
+.p-name{font-family:'Syne',sans-serif;font-size:20px;font-weight:700;}
+.p-tagline{font-size:13px;color:var(--ink-3);margin-top:3px;}
+.p-badges{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px;}
+.p-badge{font-size:11px;font-weight:500;padding:3px 9px;border-radius:20px;background:var(--accent-pale);color:#C73B10;}
+.wwwwh-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.w-card{border:1.5px solid var(--border);border-radius:14px;overflow:hidden;background:var(--white);}
+.w-card.full{grid-column:1/-1;}
+.w-head{padding:12px 18px 10px;border-bottom:1px solid var(--border-light);display:flex;align-items:center;gap:9px;}
+.w-icon{font-size:18px;}
+.w-label{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;}
+.w-body{padding:14px 18px;font-size:13px;color:var(--ink-2);line-height:1.65;}
+.w-card.who .w-head{background:var(--accent-pale);} .w-card.who .w-label{color:#C73B10;}
+.w-card.what .w-head{background:var(--blue-pale);} .w-card.what .w-label{color:#0F4A7A;}
+.w-card.where .w-head{background:var(--teal-pale);} .w-card.where .w-label{color:#007A6E;}
+.w-card.why .w-head{background:var(--amber-pale);} .w-card.why .w-label{color:#7A4A00;}
+.w-card.how .w-head{background:var(--purple-pale);} .w-card.how .w-label{color:#5B4080;}
+.pp-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.pp-col{border:1.5px solid var(--border);border-radius:14px;overflow:hidden;background:var(--white);}
+.pp-head{padding:11px 16px;font-size:10.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;border-bottom:1px solid var(--border-light);}
+.pp-head.pain{background:#FEF2F2;color:#B84040;}
+.pp-head.need{background:#F0FBF8;color:#0F6E56;}
+.pp-item{display:flex;align-items:flex-start;gap:9px;padding:9px 16px;font-size:12.5px;color:var(--ink-2);border-bottom:1px solid var(--border-light);}
+.pp-item:last-child{border-bottom:none;}
+.pp-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:6px;}
+.pp-dot.red{background:#E05050;}
+.pp-dot.green{background:var(--teal);}
+
+/* REFERENCES */
+.ref-section{margin-bottom:28px;}
+.ref-section-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;margin-bottom:12px;padding-bottom:9px;border-bottom:1.5px solid var(--border);display:flex;align-items:center;gap:9px;}
+.ref-card{background:var(--white);border:1.5px solid var(--border);border-radius:12px;padding:15px 17px;margin-bottom:9px;display:flex;flex-direction:column;gap:5px;}
+.ref-title{font-size:13px;font-weight:600;color:var(--ink);}
+.ref-meta{font-size:11px;color:var(--ink-3);}
+.ref-desc{font-size:12.5px;color:var(--ink-2);line-height:1.55;}
+.ref-links{display:flex;flex-wrap:wrap;gap:6px;margin-top:3px;}
+.ref-link{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:500;color:var(--blue);text-decoration:none;}
+.ref-link::before{content:'↗';font-size:9px;}
+.ref-tag{display:inline-block;font-size:10px;font-weight:600;padding:2px 7px;border-radius:5px;}
+.rt-stat{background:var(--accent-pale);color:#C73B10;}
+.rt-data{background:var(--blue-pale);color:#0F4A7A;}
+.rt-news{background:var(--teal-pale);color:#007A6E;}
+.rt-policy{background:var(--purple-pale);color:#5B4080;}
+
+/* RISK MATRIX */
+.risk-matrix{width:100%;border-collapse:collapse;background:var(--white);border:1.5px solid var(--border);border-radius:14px;overflow:hidden;}
+.risk-matrix th{padding:11px 13px;font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;background:var(--ink);color:rgba(255,255,255,.5);text-align:left;border-right:1px solid rgba(255,255,255,.08);}
+.risk-matrix th:last-child{border-right:none;}
+.risk-matrix td{padding:11px 13px;font-size:12.5px;color:var(--ink-2);border-bottom:1px solid var(--border);border-right:1px solid var(--border);vertical-align:top;}
+.risk-matrix td:last-child{border-right:none;}
+.risk-matrix tr:last-child td{border-bottom:none;}
+.risk-matrix tr:nth-child(even) td{background:#FAFAF8;}
+
+/* ROADMAP */
+.roadmap{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);border-radius:14px;overflow:hidden;}
+.rm-phase{background:var(--white);padding:20px 18px;}
+.rm-label{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px;}
+.rm-label.p1{color:var(--accent);}
+.rm-label.p2{color:var(--blue);}
+.rm-label.p3{color:var(--purple);}
+.rm-name{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;margin-bottom:12px;}
+.rm-item{display:flex;align-items:flex-start;gap:7px;font-size:12px;color:var(--ink-2);margin-bottom:6px;}
+.rm-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:7px;}
+.rm-dot.p1{background:var(--accent);}
+.rm-dot.p2{background:var(--blue);}
+.rm-dot.p3{background:var(--purple);}
+
+/* STACK */
+.stack-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+.stack-card{background:var(--white);border:1.5px solid var(--border);border-radius:12px;padding:15px 13px;text-align:center;}
+.stack-icon{font-size:22px;margin-bottom:7px;}
+.stack-name{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;}
+.stack-desc{font-size:11px;color:var(--ink-3);margin-top:3px;line-height:1.5;}
+
+/* CODE BLOCK */
+.code-block{background:#1A1C20;color:#E8EAF0;border-radius:10px;padding:18px 20px;font-family:var(--mono);font-size:12px;line-height:1.7;margin:12px 0;overflow-x:auto;}
+.code-comment{color:#6B7280;}
+.code-key{color:#FF5C2B;}
+.code-val{color:#00A896;}
+.code-str{color:#FFB347;}
+
+/* FOOTER */
+.doc-footer{border-top:1.5px solid var(--border);margin-top:48px;padding-top:18px;display:flex;justify-content:space-between;align-items:center;}
+.footer-brand{font-family:'Syne',sans-serif;font-size:14px;font-weight:800;}
+.footer-brand span{color:var(--accent);}
+.footer-note{font-size:11px;color:var(--ink-3);}
+
+/* UVP */
+.uvp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.uvp-card{background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:18px;}
+.uvp-icon{font-size:24px;margin-bottom:9px;}
+.uvp-title{font-family:'Syne',sans-serif;font-size:13.5px;font-weight:700;margin-bottom:6px;}
+.uvp-text{font-size:12.5px;color:var(--ink-2);line-height:1.6;}
+.uvp-vs{margin-top:9px;padding-top:9px;border-top:1px solid var(--border);font-size:11px;color:var(--ink-3);}
+.uvp-vs span{color:var(--accent);font-weight:500;}
+
+.chip{display:inline-block;font-size:10.5px;font-weight:500;padding:2px 7px;border-radius:5px;margin:2px 2px 0 0;}
+.chip-o{background:var(--accent-pale);color:#C73B10;}
+.chip-t{background:var(--teal-pale);color:#007A6E;}
+.chip-b{background:var(--blue-pale);color:#0F4A7A;}
+.chip-g{background:var(--green-pale);color:#1A6645;}
+.chip-p{background:var(--purple-pale);color:#5B4080;}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-eye">SDG 3 · Good Health & Wellbeing · Australia · v3.0</div>
+  <div class="cover-title">Medi<span>Clear</span></div>
+  <div class="cover-sub">Comprehensive Product Documentation — Rules · AI Compliance · Epics · Features · Data · References</div>
+  <div class="cover-tags">
+    <span class="cover-tag">Target: 18–29 year olds</span>
+    <span class="cover-tag">5 Core Features</span>
+    <span class="cover-tag">10 Epics</span>
+    <span class="cover-tag">7 Open Datasets</span>
+    <span class="cover-tag">AI-Enabled · RAG-grounded</span>
+    <span class="cover-tag">Azure PostgreSQL</span>
+    <span class="cover-tag">Next.js + TypeScript</span>
+    <span class="cover-tag">Non-profit framing</span>
+  </div>
+</div>
+
+<!-- TAB NAV -->
+<nav class="tab-nav">
+  <button class="tab-btn active" onclick="switchTab('overview')">🎯 Overview</button>
+  <button class="tab-btn" onclick="switchTab('rules')">🔒 Project Rules</button>
+  <button class="tab-btn" onclick="switchTab('persona')">🧑 Persona</button>
+  <button class="tab-btn" onclick="switchTab('features')">⚡ Features</button>
+  <button class="tab-btn" onclick="switchTab('epics')">📋 Epics</button>
+  <button class="tab-btn" onclick="switchTab('data')">🗄️ Datasets</button>
+  <button class="tab-btn" onclick="switchTab('thread')">🔗 Connecting Thread</button>
+  <button class="tab-btn" onclick="switchTab('build')">🏗️ Build Plan</button>
+  <button class="tab-btn" onclick="switchTab('refs')">📚 References</button>
+</nav>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- TAB: OVERVIEW -->
+<!-- ══════════════════════════════════════════ -->
+<div id="tab-overview" class="tab-panel active">
+<div class="panel-inner">
+
+  <div class="sec-label"><span class="sec-num">01</span><span class="sec-title">Problem Statement</span></div>
+  <div class="divider"></div>
+  <div class="ps-block">
+    <p class="ps-text">Young Australians aged <strong>18–29</strong> are cutting back on healthcare in real terms — <em>not because they're healthy</em>, but because the system is opaque. Most don't know what bulk-billing means, what Medicare covers them for, or what care will cost before they show up. When something feels wrong, <strong>37% go to Google first</strong>. The information to help them exists. The entitlements are already funded. The problem is that <em>no one has made the system legible</em> for the generation navigating it alone for the first time.</p>
+    <div class="ps-stats">
+      <div class="ps-stat"><div class="ps-num">37%</div><div class="ps-sl">Go to Google first for non-emergency health concerns</div><div class="ps-src">AHI 2025 / Sonder Report</div></div>
+      <div class="ps-stat"><div class="ps-num">↓3.1%</div><div class="ps-sl">Real-terms decline in health spending, 18–24 year olds</div><div class="ps-src">CommBank Health Insights 2025</div></div>
+      <div class="ps-stat"><div class="ps-num">43%</div><div class="ps-sl">ED patients whose care could have been handled by a GP</div><div class="ps-src">AHI 2025</div></div>
+    </div>
+  </div>
+  <div class="callout orange" style="margin-top:16px"><strong>The unique angle:</strong> Every existing tool asks "what service do you need?" MediClear asks: <strong>"what does Medicare already owe you — and where's the nearest place to collect it?"</strong> This reframes healthcare access from charity to citizenship.</div>
+
+  <div class="section">
+    <div class="sec-label"><span class="sec-num">02</span><span class="sec-title">Unique Value Proposition</span></div>
+    <div class="divider"></div>
+    <div class="uvp-grid">
+      <div class="uvp-card"><div class="uvp-icon">🧾</div><div class="uvp-title">Entitlement-first framing</div><div class="uvp-text">Shows what Medicare already covers personally — before any search. It's their money. Already paid in through taxes.</div><div class="uvp-vs">vs <span>every other tool</span> — starts with "find a service"</div></div>
+      <div class="uvp-card"><div class="uvp-icon">💸</div><div class="uvp-title">Cost-before-commitment</div><div class="uvp-text">Shows estimated out-of-pocket cost for each provider before booking — turning the biggest anxiety into a decision input, not a surprise.</div><div class="uvp-vs">vs <span>Healthdirect / HotDoc</span> — no cost transparency</div></div>
+      <div class="uvp-card"><div class="uvp-icon">🤖</div><div class="uvp-title">AI-powered entitlement discovery</div><div class="uvp-text">PathwayAI surfaces hidden multi-step Medicare entitlements using semantic vector search — no generative AI, grounded in MBS XML.</div><div class="uvp-vs">vs <span>MyGov / Medicare</span> — buried in 500-page PDFs</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label"><span class="sec-num">03</span><span class="sec-title">Authentication & Data Storage</span></div>
+    <div class="divider"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div class="card">
+        <div class="card-title">🔐 Logged In — Azure PostgreSQL</div>
+        <div class="card-text">Full profile stored in database — age, sex, postcode, WellTrack schedule, PathwayAI saved entitlements. Persists across devices. Future: push notifications for overdue checks. Encrypted at rest. Privacy Act 1988 compliant. Explicit consent at signup.</div>
+      </div>
+      <div class="card">
+        <div class="card-title">👤 Guest Login — localStorage / Session</div>
+        <div class="card-text">All 5 features fully functional. Data stored in browser session only. WellTrack schedule and profile lost when session ends. No account friction — Jordan can use it immediately. Guest-to-account upgrade prompt shown <em>after</em> value is delivered, not before.</div>
+      </div>
+    </div>
+    <div class="callout amber"><strong>Design principle:</strong> Guest mode must deliver the full experience — not a watered-down version. The login prompt comes <em>after</em> Jordan has seen the value, never as a gate before it.</div>
+  </div>
+
+  <div class="doc-footer"><div class="footer-brand">Medi<span>Clear</span></div><div class="footer-note">v3.0 · SDG 3 · Australia · 18–29 year olds</div></div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- TAB: PROJECT RULES -->
+<!-- ══════════════════════════════════════════ -->
+<div id="tab-rules" class="tab-panel">
+<div class="panel-inner">
+
+  <div class="sec-label"><span class="sec-num">01</span><span class="sec-title">Rule Set A — The 4 Layers of Safe AI</span></div>
+  <div class="divider"></div>
+  <div class="callout red"><strong>Non-negotiable:</strong> Every feature, every AI output, every dataset integration must pass through all 4 layers before being built, documented, or shipped. If something fails a layer check it must be revised — not worked around.</div>
+
+  <div class="layer-grid" style="margin-top:16px;">
+    <div class="layer-card lc-1">
+      <div class="layer-head"><div class="layer-num">L1</div><div><div class="layer-title">Data Grounding — No Hallucination</div><div style="font-size:11px;color:var(--ink-3);margin-top:2px;">RAG over verified government sources only</div></div></div>
+      <div class="layer-body">
+        <div class="layer-item"><div class="li-dot c1"></div>All AI outputs must be grounded in verified government source data via RAG</div>
+        <div class="layer-item"><div class="li-dot c1"></div>No AI feature may generate information from model memory alone</div>
+        <div class="layer-item"><div class="li-dot c1"></div>Every response must be traceable to a specific government document</div>
+        <div class="layer-item"><div class="li-dot c1"></div>SentenceTransformers + pgvector inside Azure PostgreSQL — no separate vector DB needed</div>
+        <div class="layer-item"><div class="li-dot c1"></div>Vector embeddings must be re-indexed every time source data updates (MBS updates quarterly)</div>
+        <div class="layer-item"><div class="li-dot c1"></div>Confidence score must be surfaced to the user for every AI match</div>
+      </div>
+    </div>
+    <div class="layer-card lc-2">
+      <div class="layer-head"><div class="layer-num">L2</div><div><div class="layer-title">Hard Fencing — What AI Cannot Do</div><div style="font-size:11px;color:var(--ink-3);margin-top:2px;">Enforced at system prompt AND application layer</div></div></div>
+      <div class="layer-body">
+        <div class="layer-item"><div class="li-dot c2"></div>AI must never diagnose, assess clinical risk, or recommend specific treatments</div>
+        <div class="layer-item"><div class="li-dot c2"></div>System prompt rules are non-negotiable and enforced at application layer — not just trusted to the model</div>
+        <div class="layer-item"><div class="li-dot c2"></div>Emergency escalation (Call 000) must be triggered automatically for any high-risk input</div>
+        <div class="layer-item"><div class="li-dot c2"></div>The line is always: Navigate, never diagnose</div>
+        <div class="layer-item"><div class="li-dot c2"></div>PathwayAI says "may be relevant to your situation" — never "you qualify for"</div>
+        <div class="layer-item"><div class="li-dot c2"></div>RightDoor never suppresses the ED option regardless of urgency score</div>
+      </div>
+    </div>
+    <div class="layer-card lc-3">
+      <div class="layer-head"><div class="layer-num">L3</div><div><div class="layer-title">Legal Disclaimers — Built Into UI</div><div style="font-size:11px;color:var(--ink-3);margin-top:2px;">Not fine print — visible on every screen</div></div></div>
+      <div class="layer-body">
+        <div class="layer-item"><div class="li-dot c3"></div>"This is not medical advice" — on every screen, always visible</div>
+        <div class="layer-item"><div class="li-dot c3"></div>"A GP makes the final clinical decision" — on every PathwayAI and EntitleCheck result</div>
+        <div class="layer-item"><div class="li-dot c3"></div>"Information sourced from [document + date]" — on every entitlement card</div>
+        <div class="layer-item"><div class="li-dot c3"></div>"In an emergency, call 000" — permanently visible in app header, one tap away</div>
+        <div class="layer-item"><div class="li-dot c3"></div>"Last updated: [date]" — because MBS data changes quarterly</div>
+        <div class="layer-item"><div class="li-dot c3"></div>Cost estimates labelled "Confirm with provider before attending" — never "guaranteed free"</div>
+      </div>
+    </div>
+    <div class="layer-card lc-4">
+      <div class="layer-head"><div class="layer-num">L4</div><div><div class="layer-title">Human Override — Always</div><div style="font-size:11px;color:var(--ink-3);margin-top:2px;">AI is never the last step — a human always is</div></div></div>
+      <div class="layer-body">
+        <div class="layer-item"><div class="li-dot c4"></div>Every AI feature must end with a clear path to a real human</div>
+        <div class="layer-item"><div class="li-dot c4"></div>Healthdirect 1800 022 222 always accessible from every screen</div>
+        <div class="layer-item"><div class="li-dot c4"></div>Call 000 always one tap away — never buried in a menu</div>
+        <div class="layer-item"><div class="li-dot c4"></div>PathwayAI: AI surfaces entitlement → Jordan books GP → GP makes clinical call</div>
+        <div class="layer-item"><div class="li-dot c4"></div>RightDoor: AI gives options → Jordan decides → human provider delivers care</div>
+        <div class="layer-item"><div class="li-dot c4"></div>No feature reaches a terminal state without a human action available</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label"><span class="sec-num">02</span><span class="sec-title">The 3 Master Rules</span></div>
+    <div class="divider"></div>
+    <div class="rule-cards">
+      <div class="rule-card rc-1"><div class="rule-num">01</div><div class="rule-title">Navigate, Never Diagnose</div><div class="rule-text">MediClear tells Jordan where to go and what to ask. It never tells Jordan what is wrong with them. If any output could be interpreted as a clinical determination — stop and revise.</div></div>
+      <div class="rule-card rc-2"><div class="rule-num">02</div><div class="rule-title">Estimate, Never Guarantee</div><div class="rule-text">Every cost, every eligibility match, every wait time is an estimate sourced from open data. A human confirms the final answer. Label every estimate clearly — never present data as certain.</div></div>
+      <div class="rule-card rc-3"><div class="rule-num">03</div><div class="rule-title">Inform, Never Decide</div><div class="rule-text">PathwayAI gives Jordan the knowledge to have a better GP conversation. The GP makes every clinical and eligibility decision. The app empowers — it does not replace professional judgement.</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label"><span class="sec-num">03</span><span class="sec-title">Do & Don't — Complete Reference</span></div>
+    <div class="divider"></div>
+    <table class="ddt">
+      <thead><tr><th>✅ DO — Safe (Navigation)</th><th>❌ DON'T — Dangerous (Clinical)</th></tr></thead>
+      <tbody>
+        <tr><td>"Here are your care options and their costs"</td><td>"Based on your symptoms, you have X condition"</td></tr>
+        <tr><td>"A GP can assess you for this plan"</td><td>"You qualify for this Medicare plan"</td></tr>
+        <tr><td>"This is what MBS Item 721 covers"</td><td>"You need this treatment"</td></tr>
+        <tr><td>"Ask your GP about a Chronic Disease Management Plan"</td><td>"You have a chronic condition"</td></tr>
+        <tr><td>"This entitlement may be relevant to your situation"</td><td>"You are eligible for this item number"</td></tr>
+        <tr><td>"Statistically, this concern category is often handled by a GP"</td><td>"Your condition is not serious"</td></tr>
+        <tr><td>"Here are your options — GP, telehealth, urgent care, ED"</td><td>"You don't need to go to the hospital"</td></tr>
+        <tr><td>"Confirm the cost with the provider before attending"</td><td>"This appointment is free"</td></tr>
+        <tr><td>"Questions to ask your GP: [list]"</td><td>"Say exactly this to your doctor: [script]"</td></tr>
+        <tr><td>"Information sourced from MBS Schedule as of [date]"</td><td>Presenting MBS data without a freshness date</td></tr>
+        <tr><td>"In an emergency, call 000" — always visible</td><td>Hiding the 000 option based on urgency score</td></tr>
+        <tr><td>Storing health data encrypted with explicit consent</td><td>Storing health data without a privacy policy</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="sec-label"><span class="sec-num">04</span><span class="sec-title">Rule Set B — Feature & Data Audit Standards</span></div>
+    <div class="divider"></div>
+    <div class="callout blue">Every feature must be evaluated across all 5 dimensions before inclusion. This is applied in the Features tab for each of the 5 features.</div>
+    <table class="audit-table" style="margin-top:14px;">
+      <thead><tr><th>Dimension</th><th>What to Check</th><th>Failure condition</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Data Reliability</strong></td><td>Is this an official government source? How often is it updated? Is there an automated refresh pipeline built?</td><td>Data is from a secondary source, scraping, or has no known update schedule</td></tr>
+        <tr><td><strong>Data Accuracy</strong></td><td>Is the data granular enough for the claim being made? Are estimates clearly labelled as estimates? Is the confidence level communicated?</td><td>Data is used to make specific claims without appropriate hedging or source citation</td></tr>
+        <tr><td><strong>Legality</strong></td><td>What licence is the data under? Is the feature within TGA boundaries? Is health data handled under the Privacy Act 1988? Is the app classified as a medical device?</td><td>Data has no clear open licence, or feature crosses into clinical determination territory under TGA guidelines</td></tr>
+        <tr><td><strong>Ethics</strong></td><td>Could this output cause harm if wrong? Does it treat users with dignity? Does it avoid manipulation? Does it surface equitable options using SEIFA weighting?</td><td>Output could plausibly cause a user to delay or avoid necessary care</td></tr>
+        <tr><td><strong>AI Risk</strong></td><td>Is RAG in place? Is hallucination risk mitigated? Is confidence score shown to user? Are system prompt fences enforced at application layer not just model level?</td><td>AI generates health-relevant text without grounding in verified source documents</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="sec-label"><span class="sec-num">05</span><span class="sec-title">TGA Compliance — The Regulatory Boundary</span></div>
+    <div class="divider"></div>
+    <div class="callout red"><strong>TGA risk:</strong> The Therapeutic Goods Administration regulates software intended to diagnose, prevent, monitor, treat or alleviate a disease or condition. Crossing this line — even accidentally — classifies MediClear as a regulated medical device requiring registration. Every feature must be demonstrably on the navigation side of this line.</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;">
+      <div class="card"><div class="card-title" style="color:#1A6645;">✅ Navigation Tool (Not Regulated)</div><div class="card-text">Displaying Medicare entitlements. Showing provider locations and costs. Comparing care pathways by cost and distance. Surfacing questions to ask a GP. Providing preventive health reminders based on public guidelines.</div></div>
+      <div class="card"><div class="card-title" style="color:var(--red);">❌ Medical Device (Regulated)</div><div class="card-text">Diagnosing conditions from symptoms. Determining clinical eligibility for Medicare items. Assessing whether a user needs emergency care. Recommending specific treatments or medications. Risk-scoring individual health conditions.</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label"><span class="sec-num">06</span><span class="sec-title">Privacy Act 1988 — Health Data Obligations</span></div>
+    <div class="divider"></div>
+    <div class="card">
+      <div class="card-title">Australian Privacy Act 1988 — Key obligations for MediClear</div>
+      <div class="card-text" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:10px;">
+        <div><strong style="display:block;margin-bottom:6px;font-size:12px;">Health information = sensitive information</strong>Age, sex, health schedule, and entitlement data stored in Azure PostgreSQL is classified as sensitive information under the Act and attracts the highest level of protection. Explicit consent required before collection.</div>
+        <div><strong style="display:block;margin-bottom:6px;font-size:12px;">Required at launch</strong>Privacy policy clearly stating: what is collected, why, how it is stored, who can access it, and how to request deletion. Data deletion mechanism must be built into the account settings. Azure PostgreSQL encryption at rest is mandatory.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer"><div class="footer-brand">Medi<span>Clear</span></div><div class="footer-note">Project Rules · 4 AI Layers · 3 Master Rules · TGA + Privacy Act compliance</div></div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- TAB: PERSONA -->
+<!-- ══════════════════════════════════════════ -->
+<div id="tab-persona" class="tab-panel">
+<div class="panel-inner">
+  <div class="sec-label"><span class="sec-num">01</span><span class="sec-title">Primary Persona</span></div>
+  <div class="divider"></div>
+  <div class="persona-wrap">
+    <div class="persona-head">
+      <div class="p-avatar">🧑</div>
+      <div>
+        <div class="p-name">Jordan, 23 — Footscray, Melbourne VIC</div>
+        <div class="p-tagline">Casual hospitality worker · Renting with two housemates · Has a Medicare card, rarely uses it</div>
+        <div class="p-badges"><span class="p-badge">Gen Z</span><span class="p-badge">Financially independent</span><span class="p-badge">Digital native</span><span class="p-badge">No regular GP</span><span class="p-badge">Unattached to the health system</span><span class="p-badge">Irregular income</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label"><span class="sec-num">02</span><span class="sec-title">Who · What · Where · Why · How</span></div>
+    <div class="divider"></div>
+    <div class="wwwwh-grid">
+      <div class="w-card who"><div class="w-head"><span class="w-icon">👤</span><span class="w-label">WHO is Jordan?</span></div><div class="w-body">Jordan moved out of home at 19 onto their own Medicare card. They earn an irregular income in hospitality — sometimes full weeks, sometimes nothing — making financial planning including healthcare genuinely hard. They didn't grow up with parents who explained the health system. They've never had a regular GP and wouldn't know how to find an affordable one. They're not disengaged from health as a concept — they care — but the <em>system</em> feels like it was built for someone else.</div></div>
+      <div class="w-card what"><div class="w-head"><span class="w-icon">🤔</span><span class="w-label">WHAT does Jordan experience?</span></div><div class="w-body">Jordan experiences the health system as opaque and anxiety-inducing. They've shown up to a GP and been surprised by a $70 out-of-pocket gap. That happened once — they haven't gone back since. They know they should be getting skin checks (grew up in Queensland), blood tests, and dental visits. But "should do" and "will do" are separated by: <em>How much will it cost? Where do I go? Do I need a referral? Is this worth it?</em> The back pain from standing 8 hours a day is dismissed as "just part of the job."</div></div>
+      <div class="w-card where"><div class="w-head"><span class="w-icon">📍</span><span class="w-label">WHERE does Jordan seek help?</span></div><div class="w-body"><strong>First stop: Google.</strong> A symptom, a question, a worry — it goes into a search bar. Jordan doesn't distinguish between reliable health information and the first result.<br><br><strong>Second stop: texting a friend.</strong> "Is this normal?" is a common 11pm message.<br><br><strong>Third stop (only if urgent): hospital ED.</strong> Been once with a bad infection. Four-hour wait. Determined not to repeat it — but doesn't know where else to go if something feels serious.</div></div>
+      <div class="w-card why"><div class="w-head"><span class="w-icon">💡</span><span class="w-label">WHY doesn't Jordan engage?</span></div><div class="w-body"><strong>Cost uncertainty is the primary barrier.</strong> It's not that Jordan can't afford $0 — it's that they don't know if it will be $0 or $95 until they're at the counter. That asymmetry is enough to avoid it entirely.<br><br><strong>Navigation complexity is the secondary barrier.</strong> The Medicare website, MyGov, and Healthdirect feel like they were written for people who already understand the system.<br><br><strong>Absence of urgency is the third.</strong> Nothing has gone seriously wrong yet. The "someday" list keeps growing indefinitely.</div></div>
+      <div class="w-card how full"><div class="w-head"><span class="w-icon">📱</span><span class="w-label">HOW does Jordan want to be helped?</span></div>
+      <div class="w-body" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;">
+        <div><strong style="display:block;margin-bottom:6px;">Plain language, not jargon</strong>"This is free for you" beats "eligible for Medicare bulk-billing rebate under item 715." Every term must be explained in one sentence without requiring a glossary.</div>
+        <div><strong style="display:block;margin-bottom:6px;">Cost shown upfront, always</strong>The number one thing that would change Jordan's behaviour: knowing what something costs before committing. Not a range. Not "it depends." A specific honest estimate.</div>
+        <div><strong style="display:block;margin-bottom:6px;">Mobile-first, no account needed</strong>Jordan won't create an account for a health app. They'll use it on their phone during a 10-minute break at work. The entire value must be delivered in under 60 seconds.</div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label"><span class="sec-num">03</span><span class="sec-title">Pain Points & What Jordan Actually Needs</span></div>
+    <div class="divider"></div>
+    <div class="pp-grid">
+      <div class="pp-col">
+        <div class="pp-head pain">Pain Points</div>
+        <div class="pp-item"><div class="pp-dot red"></div>Avoids booking because cost is unknown until they're at the counter</div>
+        <div class="pp-item"><div class="pp-dot red"></div>Hasn't had a skin check, blood test, or dental visit since leaving home at 19</div>
+        <div class="pp-item"><div class="pp-dot red"></div>Doesn't know what bulk-billing means or if they personally qualify</div>
+        <div class="pp-item"><div class="pp-dot red"></div>Googles health concerns at 11pm and ends up more anxious than before</div>
+        <div class="pp-item"><div class="pp-dot red"></div>No regular GP — doesn't know how to find an affordable one nearby</div>
+        <div class="pp-item"><div class="pp-dot red"></div>Has a mental "someday" list with no trigger to ever act on it</div>
+        <div class="pp-item"><div class="pp-dot red"></div>Went to ED for something a GP could have handled — 4-hour wait</div>
+        <div class="pp-item"><div class="pp-dot red"></div>Has chronic back pain from work but doesn't know there's a funded pathway</div>
+        <div class="pp-item"><div class="pp-dot red"></div>Has no idea what their Medicare card entitles them to beyond "going to the doctor"</div>
+      </div>
+      <div class="pp-col">
+        <div class="pp-head need">What Jordan Actually Needs</div>
+        <div class="pp-item"><div class="pp-dot green"></div>To know the cost before committing to a booking — not after</div>
+        <div class="pp-item"><div class="pp-dot green"></div>A plain-English list of what Medicare covers for their exact age and sex</div>
+        <div class="pp-item"><div class="pp-dot green"></div>A way to find bulk-billing GPs nearby without ringing 6 clinics</div>
+        <div class="pp-item"><div class="pp-dot green"></div>A reliable answer to "do I actually need to see someone about this?"</div>
+        <div class="pp-item"><div class="pp-dot green"></div>A trigger — a deadline, a reminder — that turns someday into this week</div>
+        <div class="pp-item"><div class="pp-dot green"></div>Confidence they're not being ripped off or missing entitlements</div>
+        <div class="pp-item"><div class="pp-dot green"></div>To know they have a funded physio pathway through their GP — not to just pay full price</div>
+        <div class="pp-item"><div class="pp-dot green"></div>A tool that treats them like an adult who's paid into the system, not a patient seeking charity</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer"><div class="footer-brand">Medi<span>Clear</span></div><div class="footer-note">Persona · Jordan, 23 · Footscray, Melbourne</div></div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- TAB: FEATURES -->
+<!-- ══════════════════════════════════════════ -->
+<div id="tab-features" class="tab-panel">
+<div class="panel-inner">
+  <div class="callout red"><strong>Layer check applies to every feature.</strong> Before any feature is built, it must pass Layer 1 (Data Grounding) → Layer 2 (Hard Fencing) → Layer 3 (Legal Disclaimers) → Layer 4 (Human Override). See Rules tab for full detail.</div>
+
+  <div class="section">
+    <div class="sec-label"><span class="sec-num">F1</span><span class="sec-title">EntitleCheck — Medicare Entitlement Engine</span></div>
+    <div class="divider"></div>
+    <div class="feature-card">
+      <div class="feature-head"><div class="f-badge f-o">🧾</div><div><div class="f-name">EntitleCheck</div><div class="f-tag">Enter age, sex, postcode → get a plain-English list of what Medicare covers you for right now</div></div><span class="f-pri pri-core">Core Feature</span></div>
+      <div class="feature-body">
+        <div>
+          <div class="fb-label">Problem it solves</div>
+          <div class="fb-text">Most 18–29 year olds have a Medicare card but no idea what it actually covers. Multi-step entitlements like Chronic Disease Management Plans exist but are buried in 500-page government PDFs. This feature turns invisible entitlements into a personal readable checklist.</div>
+          <div style="margin-top:14px"><div class="fb-label">User flow</div>
+          <div class="flow-steps">
+            <div class="flow-step"><div class="flow-num">1</div>Enter age, sex, postcode — no login, no account required</div>
+            <div class="flow-step"><div class="flow-num">2</div>App generates personalised entitlement list from MBS item numbers</div>
+            <div class="flow-step"><div class="flow-num">3</div>Each item: what it is · what it costs · when you're due · plain-English explanation</div>
+            <div class="flow-step"><div class="flow-num">4</div>Tap "Find a provider" → hands off to CostClear filtered for that service</div>
+          </div></div>
+        </div>
+        <div>
+          <div class="fb-label">Datasets</div>
+          <div class="dpills"><span class="dpill">MBS Item Schedule</span><span class="dpill">NPHS Guidelines</span><span class="dpill">ABS Postcode→SA2</span></div>
+          <div style="margin-top:14px"><div class="fb-label">Layer Check</div>
+          <div class="layer-check"><span class="lc-chip lc-pass">L1 ✅ MBS XML — ground truth</span><span class="lc-chip lc-pass">L2 ✅ No diagnosis — entitlement info only</span><span class="lc-chip lc-pass">L3 ✅ GP makes final call on every card</span><span class="lc-chip lc-pass">L4 ✅ Hands off to human provider</span><span class="lc-chip lc-warn">⚠️ Quarterly MBS refresh required</span></div></div>
+          <div style="margin-top:14px"><div class="fb-label">Solves Jordan's pain point</div>
+          <div class="fb-text">"Has no idea what their Medicare card entitles them to beyond going to the doctor."</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label"><span class="sec-num">F2</span><span class="sec-title">CostClear — Cost Transparency Engine</span></div>
+    <div class="divider"></div>
+    <div class="feature-card">
+      <div class="feature-head"><div class="f-badge f-t">💸</div><div><div class="f-name">CostClear</div><div class="f-tag">Know what you'll pay before you go — 🟢 Free · 🟡 Low-cost · 🔴 Gap fee expected</div></div><span class="f-pri pri-core">Core Feature</span></div>
+      <div class="feature-body">
+        <div>
+          <div class="fb-label">Problem it solves</div>
+          <div class="fb-text">Cost uncertainty is the #1 reason 18–29s avoid booking. The gap between "Medicare covers it" and "what I'll actually pay at the counter" is enormous and invisible until it's too late. CostClear makes it visible before commitment.</div>
+          <div style="margin-top:14px"><div class="fb-label">User flow</div>
+          <div class="flow-steps">
+            <div class="flow-step"><div class="flow-num">1</div>Select service type: GP, skin check, blood test, dental, physio</div>
+            <div class="flow-step"><div class="flow-num">2</div>See providers near postcode colour-coded by cost estimate</div>
+            <div class="flow-step"><div class="flow-num">3</div>Tap provider → estimated gap fee + what Medicare rebates</div>
+            <div class="flow-step"><div class="flow-num">4</div>Tap "Book" → direct link to provider booking page</div>
+          </div></div>
+        </div>
+        <div>
+          <div class="fb-label">Datasets</div>
+          <div class="dpills"><span class="dpill">MBS Bulk-Billing Stats</span><span class="dpill">Healthdirect NHSD API</span><span class="dpill">ABS SEIFA 2021</span><span class="dpill">ABS Postcode→SA2</span></div>
+          <div style="margin-top:14px"><div class="fb-label">Layer Check</div>
+          <div class="layer-check"><span class="lc-chip lc-pass">L1 ✅ All open govt sources</span><span class="lc-chip lc-pass">L2 ✅ No clinical judgement</span><span class="lc-chip lc-pass">L3 ✅ "Estimate — confirm with provider"</span><span class="lc-chip lc-pass">L4 ✅ Books with real provider</span><span class="lc-chip lc-warn">⚠️ Bulk-billing rates are area averages — not per-provider guarantees</span></div></div>
+          <div style="margin-top:14px"><div class="fb-label">Solves Jordan's pain point</div>
+          <div class="fb-text">"Avoids booking because cost is unknown until they're at the counter — and that happened before."</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label"><span class="sec-num">F3</span><span class="sec-title">RightDoor — Care Pathway Navigator</span></div>
+    <div class="divider"></div>
+    <div class="feature-card">
+      <div class="feature-head"><div class="f-badge f-b">🚦</div><div><div class="f-name">RightDoor</div><div class="f-tag">GP vs Telehealth vs Urgent Care vs ED — side by side with cost and wait time</div></div><span class="f-pri pri-core">Core Feature</span></div>
+      <div class="feature-body">
+        <div>
+          <div class="fb-label">Problem it solves</div>
+          <div class="fb-text">37% go to Google first. 43% end up in ED unnecessarily. RightDoor replaces the Google search with a structured, non-diagnostic care pathway comparison. It never tells Jordan what is wrong — only where their options are.</div>
+          <div style="margin-top:14px"><div class="fb-label">User flow</div>
+          <div class="flow-steps">
+            <div class="flow-step"><div class="flow-num">1</div>Select concern category (broad — not symptom diagnosis)</div>
+            <div class="flow-step"><div class="flow-num">2</div>Answer 2–3 urgency questions (no clinical assessment)</div>
+            <div class="flow-step"><div class="flow-num">3</div>See GP · Telehealth · Urgent Care · ED side by side</div>
+            <div class="flow-step"><div class="flow-num">4</div>Each pathway: cost · nearest option · estimated wait time · directions</div>
+          </div></div>
+        </div>
+        <div>
+          <div class="fb-label">Datasets</div>
+          <div class="dpills"><span class="dpill">MyHospitals ED API</span><span class="dpill">MBS Telehealth Items</span><span class="dpill">Medicare Urgent Care Clinics</span><span class="dpill">Healthdirect NHSD API</span><span class="dpill">After-Hours GP (Health.gov.au)</span></div>
+          <div style="margin-top:14px"><div class="fb-label">Layer Check</div>
+          <div class="layer-check"><span class="lc-chip lc-pass">L1 ✅ All govt sources</span><span class="lc-chip lc-pass">L2 ✅ ED always shown — never suppressed</span><span class="lc-chip lc-pass">L3 ✅ Wait times labelled as estimates</span><span class="lc-chip lc-pass">L4 ✅ 000 always one tap away</span><span class="lc-chip lc-warn">⚠️ Most legally sensitive feature — never imply hospital is unnecessary</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label"><span class="sec-num">F4</span><span class="sec-title">WellTrack — Preventive Health Schedule</span></div>
+    <div class="divider"></div>
+    <div class="feature-card">
+      <div class="feature-head"><div class="f-badge f-g">📅</div><div><div class="f-name">WellTrack</div><div class="f-tag">Personal preventive health timeline — overdue · due now · upcoming — with calendar export</div></div><span class="f-pri" style="background:var(--teal-pale);color:#007A6E;">Key Feature</span></div>
+      <div class="feature-body">
+        <div>
+          <div class="fb-label">Problem it solves</div>
+          <div class="fb-text">The behaviour gap — knowing you should but never doing it. WellTrack turns vague intention into a personal schedule grounded in Medicare's own guidelines, with a real deadline and a direct booking path.</div>
+          <div style="margin-top:14px"><div class="fb-label">User flow</div>
+          <div class="flow-steps">
+            <div class="flow-step"><div class="flow-num">1</div>Profile: age, sex, postcode — localStorage for guests, Azure PostgreSQL if logged in</div>
+            <div class="flow-step"><div class="flow-num">2</div>Timeline generated: Overdue · Due now · Upcoming 12 months</div>
+            <div class="flow-step"><div class="flow-num">3</div>Tap item → what it is, why it matters, cost, what's covered</div>
+            <div class="flow-step"><div class="flow-num">4</div>Export to calendar (.ics) or book directly via CostClear</div>
+          </div></div>
+        </div>
+        <div>
+          <div class="fb-label">Datasets</div>
+          <div class="dpills"><span class="dpill">MBS Item Schedule</span><span class="dpill">NPHS Guidelines</span><span class="dpill">AIHW National Health Survey</span></div>
+          <div style="margin-top:14px"><div class="fb-label">Layer Check</div>
+          <div class="layer-check"><span class="lc-chip lc-pass">L1 ✅ NPHS CC BY 4.0</span><span class="lc-chip lc-pass">L2 ✅ Reminders — not clinical urgency</span><span class="lc-chip lc-pass">L3 ✅ "Based on MBS guidelines as of [date]"</span><span class="lc-chip lc-pass">L4 ✅ Books with real provider</span><span class="lc-chip lc-warn">⚠️ Health data in Azure PostgreSQL — Privacy Act applies</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label"><span class="sec-num">F5</span><span class="sec-title">PathwayAI — Hidden Entitlement Engine</span></div>
+    <div class="divider"></div>
+    <div class="callout purple"><strong>AI feature — Layer check is most critical here.</strong> PathwayAI uses semantic vector search over MBS eligibility rules. It is a navigation and information tool — never a clinical eligibility determination engine.</div>
+    <div class="feature-card">
+      <div class="feature-head"><div class="f-badge f-p">🤖</div><div><div class="f-name">PathwayAI</div><div class="f-tag">Describe your lifestyle → discover hidden Medicare entitlements → know exactly what to ask your GP</div></div><span class="f-pri pri-ai">AI Feature</span></div>
+      <div class="feature-body">
+        <div>
+          <div class="fb-label">Problem it solves</div>
+          <div class="fb-text">The Australian health system operates on hidden multi-step rules. Jordan's chronic back pain from hospitality work could unlock a GP Care Plan (Item 721) → 5 subsidised physio sessions. But Jordan assumes they just have to pay full price. PathwayAI surfaces these hidden pathways from plain-English lifestyle input.</div>
+          <div style="margin-top:14px"><div class="fb-label">User flow</div>
+          <div class="flow-steps">
+            <div class="flow-step"><div class="flow-num">1</div>Jordan describes their lifestyle in plain English: "I stand 8 hours a day and my lower back always hurts"</div>
+            <div class="flow-step"><div class="flow-num">2</div>SentenceTransformers semantic search finds closest MBS eligibility rules</div>
+            <div class="flow-step"><div class="flow-num">3</div>Results shown as entitlement cards with: MBS item, plain English, confidence score, source link</div>
+            <div class="flow-step"><div class="flow-num">4</div>"Questions to ask your GP" — not a script, not a guarantee. A conversation starter.</div>
+          </div></div>
+        </div>
+        <div>
+          <div class="fb-label">Technical implementation</div>
+          <div class="fb-text" style="font-size:12px;">SentenceTransformers → pgvector (inside Azure PostgreSQL) → semantic search. No live LLM. No generative AI. Pure vector matching — fast, free, no hallucination risk when properly indexed.</div>
+          <div class="dpills" style="margin-top:8px;"><span class="dpill">MBS Eligibility Rules (XML)</span><span class="dpill">AIHW Chronic Condition Data</span><span class="dpill">pgvector + Azure PostgreSQL</span></div>
+          <div style="margin-top:14px"><div class="fb-label">Layer Check</div>
+          <div class="layer-check"><span class="lc-chip lc-pass">L1 ✅ RAG over MBS XML — traceable to source</span><span class="lc-chip lc-pass">L2 ✅ "May be relevant" — never "you qualify"</span><span class="lc-chip lc-pass">L3 ✅ MBS item + link + date on every card</span><span class="lc-chip lc-pass">L4 ✅ GP makes final eligibility call</span><span class="lc-chip lc-warn">⚠️ Confidence score must be shown — low matches must be clearly flagged</span><span class="lc-chip lc-warn">⚠️ "Questions to ask GP" framing — never "say this to your doctor"</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label"><span class="sec-num">→</span><span class="sec-title">Feature Risk Matrix</span></div>
+    <div class="divider"></div>
+    <table class="risk-matrix">
+      <thead><tr><th>Feature</th><th>Data Reliability</th><th>Legal Risk</th><th>Ethical Risk</th><th>AI Risk</th><th>Overall</th></tr></thead>
+      <tbody>
+        <tr><td><strong>EntitleCheck</strong></td><td>✅ High — MBS is ground truth</td><td>✅ Low — CC BY licence</td><td>✅ Low — informational only</td><td>— No AI</td><td><span class="risk-l">🟢 Build confidently</span></td></tr>
+        <tr><td><strong>CostClear</strong></td><td>🟡 Medium — area averages not per-provider</td><td>✅ Low — all open govt data</td><td>✅ Low — pro-social</td><td>— No AI</td><td><span class="risk-l">🟢 Build with cost disclaimer</span></td></tr>
+        <tr><td><strong>RightDoor</strong></td><td>🟡 Medium — wait times are historical</td><td>🟡 Medium — most sensitive feature</td><td>🟡 Medium — must never suppress ED</td><td>— No AI</td><td><span class="risk-m">🟡 Build carefully</span></td></tr>
+        <tr><td><strong>WellTrack</strong></td><td>✅ High — NPHS + MBS</td><td>✅ Low — NPHS CC BY 4.0</td><td>✅ Low — preventive reminders</td><td>— No AI</td><td><span class="risk-l">🟢 Build confidently</span></td></tr>
+        <tr><td><strong>PathwayAI</strong></td><td>🟡 Medium — vector match ≠ legal determination</td><td>🟡 Medium — TGA framing risk</td><td>🟡 Medium — GP framing critical</td><td>🟡 Medium — RAG required</td><td><span class="risk-m">🟡 Build with RAG + strong disclaimers</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="doc-footer"><div class="footer-brand">Medi<span>Clear</span></div><div class="footer-note">5 Features · All passing 4-layer check</div></div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- TAB: EPICS -->
+<!-- ══════════════════════════════════════════ -->
+<div id="tab-epics" class="tab-panel">
+<div class="panel-inner">
+
+  <div class="sec-label"><span class="sec-num">01</span><span class="sec-title">10 Epics — Mapped to Features</span></div>
+  <div class="divider"></div>
+  <div class="callout blue">Each Epic is written in user story format. Phase 1 = foundation (build first). Phase 2 = core product. Phase 3 = intelligence layer. No Phase 2 Epic can be built without Phase 1 complete.</div>
+
+  <!-- EPIC 1 -->
+  <div class="epic-card">
+    <div class="epic-head"><div class="epic-num">1.0</div><div><div class="epic-name">Core App Infrastructure & Authentication</div><div class="epic-feature">Feature: Authentication & User Identity · Tech Foundation</div></div><span class="epic-phase ph-1">Phase 1</span></div>
+    <div class="epic-body">
+      <div class="epic-story">"As a young Australian adult, I want to be able to access MediClear as a guest or with an account so that my health information is either saved securely across devices or kept private on my device without any friction."</div>
+      <div class="epic-stories-title">User Stories</div>
+      <div class="story-item"><div class="story-dot active"></div>As a guest user, I can use all 5 features without creating an account so that there is no barrier to accessing my entitlements</div>
+      <div class="story-item"><div class="story-dot active"></div>As a returning user, I can create an account with email so that my WellTrack schedule and PathwayAI results persist across devices</div>
+      <div class="story-item"><div class="story-dot active"></div>As a logged-in user, I can delete my account and all associated health data so that I comply with the Privacy Act 1988 right to deletion</div>
+      <div class="story-item"><div class="story-dot active"></div>As a guest user, I am prompted to create an account only after I have seen the value of a feature, not before</div>
+      <div class="layer-check"><span class="lc-chip lc-pass">Azure PostgreSQL — encrypted at rest</span><span class="lc-chip lc-pass">Privacy Act 1988 — explicit consent at signup</span><span class="lc-chip lc-pass">NextAuth.js authentication layer</span><span class="lc-chip lc-warn">Health data = sensitive information under Privacy Act</span></div>
+    </div>
+  </div>
+
+  <!-- EPIC 2 -->
+  <div class="epic-card">
+    <div class="epic-head"><div class="epic-num">2.0</div><div><div class="epic-name">Geographic Data Layer</div><div class="epic-feature">Feature: Geographic Infrastructure · Shared across all 5 features</div></div><span class="epic-phase ph-1">Phase 1</span></div>
+    <div class="epic-body">
+      <div class="epic-story">"As a young Australian adult, I want to be able to enter my postcode so that every feature I use shows me results relevant to where I actually live, not a national average."</div>
+      <div class="epic-stories-title">User Stories</div>
+      <div class="story-item"><div class="story-dot active"></div>As a user, I can enter my postcode and have it automatically mapped to my SA2, SEIFA score, and local bulk-billing rate</div>
+      <div class="story-item"><div class="story-dot active"></div>As a user in a high-disadvantage postcode, I see free and low-cost options surfaced first automatically</div>
+      <div class="story-item"><div class="story-dot active"></div>As a user, all provider results are sorted by distance from my postcode</div>
+      <div class="layer-check"><span class="lc-chip lc-pass">ABS ASGS 2021 — CC BY 4.0</span><span class="lc-chip lc-pass">SEIFA equity weighting — ethically sound</span><span class="lc-chip lc-pass">Master join key — built once, used by all features</span></div>
+    </div>
+  </div>
+
+  <!-- EPIC 3 -->
+  <div class="epic-card">
+    <div class="epic-head"><div class="epic-num">3.0</div><div><div class="epic-name">EntitleCheck</div><div class="epic-feature">Feature 1: EntitleCheck — Medicare Entitlement Engine</div></div><span class="epic-phase ph-2">Phase 2</span></div>
+    <div class="epic-body">
+      <div class="epic-story">"As a young Australian adult, I want to be able to see a plain-English list of what Medicare already covers for someone my age and sex so that I stop missing out on health checks I didn't know I was entitled to."</div>
+      <div class="epic-stories-title">User Stories</div>
+      <div class="story-item"><div class="story-dot active"></div>As a user, I can enter my age and sex and see a personalised list of Medicare-covered services I am entitled to right now</div>
+      <div class="story-item"><div class="story-dot active"></div>As a user, each entitlement card shows: what it is in plain English, the estimated cost, when I am due, and the MBS item number with a link to the official source</div>
+      <div class="story-item"><div class="story-dot active"></div>As a user, I can tap any entitlement and be taken directly to CostClear filtered for that service near my postcode</div>
+      <div class="story-item"><div class="story-dot active"></div>As a user, I can see a data freshness indicator showing when the MBS data was last updated</div>
+      <div class="layer-check"><span class="lc-chip lc-pass">L1 ✅ MBS XML — ground truth</span><span class="lc-chip lc-pass">L2 ✅ No diagnosis</span><span class="lc-chip lc-pass">L3 ✅ GP makes final call on every card</span><span class="lc-chip lc-warn">⚠️ Quarterly MBS refresh pipeline required</span></div>
+    </div>
+  </div>
+
+  <!-- EPIC 4 -->
+  <div class="epic-card">
+    <div class="epic-head"><div class="epic-num">4.0</div><div><div class="epic-name">CostClear</div><div class="epic-feature">Feature 2: CostClear — Cost Transparency Engine</div></div><span class="epic-phase ph-2">Phase 2</span></div>
+    <div class="epic-body">
+      <div class="epic-story">"As a young Australian adult, I want to be able to see how much a health service will cost me before I commit to booking so that I never get surprised by an unexpected gap fee at the counter again."</div>
+      <div class="epic-stories-title">User Stories</div>
+      <div class="story-item"><div class="story-dot active"></div>As a user, I can search for a service type and see nearby providers colour-coded 🟢 Free · 🟡 Low-cost · 🔴 Gap fee expected</div>
+      <div class="story-item"><div class="story-dot active"></div>As a user, I can see an estimated out-of-pocket cost and what Medicare rebates before I book</div>
+      <div class="story-item"><div class="story-dot active"></div>As a user in a disadvantaged postcode, free options are surfaced first in my results automatically</div>
+      <div class="story-item"><div class="story-dot active"></div>As a user, every cost estimate clearly states "Confirm with provider before attending — this is an estimate based on area bulk-billing rates"</div>
+      <div class="layer-check"><span class="lc-chip lc-pass">L1 ✅ MBS bulk-billing stats + Healthdirect API</span><span class="lc-chip lc-pass">L3 ✅ Estimate disclaimer on every card</span><span class="lc-chip lc-warn">⚠️ Area averages — not per-provider guarantees</span></div>
+    </div>
+  </div>
+
+  <!-- EPIC 5 -->
+  <div class="epic-card">
+    <div class="epic-head"><div class="epic-num">5.0</div><div><div class="epic-name">RightDoor</div><div class="epic-feature">Feature 3: RightDoor — Care Pathway Navigator</div></div><span class="epic-phase ph-2">Phase 2</span></div>
+    <div class="epic-body">
+      <div class="epic-story">"As a young Australian adult, I want to be able to find out where I should actually go when something feels wrong so that I stop defaulting to Google or the Emergency Department for things a GP or telehealth service could handle."</div>
+      <div class="epic-stories-title">User Stories</div>
+      <div class="story-item"><div class="story-dot active"></div>As a user, I can select a broad concern category and answer 2–3 urgency questions to see a side-by-side comparison of GP, telehealth, urgent care, and ED options</div>
+      <div class="story-item"><div class="story-dot active"></div>As a user, I always see all four care pathways — the ED option is never hidden or suppressed regardless of my urgency answers</div>
+      <div class="story-item"><div class="story-dot active"></div>As a user, I can see the estimated ED wait time so I can make an informed decision about whether to go tonight or in the morning</div>
+      <div class="story-item"><div class="story-dot active"></div>As a user, "Call 000" is always visible and one tap away from every screen in this feature</div>
+      <div class="layer-check"><span class="lc-chip lc-pass">L2 ✅ ED always shown</span><span class="lc-chip lc-pass">L4 ✅ 000 always one tap away</span><span class="lc-chip lc-warn">⚠️ Most legally sensitive feature — never imply hospital is unnecessary</span><span class="lc-chip lc-warn">⚠️ Wait times are historical averages — label clearly</span></div>
+    </div>
+  </div>
+
+  <!-- EPIC 6 -->
+  <div class="epic-card">
+    <div class="epic-head"><div class="epic-num">6.0</div><div><div class="epic-name">WellTrack</div><div class="epic-feature">Feature 4: WellTrack — Preventive Health Schedule</div></div><span class="epic-phase ph-2">Phase 2</span></div>
+    <div class="epic-body">
+      <div class="epic-story">"As a young Australian adult, I want to be able to see a personal preventive health schedule showing what checks I am overdue for so that the things I always say I'll do 'someday' actually get done."</div>
+      <div class="epic-stories-title">User Stories</div>
+      <div class="story-item"><div class="story-dot active"></div>As a guest user, my WellTrack profile is stored locally on my device so I don't need an account to see my schedule</div>
+      <div class="story-item"><div class="story-dot active"></div>As a logged-in user, my WellTrack schedule persists across my phone and laptop</div>
+      <div class="story-item"><div class="story-dot active"></div>As a user, I can export any health check reminder to my phone calendar as a .ics file with one tap</div>
+      <div class="story-item"><div class="story-dot active"></div>As a user, I can tap any check and be taken directly to CostClear to find a nearby bulk-billing provider for that service</div>
+      <div class="layer-check"><span class="lc-chip lc-pass">L1 ✅ NPHS + MBS — both open govt data</span><span class="lc-chip lc-pass">L2 ✅ Reminders — not clinical urgency framing</span><span class="lc-chip lc-warn">⚠️ Azure PostgreSQL health data — Privacy Act applies</span></div>
+    </div>
+  </div>
+
+  <!-- EPIC 7 -->
+  <div class="epic-card">
+    <div class="epic-head"><div class="epic-num">7.0</div><div><div class="epic-name">PathwayAI</div><div class="epic-feature">Feature 5: PathwayAI — Hidden Entitlement Engine (AI-Powered)</div></div><span class="epic-phase ph-3">Phase 3</span></div>
+    <div class="epic-body">
+      <div class="epic-story">"As a young Australian adult, I want to be able to describe my lifestyle and health situation in plain English so that I can discover multi-step Medicare entitlements I would never have found on my own, and know exactly what to ask my GP."</div>
+      <div class="epic-stories-title">User Stories</div>
+      <div class="story-item"><div class="story-dot active"></div>As a user, I can type a plain-English description of my lifestyle or recurring health concern and receive a list of potentially relevant Medicare entitlements</div>
+      <div class="story-item"><div class="story-dot active"></div>As a user, every entitlement result shows: the MBS item number, plain-English explanation, a confidence score, and a direct link to the official MBS source</div>
+      <div class="story-item"><div class="story-dot active"></div>As a user, every result includes a list of "questions to ask your GP" — never a script, never a guarantee of eligibility</div>
+      <div class="story-item"><div class="story-dot active"></div>As a logged-in user, I can save PathwayAI results to my profile to bring to my next GP appointment</div>
+      <div class="story-item"><div class="story-dot active"></div>As a user, I always see the disclaimer "A GP makes the final eligibility decision" on every PathwayAI result card</div>
+      <div class="layer-check"><span class="lc-chip lc-pass">L1 ✅ RAG over MBS XML — fully grounded</span><span class="lc-chip lc-pass">L2 ✅ "May be relevant" — never "you qualify"</span><span class="lc-chip lc-pass">L3 ✅ Source + date on every card</span><span class="lc-chip lc-pass">L4 ✅ GP makes final call</span><span class="lc-chip lc-warn">⚠️ Confidence score visible — low matches flagged</span><span class="lc-chip lc-warn">⚠️ "Questions to ask GP" framing — never "say this"</span></div>
+    </div>
+  </div>
+
+  <!-- EPIC 8 -->
+  <div class="epic-card">
+    <div class="epic-head"><div class="epic-num">8.0</div><div><div class="epic-name">Notifications & Reminders</div><div class="epic-feature">Feature: Notifications — WellTrack persistence layer</div></div><span class="epic-phase ph-3">Phase 3</span></div>
+    <div class="epic-body">
+      <div class="epic-story">"As a young Australian adult, I want to be able to receive timely reminders about my upcoming and overdue health checks so that I don't need to remember to come back to the app for it to keep working for me."</div>
+      <div class="epic-stories-title">User Stories</div>
+      <div class="story-item"><div class="story-dot active"></div>As a logged-in user, I receive a push notification when a health check on my WellTrack schedule becomes due</div>
+      <div class="story-item"><div class="story-dot active"></div>As a user, I can manage my notification preferences and opt out at any time</div>
+      <div class="story-item"><div class="story-dot active"></div>As a user, notification content frames reminders as helpful prompts — never as clinical urgency or warnings</div>
+      <div class="layer-check"><span class="lc-chip lc-pass">L2 ✅ "Your skin check reminder" — never "you may have a health risk"</span><span class="lc-chip lc-warn">⚠️ Push notifications require explicit opt-in consent</span></div>
+    </div>
+  </div>
+
+  <!-- EPIC 9 -->
+  <div class="epic-card">
+    <div class="epic-head"><div class="epic-num">9.0</div><div><div class="epic-name">Safety & Compliance Layer</div><div class="epic-feature">Feature: Non-negotiable safety infrastructure — enforces all 4 AI Layers</div></div><span class="epic-phase ph-1">Phase 1</span></div>
+    <div class="epic-body">
+      <div class="epic-story">"As a young Australian adult, I want to be able to trust that every piece of information MediClear shows me is sourced from verified government data, clearly labelled as guidance not diagnosis, and always points me to a real human when it matters most."</div>
+      <div class="epic-stories-title">User Stories</div>
+      <div class="story-item"><div class="story-dot active"></div>As a user, I can always see "This is not medical advice" on every screen — it is never buried in a footer</div>
+      <div class="story-item"><div class="story-dot active"></div>As a user, I can always call 000 in one tap from any screen in the app</div>
+      <div class="story-item"><div class="story-dot active"></div>As a user, I can see the source government document and last-updated date for every piece of data shown to me</div>
+      <div class="story-item"><div class="story-dot active"></div>As a user, I can access the privacy policy, terms of service, and data deletion request from the account menu</div>
+      <div class="layer-check"><span class="lc-chip lc-pass">This Epic IS the layer enforcement mechanism</span><span class="lc-chip lc-pass">TGA boundary documentation</span><span class="lc-chip lc-pass">Privacy Act 1988 compliance</span><span class="lc-chip lc-pass">WCAG 2.1 AA accessibility</span></div>
+    </div>
+  </div>
+
+  <!-- EPIC 10 -->
+  <div class="epic-card">
+    <div class="epic-head"><div class="epic-num">10.0</div><div><div class="epic-name">Accessibility & Inclusivity</div><div class="epic-feature">Feature: Accessibility — WCAG 2.1 AA compliance + low-bandwidth support</div></div><span class="epic-phase ph-1">Phase 1</span></div>
+    <div class="epic-body">
+      <div class="epic-story">"As a young Australian adult, I want to be able to use MediClear regardless of my device, connection speed, or accessibility needs so that the app works for every 18–29 year old, not just those with the latest phone or fastest internet."</div>
+      <div class="epic-stories-title">User Stories</div>
+      <div class="story-item"><div class="story-dot active"></div>As a user on an older Android phone on 4G, the app loads key features in under 3 seconds</div>
+      <div class="story-item"><div class="story-dot active"></div>As a user who relies on a screen reader, all interactive elements have appropriate ARIA labels</div>
+      <div class="story-item"><div class="story-dot active"></div>As a user with colour blindness, the 🟢🟡🔴 cost coding in CostClear also uses icons and text labels — not colour alone</div>
+      <div class="layer-check"><span class="lc-chip lc-pass">WCAG 2.1 AA — built in from Phase 1</span><span class="lc-chip lc-pass">Mobile-first — tested on mid-range Android</span><span class="lc-chip lc-warn">⚠️ Colour-blind accessible cost indicators required</span></div>
+    </div>
+  </div>
+
+  <div class="doc-footer"><div class="footer-brand">Medi<span>Clear</span></div><div class="footer-note">10 Epics · Phase 1 foundation → Phase 2 core → Phase 3 intelligence</div></div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- TAB: DATASETS -->
+<!-- ══════════════════════════════════════════ -->
+<div id="tab-data" class="tab-panel">
+<div class="panel-inner">
+  <div class="sec-label"><span class="sec-num">01</span><span class="sec-title">Key Open Datasets & Direct Links</span></div>
+  <div class="divider"></div>
+  <div class="callout blue"><strong>Geographic join chain (build this first):</strong> User enters postcode → ABS concordance maps to SA2 → SA2 joins to SEIFA score + bulk-billing stats + provider locations + remoteness class. Every feature inherits this chain. Build it once in Phase 1.</div>
+
+  <div class="ds-table" style="margin-top:16px;">
+    <div class="ds-row hdr"><div class="ds-cell">Dataset</div><div class="ds-cell">Usage + Links</div><div class="ds-cell">Joins To</div></div>
+
+    <div class="ds-row">
+      <div class="ds-cell"><div class="ds-name">MBS — Medicare Benefits Schedule<small>health.gov.au · updated quarterly · CC BY</small></div>
+      <div class="ds-links"><a class="ds-link" href="https://www.mbsonline.gov.au/" target="_blank">MBS Online — item search</a><a class="ds-link" href="https://www.mbsonline.gov.au/internet/mbsonline/publishing.nsf/Content/downloads" target="_blank">MBS Downloads (XML/CSV)</a><a class="ds-link" href="https://data.gov.au/data/dataset/medicare-benefits-schedule-statistics" target="_blank">MBS Stats — data.gov.au</a></div></div>
+      <div class="ds-cell"><div class="ds-use">Core engine of EntitleCheck, WellTrack, and PathwayAI. Each MBS item number maps to an age range, sex, and service type. The XML/CSV downloads are what you parse into Azure PostgreSQL during ETL Phase 1. Must be re-indexed quarterly for PathwayAI vector embeddings.</div></div>
+      <div class="ds-cell"><div class="ds-join">→ ABS postcode<br>→ Provider table<br>→ Bulk-billing stats<br>→ NPHS guidelines<br>→ pgvector index</div></div>
+    </div>
+
+    <div class="ds-row">
+      <div class="ds-cell"><div class="ds-name">Healthdirect NHSD API<small>healthdirect.gov.au · live REST API · API key required (free)</small></div>
+      <div class="ds-links"><a class="ds-link" href="https://developers.nhsd.healthdirect.org.au/docs/consumer-api/index.html" target="_blank">NHSD Developer Hub</a><a class="ds-link" href="https://www.healthdirect.gov.au/service-finder" target="_blank">Service Finder (consumer)</a></div></div>
+      <div class="ds-cell"><div class="ds-use">Master provider directory. Powers CostClear and RightDoor. Supplies GP, urgent care, telehealth, and allied health locations with opening hours and service types. REST API returns JSON — search by postcode, proximity, service type. Apply for free API key at developer hub.</div></div>
+      <div class="ds-cell"><div class="ds-join">→ MBS bulk-billing stats<br>→ ABS SA2/postcode<br>→ SEIFA scores</div></div>
+    </div>
+
+    <div class="ds-row">
+      <div class="ds-cell"><div class="ds-name">MBS Bulk-Billing Statistics<small>health.gov.au · quarterly · open Excel</small></div>
+      <div class="ds-links"><a class="ds-link" href="https://data.gov.au/data/dataset/medicare-benefits-schedule-mbs-group" target="_blank">MBS Group Stats — data.gov.au</a><a class="ds-link" href="https://www.servicesaustralia.gov.au/medicare-statistics?context=22" target="_blank">Medicare Statistics — Services Australia</a><a class="ds-link" href="https://www.aihw.gov.au/reports/medicare/mbs-funded-services-data/contents/about" target="_blank">MBS Monthly Data — AIHW</a></div></div>
+      <div class="ds-cell"><div class="ds-use">Powers 🟢🟡🔴 cost coding in CostClear. Shows bulk-billing rates by Statistical Area — used to calculate whether a provider in a given suburb is likely to bulk-bill and the average gap fee. Updated quarterly as Excel spreadsheets. Parse into Azure PostgreSQL during ETL.</div></div>
+      <div class="ds-cell"><div class="ds-join">→ Provider table<br>→ ABS SA2 codes<br>→ SEIFA layer</div></div>
+    </div>
+
+    <div class="ds-row">
+      <div class="ds-cell"><div class="ds-name">ABS SEIFA 2021<small>abs.gov.au · 5-year Census · CC BY 4.0</small></div>
+      <div class="ds-links"><a class="ds-link" href="https://www.abs.gov.au/statistics/people/people-and-communities/socio-economic-indexes-areas-seifa-australia/latest-release" target="_blank">SEIFA 2021 — ABS latest release</a><a class="ds-link" href="https://digital.atlas.gov.au/datasets/abs-socio-economic-indexes-for-areas-seifa-by-2021-sa2/about" target="_blank">SEIFA by SA2 — Digital Atlas</a><a class="ds-link" href="https://digital.atlas.gov.au/datasets/abs-socio-economic-indexes-for-areas-seifa-by-2021-poa/about" target="_blank">SEIFA by Postcode — Digital Atlas</a></div></div>
+      <div class="ds-cell"><div class="ds-use">Socioeconomic disadvantage index by SA2. Used to surface free/bulk-billing options first in high-disadvantage postcodes. Use IRSD (Index of Relative Socio-economic Disadvantage) for this use case. Download Excel data cubes — SA1/SA2/LGA/postcode granularity available.</div></div>
+      <div class="ds-cell"><div class="ds-join">→ ABS postcode→SA2<br>→ Provider table<br>→ MBS bulk-billing</div></div>
+    </div>
+
+    <div class="ds-row">
+      <div class="ds-cell"><div class="ds-name">MyHospitals ED API<small>aihw.gov.au · open API · no auth required · daily update</small></div>
+      <div class="ds-links"><a class="ds-link" href="https://www.aihw.gov.au/reports-data/myhospitals/content/api" target="_blank">MyHospitals API Docs</a><a class="ds-link" href="https://myhospitalsapi.aihw.gov.au/api/v1/measure-categories" target="_blank">Live API endpoint</a><a class="ds-link" href="https://www.aihw.gov.au/hospitals/topics/emergency-departments" target="_blank">ED Care Data & Downloads</a></div></div>
+      <div class="ds-cell"><div class="ds-use">Powers ED pathway card in RightDoor. Shows current and historical ED wait times by hospital. API is open, free, no authentication required — returns JSON. Query by measure category then hospital code. Updated daily. Cached — no rate limit concerns for typical usage.</div></div>
+      <div class="ds-cell"><div class="ds-join">→ Hospital postcode<br>→ ABS concordance<br>→ RightDoor pathways</div></div>
+    </div>
+
+    <div class="ds-row">
+      <div class="ds-cell"><div class="ds-name">ABS Postcode→SA2 Concordance<small>abs.gov.au · ASGS Edition 3 2021 · CC BY 4.0</small></div>
+      <div class="ds-links"><a class="ds-link" href="https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/correspondences" target="_blank">ASGS Correspondences (CSV)</a><a class="ds-link" href="https://data.gov.au/data/dataset/asgs-edition-3-2021-allocation-files" target="_blank">Allocation Files — data.gov.au</a></div></div>
+      <div class="ds-cell"><div class="ds-use">The geographic glue. Maps postcode (POA) → SA2 → LGA → remoteness class. Every feature uses postcode as user input — this concordance enables all cross-dataset joins. Build this lookup table first in ETL Phase 1. CSV format — easy to parse into PostgreSQL.</div></div>
+      <div class="ds-cell"><div class="ds-join">→ All datasets<br>(master join key)</div></div>
+    </div>
+
+    <div class="ds-row">
+      <div class="ds-cell"><div class="ds-name">National Preventive Health Strategy<small>AIHW · CC BY 4.0 · monitoring dashboard open</small></div>
+      <div class="ds-links"><a class="ds-link" href="https://www.aihw.gov.au/reports/risk-factors/nat-preventive-health-monitoring-dashboard/contents/about" target="_blank">NPHS Monitoring Dashboard</a><a class="ds-link" href="https://www.health.gov.au/sites/default/files/documents/2021/12/national-preventive-health-strategy-2021-2030_1.pdf" target="_blank">NPHS Strategy PDF 2021–2030</a></div></div>
+      <div class="ds-cell"><div class="ds-use">Clinical rationale behind WellTrack items — why each screening is recommended, at what age, and how often. Licensed CC BY 4.0 — content can be used in plain-English explanations without copyright concerns. Also validates which preventive checks to prioritise for 18–29 year olds.</div></div>
+      <div class="ds-cell"><div class="ds-join">→ MBS item numbers<br>→ WellTrack timeline<br>→ EntitleCheck copy</div></div>
+    </div>
+  </div>
+
+  <div class="doc-footer"><div class="footer-brand">Medi<span>Clear</span></div><div class="footer-note">7 Open Datasets · All Australian Government sources · No scraping</div></div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- TAB: CONNECTING THREAD -->
+<!-- ══════════════════════════════════════════ -->
+<div id="tab-thread" class="tab-panel">
+<div class="panel-inner">
+  <div class="sec-label"><span class="sec-num">01</span><span class="sec-title">Problem → Persona → Pain → Feature → Data → Solution</span></div>
+  <div class="divider"></div>
+  <div class="callout purple">Every element of MediClear is connected by a single thread: <strong>young Australians are cut off from a health system they've already paid into — not by cost alone, but by opacity.</strong></div>
+
+  <div class="thread-map" style="margin-top:16px;">
+    <div class="thread-row t-prob"><div class="thread-label"><div class="tl-icon">🎯</div><div class="tl-name">Problem</div><div class="tl-sub">Root cause</div></div><div class="thread-content"><div class="tc-title">Core tensions</div><div class="tc-items"><span class="tc-item">System opacity</span><span class="tc-item">Cost uncertainty</span><span class="tc-item">Entitlement blindness</span><span class="tc-item">Navigation complexity</span><span class="tc-item">Wrong-door behaviour</span><span class="tc-item">Behaviour gap</span><span class="tc-item">Hidden multi-step rules</span></div></div></div>
+    <div class="tc-arrow">↓</div>
+    <div class="thread-row t-per"><div class="thread-label"><div class="tl-icon">🧑</div><div class="tl-name">Persona</div><div class="tl-sub">Jordan, 23</div></div><div class="thread-content"><div class="tc-title">Who experiences this</div><div class="tc-items"><span class="tc-item">Casual hospitality worker</span><span class="tc-item">No regular GP</span><span class="tc-item">Irregular income</span><span class="tc-item">Digital native</span><span class="tc-item">Own Medicare card — never activated</span><span class="tc-item">Chronic back pain from work</span></div></div></div>
+    <div class="tc-arrow">↓</div>
+    <div class="thread-row t-pain"><div class="thread-label"><div class="tl-icon">😤</div><div class="tl-name">Pain Points</div><div class="tl-sub">Lived barriers</div></div><div class="thread-content"><div class="tc-title">What Jordan faces day-to-day</div><div class="tc-items"><span class="tc-item">Doesn't know what's covered</span><span class="tc-item">Surprised by unexpected gap fee</span><span class="tc-item">Googles symptoms at 11pm</span><span class="tc-item">Someday list never acted on</span><span class="tc-item">Unnecessary ED visit</span><span class="tc-item">Pays full price for physio — didn't know there's a funded pathway</span></div></div></div>
+    <div class="tc-arrow">↓</div>
+    <div class="thread-row t-feat"><div class="thread-label"><div class="tl-icon">⚡</div><div class="tl-name">Features</div><div class="tl-sub">Direct solutions</div></div><div class="thread-content"><div class="tc-title">Each feature maps to a specific pain point</div><div class="tc-items"><span class="tc-item">EntitleCheck → Entitlement blindness</span><span class="tc-item">CostClear → Cost uncertainty</span><span class="tc-item">RightDoor → Wrong-door / Google behaviour</span><span class="tc-item">WellTrack → Behaviour gap / someday list</span><span class="tc-item">PathwayAI → Hidden multi-step rules</span></div></div></div>
+    <div class="tc-arrow">↓</div>
+    <div class="thread-row t-data"><div class="thread-label"><div class="tl-icon">🗄️</div><div class="tl-name">Datasets</div><div class="tl-sub">Evidence & power</div></div><div class="thread-content"><div class="tc-title">Open data powering each feature</div><div class="tc-items"><span class="tc-item">MBS → EntitleCheck + WellTrack + PathwayAI</span><span class="tc-item">Healthdirect API → CostClear + RightDoor</span><span class="tc-item">MBS Bulk-Billing → CostClear cost coding</span><span class="tc-item">ABS SEIFA → Equity weighting</span><span class="tc-item">MyHospitals ED API → RightDoor</span><span class="tc-item">ABS Concordance → Master join key</span></div></div></div>
+    <div class="tc-arrow">↓</div>
+    <div class="thread-row t-sol"><div class="thread-label"><div class="tl-icon">✅</div><div class="tl-name">Solution</div><div class="tl-sub">Unique outcome</div></div><div class="thread-content"><div class="tc-title">What MediClear delivers that no other tool does</div><div class="tc-items"><span class="tc-item">Entitlement-first framing (citizenship not charity)</span><span class="tc-item">Cost transparency before commitment</span><span class="tc-item">Google replacement for care navigation</span><span class="tc-item">Personal health schedule with real deadlines</span><span class="tc-item">AI surfaces hidden multi-step Medicare rules in plain English</span><span class="tc-item">No login, no jargon, works in 60 seconds</span></div></div></div>
+  </div>
+
+  <div class="doc-footer"><div class="footer-brand">Medi<span>Clear</span></div><div class="footer-note">Connecting Thread · Problem → Persona → Pain → Feature → Data → Solution</div></div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- TAB: BUILD PLAN -->
+<!-- ══════════════════════════════════════════ -->
+<div id="tab-build" class="tab-panel">
+<div class="panel-inner">
+  <div class="sec-label"><span class="sec-num">01</span><span class="sec-title">Build Roadmap — 3 Phases</span></div>
+  <div class="divider"></div>
+  <div class="roadmap">
+    <div class="rm-phase"><div class="rm-label p1">Phase 1 — Foundation</div><div class="rm-name">Data layer + safety infrastructure</div>
+      <div class="rm-item"><div class="rm-dot p1"></div>ETL: ABS Postcode→SA2 concordance into Azure PostgreSQL</div>
+      <div class="rm-item"><div class="rm-dot p1"></div>ETL: SEIFA 2021 disadvantage scores by SA2</div>
+      <div class="rm-item"><div class="rm-dot p1"></div>ETL: MBS XML/CSV → item table (num · age · sex · service · cost)</div>
+      <div class="rm-item"><div class="rm-dot p1"></div>ETL: MBS bulk-billing stats by Statistical Area</div>
+      <div class="rm-item"><div class="rm-dot p1"></div>API route: /api/postcode → SA2 + SEIFA + bulk-billing rate</div>
+      <div class="rm-item"><div class="rm-dot p1"></div>Healthdirect NHSD API integration</div>
+      <div class="rm-item"><div class="rm-dot p1"></div>MyHospitals ED API connection</div>
+      <div class="rm-item"><div class="rm-dot p1"></div>Authentication (NextAuth.js + Azure PostgreSQL)</div>
+      <div class="rm-item"><div class="rm-dot p1"></div>Safety layer: "Call 000" + "Not medical advice" components</div>
+      <div class="rm-item"><div class="rm-dot p1"></div>Privacy policy + data deletion mechanism</div>
+    </div>
+    <div class="rm-phase"><div class="rm-label p2">Phase 2 — Core Product</div><div class="rm-name">All 4 non-AI features shipped</div>
+      <div class="rm-item"><div class="rm-dot p2"></div>EntitleCheck: age + sex → MBS entitlement list in plain English</div>
+      <div class="rm-item"><div class="rm-dot p2"></div>CostClear: provider search with 🟢🟡🔴 cost coding</div>
+      <div class="rm-item"><div class="rm-dot p2"></div>RightDoor: care pathway comparison (non-diagnostic)</div>
+      <div class="rm-item"><div class="rm-dot p2"></div>WellTrack: preventive schedule + calendar export (.ics)</div>
+      <div class="rm-item"><div class="rm-dot p2"></div>Mobile-responsive UI — postcode search as homepage</div>
+      <div class="rm-item"><div class="rm-dot p2"></div>Mapbox provider proximity map</div>
+      <div class="rm-item"><div class="rm-dot p2"></div>Plain-English glossary (bulk-billing, gap fee, rebate)</div>
+      <div class="rm-item"><div class="rm-dot p2"></div>Guest vs logged-in data routing</div>
+    </div>
+    <div class="rm-phase"><div class="rm-label p3">Phase 3 — Intelligence Layer</div><div class="rm-name">PathwayAI + notifications</div>
+      <div class="rm-item"><div class="rm-dot p3"></div>SentenceTransformers: MBS rules → vector embeddings</div>
+      <div class="rm-item"><div class="rm-dot p3"></div>pgvector setup inside Azure PostgreSQL</div>
+      <div class="rm-item"><div class="rm-dot p3"></div>PathwayAI: lifestyle input → semantic search → entitlement cards</div>
+      <div class="rm-item"><div class="rm-dot p3"></div>Confidence score display per PathwayAI result</div>
+      <div class="rm-item"><div class="rm-dot p3"></div>Push notifications for WellTrack overdue checks</div>
+      <div class="rm-item"><div class="rm-dot p3"></div>Quarterly MBS re-indexing pipeline (automated)</div>
+      <div class="rm-item"><div class="rm-dot p3"></div>Medicare Urgent Care Clinic locator (137 nationally)</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label"><span class="sec-num">02</span><span class="sec-title">Tech Stack</span></div>
+    <div class="divider"></div>
+    <div class="stack-grid">
+      <div class="stack-card"><div class="stack-icon">⚡</div><div class="stack-name">Next.js 14</div><div class="stack-desc">App Router, SSR for postcode pages, API routes</div></div>
+      <div class="stack-card"><div class="stack-icon">🗄️</div><div class="stack-name">Azure PostgreSQL</div><div class="stack-desc">User data + MBS tables + pgvector for PathwayAI embeddings</div></div>
+      <div class="stack-card"><div class="stack-icon">🤖</div><div class="stack-name">SentenceTransformers</div><div class="stack-desc">MBS rules → vector embeddings for PathwayAI semantic search</div></div>
+      <div class="stack-card"><div class="stack-icon">🗺️</div><div class="stack-name">Mapbox / Leaflet</div><div class="stack-desc">Provider map, distance sorting, postcode overlays</div></div>
+      <div class="stack-card"><div class="stack-icon">🔐</div><div class="stack-name">NextAuth.js</div><div class="stack-desc">Authentication — guest and account login flows</div></div>
+      <div class="stack-card"><div class="stack-icon">📦</div><div class="stack-name">Vercel</div><div class="stack-desc">Deployment + edge functions for postcode lookups</div></div>
+      <div class="stack-card"><div class="stack-icon">🎨</div><div class="stack-name">Tailwind CSS</div><div class="stack-desc">Utility-first styling — consistent with UVibe/Orbit stack</div></div>
+      <div class="stack-card"><div class="stack-icon">🐍</div><div class="stack-name">Python (ETL)</div><div class="stack-desc">One-time scripts: MBS CSV + SEIFA Excel → Azure PostgreSQL</div></div>
+    </div>
+  </div>
+
+  <div class="doc-footer"><div class="footer-brand">Medi<span>Clear</span></div><div class="footer-note">Build Plan · 3 Phases · Next.js + Azure PostgreSQL + Vercel</div></div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- TAB: REFERENCES -->
+<!-- ══════════════════════════════════════════ -->
+<div id="tab-refs" class="tab-panel">
+<div class="panel-inner">
+
+  <div class="sec-label"><span class="sec-num">01</span><span class="sec-title">Statistics & Research Reports</span></div>
+  <div class="divider"></div>
+
+  <div class="ref-section">
+    <div class="ref-card"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span class="ref-tag rt-stat">Key Stat</span><span class="ref-title">Australian Healthcare Index 2025 (7th Edition)</span></div><div class="ref-meta">Healthengine · November 2025 · 8,000+ respondents across Australia</div><div class="ref-desc">Source of the 37% Google-first stat and 43% ED misdirection finding. Documents rising out-of-pocket costs as #1 health concern, younger Australians most affected. Most comprehensive annual survey of Australian healthcare experiences.</div><div class="ref-links"><a class="ref-link" href="https://australianhealthcareindex.com.au/" target="_blank">australianhealthcareindex.com.au</a></div></div>
+
+    <div class="ref-card"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span class="ref-tag rt-stat">Key Stat</span><span class="ref-title">CommBank Health Insights Report 2025</span></div><div class="ref-meta">Commonwealth Bank of Australia · May 2025 · 7 million transaction records (Apr 2024–Mar 2025)</div><div class="ref-desc">Hard transaction data confirming 18–24 year olds increased health spending by only 3.1% — below Health CPI of 4.1%, a real-terms decline. They specifically cut physiotherapy, dental, and optometry. Spending data, not survey — one of the strongest evidence sources for the problem.</div><div class="ref-links"><a class="ref-link" href="https://www.commbank.com.au/articles/newsroom/2025/05/gen-z-healthcare-cost-of-living.html" target="_blank">CommBank — Gen Z cuts back on healthcare</a></div></div>
+
+    <div class="ref-card"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span class="ref-tag rt-stat">Key Stat</span><span class="ref-title">ABS Patient Experiences Survey 2024–25</span></div><div class="ref-meta">Australian Bureau of Statistics · 2025 · National survey</div><div class="ref-desc">Official ABS data confirming 9.6% of Australians delayed or did not see a GP due to cost. 26.0% waited longer than acceptable for a GP appointment. Age-disaggregated data confirms younger Australians face disproportionate access barriers.</div><div class="ref-links"><a class="ref-link" href="https://www.abs.gov.au/statistics/health/health-services/patient-experiences/latest-release" target="_blank">ABS — Patient Experiences 2024–25</a></div></div>
+
+    <div class="ref-card"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span class="ref-tag rt-stat">Key Stat</span><span class="ref-title">RACGP Health of the Nation 2025</span></div><div class="ref-meta">Royal Australian College of GPs · September 2025</div><div class="ref-desc">Average gap fee for a standard appointment increased to $39. 8.8% of Australians delayed care due to costs in 2023–24. Strong GP-sector evidence for the bulk-billing crisis directly relevant to CostClear's design rationale.</div><div class="ref-links"><a class="ref-link" href="https://www.racgp.org.au/gp-news/media-releases/2025-media-releases/september-2025/new-racgp-report-tracks-rise-in-cost-of-health-1" target="_blank">RACGP — Rise in cost of healthcare</a></div></div>
+  </div>
+
+  <div class="sec-label"><span class="sec-num">02</span><span class="sec-title">News Articles & Commentary</span></div>
+  <div class="divider"></div>
+
+  <div class="ref-section">
+    <div class="ref-card"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span class="ref-tag rt-news">News</span><span class="ref-title">Top healthcare concerns for Australians — Sonder / AHI 2025</span></div><div class="ref-meta">Sonder · January 2026</div><div class="ref-desc">Excellent AHI 2025 summary including 37% Google-first stat, 43% ED misdirection, and 76% telehealth satisfaction rate supporting RightDoor's telehealth pathway design.</div><div class="ref-links"><a class="ref-link" href="https://sonder.io/resources/blog/top-healthcare-concerns-australians-2025/" target="_blank">Sonder — Top 3 healthcare concerns</a></div></div>
+
+    <div class="ref-card"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span class="ref-tag rt-news">News</span><span class="ref-title">Should we aim to bulk-bill everyone? We asked 5 experts</span></div><div class="ref-meta">University of Western Australia / The Conversation · January 2025</div><div class="ref-desc">Four out of five experts said yes. Documents that young and middle-aged adults largely miss out from bulk-billing incentives — strong evidence for the generational equity framing in MediClear's problem statement.</div><div class="ref-links"><a class="ref-link" href="https://www.uwa.edu.au/news/article/2025/january/should-we-aim-to-bulk-bill-everyone-for-gp-visits-we-asked-5-experts" target="_blank">UWA — Should we bulk-bill everyone?</a></div></div>
+
+    <div class="ref-card"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span class="ref-tag rt-news">News</span><span class="ref-title">Why GP visits just got more expensive</span></div><div class="ref-meta">National Seniors Australia · 2025 · Cleanbill survey of 7,000 GP clinics</div><div class="ref-desc">Only 20.7% of GP clinics bulk-bill adult patients without concessions — down 15% in two years. Average out-of-pocket cost: $43. Directly underpins CostClear's cost-coding logic.</div><div class="ref-links"><a class="ref-link" href="https://nationalseniors.com.au/news/latest-news/why-gp-visits-just-got-more-expensive" target="_blank">National Seniors Australia — GP cost rises</a></div></div>
+  </div>
+
+  <div class="sec-label"><span class="sec-num">03</span><span class="sec-title">Policy & Government Sources</span></div>
+  <div class="divider"></div>
+
+  <div class="ref-section">
+    <div class="ref-card"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span class="ref-tag rt-policy">Policy</span><span class="ref-title">Australian Government Budget 2025–26 — Health</span></div><div class="ref-meta">Australian Government · May 2025</div><div class="ref-desc">$7.9B investment to expand bulk-billing to all Australians from 1 November 2025. 137 Medicare Urgent Care Clinics nationally. Critical context: cost barrier is being addressed structurally but the navigation and legibility gap remains — MediClear's core value shifts to entitlement education as bulk-billing expands.</div><div class="ref-links"><a class="ref-link" href="https://budget.gov.au/content/02-health.htm" target="_blank">Budget 2025–26 — Health</a></div></div>
+
+    <div class="ref-card"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span class="ref-tag rt-policy">Policy</span><span class="ref-title">National Preventive Health Strategy 2021–2030</span></div><div class="ref-meta">Dept of Health & Aged Care · December 2021 · CC BY 4.0 licence</div><div class="ref-desc">Foundational policy behind WellTrack's schedule. Defines preventive interventions recommended at specific ages and frequencies. CC BY 4.0 — content can be used directly in plain-English explanations.</div><div class="ref-links"><a class="ref-link" href="https://www.health.gov.au/sites/default/files/documents/2021/12/national-preventive-health-strategy-2021-2030_1.pdf" target="_blank">NPHS 2021–2030 Full PDF</a><a class="ref-link" href="https://www.aihw.gov.au/reports/risk-factors/nat-preventive-health-monitoring-dashboard/contents/about" target="_blank">NPHS Monitoring Dashboard (AIHW)</a></div></div>
+
+    <div class="ref-card"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span class="ref-tag rt-policy">Policy</span><span class="ref-title">TGA — Software as a Medical Device (SaMD) Guidance</span></div><div class="ref-meta">Therapeutic Goods Administration · Australian Government</div><div class="ref-desc">The regulatory framework MediClear must stay within. Defines when software qualifies as a regulated medical device. Critical reading before any AI feature is scoped. MediClear's navigation-not-diagnosis framing is designed specifically to remain outside this regulatory boundary.</div><div class="ref-links"><a class="ref-link" href="https://www.tga.gov.au/resources/resource/guidance/software-medical-device-guidance" target="_blank">TGA — Software as Medical Device guidance</a></div></div>
+
+    <div class="ref-card"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span class="ref-tag rt-policy">Policy</span><span class="ref-title">Australian Privacy Act 1988 — Health Information</span></div><div class="ref-meta">Office of the Australian Information Commissioner</div><div class="ref-desc">Health information is classified as sensitive information under the Privacy Act and attracts the highest level of protection. Explicit consent required before collection. Right to deletion must be provided. Relevant to all logged-in user data stored in Azure PostgreSQL.</div><div class="ref-links"><a class="ref-link" href="https://www.oaic.gov.au/privacy/the-privacy-act/rights-and-responsibilities" target="_blank">OAIC — Privacy Act rights & responsibilities</a></div></div>
+  </div>
+
+  <div class="sec-label"><span class="sec-num">04</span><span class="sec-title">Open Data Sources — Direct Download Links</span></div>
+  <div class="divider"></div>
+
+  <div class="ref-section">
+    <div class="ref-card"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span class="ref-tag rt-data">Dataset</span><span class="ref-title">Medicare Benefits Schedule — MBS Online</span></div><div class="ref-meta">Dept of Health & Aged Care · Updated as changes occur · XML + CSV</div><div class="ref-links"><a class="ref-link" href="https://www.mbsonline.gov.au/" target="_blank">MBS Online (item search)</a><a class="ref-link" href="https://www.mbsonline.gov.au/internet/mbsonline/publishing.nsf/Content/downloads" target="_blank">MBS Downloads (XML/CSV)</a><a class="ref-link" href="https://data.gov.au/data/dataset/medicare-benefits-schedule-statistics" target="_blank">MBS Stats — data.gov.au</a></div></div>
+
+    <div class="ref-card"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span class="ref-tag rt-data">Dataset</span><span class="ref-title">Healthdirect NHSD API</span></div><div class="ref-meta">Healthdirect Australia · Live REST API · API key required (free)</div><div class="ref-links"><a class="ref-link" href="https://developers.nhsd.healthdirect.org.au/docs/consumer-api/index.html" target="_blank">NHSD Developer Hub + API Docs</a><a class="ref-link" href="https://www.healthdirect.gov.au/service-finder" target="_blank">Service Finder (consumer)</a></div></div>
+
+    <div class="ref-card"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span class="ref-tag rt-data">Dataset</span><span class="ref-title">ABS SEIFA 2021</span></div><div class="ref-meta">Australian Bureau of Statistics · CC BY 4.0 · Excel data cubes</div><div class="ref-links"><a class="ref-link" href="https://www.abs.gov.au/statistics/people/people-and-communities/socio-economic-indexes-areas-seifa-australia/latest-release" target="_blank">SEIFA 2021 — ABS latest release</a><a class="ref-link" href="https://digital.atlas.gov.au/datasets/abs-socio-economic-indexes-for-areas-seifa-by-2021-sa2/about" target="_blank">SEIFA by SA2</a><a class="ref-link" href="https://digital.atlas.gov.au/datasets/abs-socio-economic-indexes-for-areas-seifa-by-2021-poa/about" target="_blank">SEIFA by Postcode</a></div></div>
+
+    <div class="ref-card"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span class="ref-tag rt-data">Dataset</span><span class="ref-title">MyHospitals API — ED Wait Times</span></div><div class="ref-meta">AIHW · Open API · No authentication required · Updated daily</div><div class="ref-links"><a class="ref-link" href="https://www.aihw.gov.au/reports-data/myhospitals/content/api" target="_blank">MyHospitals API Docs</a><a class="ref-link" href="https://myhospitalsapi.aihw.gov.au/api/v1/measure-categories" target="_blank">Live API endpoint</a><a class="ref-link" href="https://www.aihw.gov.au/hospitals/topics/emergency-departments" target="_blank">ED Data Downloads</a></div></div>
+
+    <div class="ref-card"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span class="ref-tag rt-data">Dataset</span><span class="ref-title">ABS ASGS — Postcode to SA2 Concordance</span></div><div class="ref-meta">Australian Bureau of Statistics · ASGS Edition 3 2021 · CC BY 4.0 · CSV</div><div class="ref-links"><a class="ref-link" href="https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/correspondences" target="_blank">ASGS Correspondences (CSV)</a><a class="ref-link" href="https://data.gov.au/data/dataset/asgs-edition-3-2021-allocation-files" target="_blank">Allocation Files — data.gov.au</a></div></div>
+
+    <div class="ref-card"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span class="ref-tag rt-data">Dataset</span><span class="ref-title">MBS Bulk-Billing Statistics</span></div><div class="ref-meta">Services Australia / Health.gov.au · Quarterly · Excel</div><div class="ref-links"><a class="ref-link" href="https://data.gov.au/data/dataset/medicare-benefits-schedule-mbs-group" target="_blank">MBS Group Stats — data.gov.au</a><a class="ref-link" href="https://www.servicesaustralia.gov.au/medicare-statistics?context=22" target="_blank">Medicare Statistics — Services Australia</a><a class="ref-link" href="https://www.aihw.gov.au/reports/medicare/mbs-funded-services-data/contents/about" target="_blank">MBS Monthly Data — AIHW</a></div></div>
+  </div>
+
+  <div class="doc-footer"><div class="footer-brand">Medi<span>Clear</span></div><div class="footer-note">References · All sources verified · v3.0 · March 2026</div></div>
+</div>
+</div>
+
+<script>
+function switchTab(id) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.currentTarget.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
